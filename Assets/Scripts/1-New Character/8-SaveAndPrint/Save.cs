@@ -13,42 +13,25 @@ public class Save
 
         SaveLoadCharacter saveLoad = new SaveLoadCharacter();
 
-        saveLoad.age = character.Age;
-        saveLoad.ageText = character.AgeText;
-        saveLoad.background = character.Background;
-        saveLoad.bonusBack = character.BonusBack;
+        saveLoad.godGifts = character.GodGifts;
         saveLoad.carryWeight = character.CarryWeight;
-        saveLoad.constitution = character.Constitution;
-        saveLoad.corruptionPoints = character.CorruptionPoints;
+        saveLoad.corruption = character.CorruptionPoints;
         saveLoad.experienceSpent = character.ExperienceSpent;
         saveLoad.experienceTotal = character.ExperienceTotal;
         saveLoad.experienceUnspent = character.ExperienceUnspent;
-        saveLoad.eyes = character.Eyes;
-        saveLoad.fatePoint = character.FatePoint;
         saveLoad.fatigue = character.Fatigue;
         saveLoad.fullMove = character.FullMove;
-        saveLoad.gender = character.Gender;
-        saveLoad.hair = character.Hair;
         saveLoad.halfMove = character.HalfMove;
-        saveLoad.homeworld = character.Homeworld;
-        saveLoad.insanityPoints = character.InsanityPoints;
-        saveLoad.liftWeight = character.LiftWeight;
-        saveLoad.memoryOfBackground = character.MemoryOfBackground;
-        saveLoad.memoryOfHome = character.MemoryOfHome;
         saveLoad.name = character.Name;
         saveLoad.natisk = character.Natisk;
-        saveLoad.physFeatures = character.PhysFeatures;
-        saveLoad.prophecy = character.Prophecy;
         saveLoad.psyRating = character.PsyRating;
         saveLoad.pushWeight = character.PushWeight;
-        saveLoad.role = character.Role;
         saveLoad.run = character.Run;
-        saveLoad.skeen = character.Skeen;
         saveLoad.wounds = character.Wounds;
-        saveLoad.elite = character.Elite;
-        saveLoad.tradition = character.Tradition;
-        saveLoad.bonusHomeworld = character.BonusHomeworld;
-        saveLoad.bonusRole = character.BonusRole;
+        saveLoad.description = character.Description;
+        saveLoad.infamy = character.Infamy;
+        saveLoad.god = character.God;
+        saveLoad.canChangeGod = character.CanChageGod;
 
         saveLoad.talents = "";
         foreach (Talent talent in character.Talents)
@@ -84,25 +67,29 @@ public class Save
         }
         saveLoad.psyPowers = DeleteLastChar(saveLoad.psyPowers);
 
-        saveLoad.inclinations = "";
-        foreach (GameStat.Inclinations inclination in character.Inclinations)
-        {
-            saveLoad.inclinations += inclination.ToString();
-            saveLoad.inclinations += "/";
-        }
-        saveLoad.inclinations = DeleteLastChar(saveLoad.inclinations);
-
-        saveLoad.features = "";
-        saveLoad.featuresLvl = "";
+        saveLoad.traits = "";
+        saveLoad.traitsLvl = "";
         foreach(Trait feature in character.Traits)
         {
-            saveLoad.features += feature.Name;
-            saveLoad.features += "/";
-            saveLoad.featuresLvl += feature.Lvl;
-            saveLoad.featuresLvl += "/";
+            saveLoad.traits += feature.Name;
+            saveLoad.traits += "/";
+            saveLoad.traitsLvl += feature.Lvl;
+            saveLoad.traitsLvl += "/";
         }
-        saveLoad.features = DeleteLastChar(saveLoad.features); 
-        saveLoad.featuresLvl = DeleteLastChar(saveLoad.featuresLvl);
+        saveLoad.traits = DeleteLastChar(saveLoad.traits); 
+        saveLoad.traitsLvl = DeleteLastChar(saveLoad.traitsLvl);
+
+        saveLoad.upgrades = "";
+        foreach(Trait upgrade in character.Upgrades)
+        {
+            saveLoad.upgrades += upgrade.Name;
+            saveLoad.upgrades += "/";
+            saveLoad.upgradesLvl += upgrade.Lvl;
+            saveLoad.upgradesLvl += "/";
+        }
+        saveLoad.upgrades = DeleteLastChar(saveLoad.upgrades);
+        saveLoad.upgradesLvl = DeleteLastChar(saveLoad.upgradesLvl);
+
         int counter = 0;
         List<string> dataSkills = new List<string>();
         foreach (Skill skill in character.Skills)
@@ -118,8 +105,9 @@ public class Save
         }
         saveLoad.amountSkills = counter;
         data.Add(JsonUtility.ToJson(saveLoad,true));
+        
 
-        foreach(Characteristic characteristic in character.Characteristics)
+        foreach (Characteristic characteristic in character.Characteristics)
         {
             SaveLoadCharacteristic saveCharacteristic = new SaveLoadCharacteristic();
             saveCharacteristic.name = characteristic.Name;
@@ -128,9 +116,9 @@ public class Save
             data.Add(JsonUtility.ToJson(saveCharacteristic,true));
         }
 
-        data.AddRange(dataSkills);        
+        data.AddRange(dataSkills);
 
-        foreach(MechImplant implant in character.Implants)
+        foreach (MechImplant implant in character.Implants)
         {
             SaveLoadImplant saveImplant = new SaveLoadImplant();
             saveImplant.armor = implant.Armor;

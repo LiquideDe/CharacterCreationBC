@@ -5,7 +5,7 @@ using System;
 [Serializable]
 public class JSONTalentReader 
 {
-    public string name, inclinationFirst, inclinationSecond;
+    public string name, god;
     public int rank;
     public bool canActivate, repeatable;
 }

@@ -12,7 +12,7 @@ public class TakeScreenshot : MonoBehaviour
     protected ICharacter _character;
     List<byte[]> savedImages = new List<byte[]>();
     [SerializeField] RectTransform rectImage;
-    public enum PageName { First, Second, Third}
+    public enum PageName { First, Second, Third, Fourth}
     private string _pageName;
     bool _isManyPages;
 
@@ -95,8 +95,10 @@ public class TakeScreenshot : MonoBehaviour
             bitmaps.Add(ConvertByteToBitmap(by));
         }
         //Bitmap newImage = new Bitmap(2800, 2160);
+        //1985
         int w = (int)(cam.pixelWidth * 1.458f);
         int h = cam.pixelHeight * 2;
+        //int h = (int)(cam.pixelHeight * 1.03f);
         Bitmap newImage = new Bitmap(w, h);
         newImage.SetResolution(72, 72);
         System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(newImage);

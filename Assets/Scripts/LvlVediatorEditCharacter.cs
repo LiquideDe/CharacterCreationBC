@@ -48,7 +48,7 @@ public class LvlVediatorEditCharacter
         UpgradeCharacteristicsView upgradeCharacteristicsView = _lvlFactory.Get(TypeScene.UpgradeCharacteristic).GetComponent<UpgradeCharacteristicsView>();
         UpgradeCharacteristicsPresenter characteristicsPresenter = (UpgradeCharacteristicsPresenter)_presenterFactory.Get(TypeScene.UpgradeCharacteristic);
         characteristicsPresenter.GoNext += ShowUpgradeSkill;
-        characteristicsPresenter.ReturnToPrev += ShowEditCharacters;
+        //characteristicsPresenter.ReturnToPrev += ShowEditCharacters;
         characteristicsPresenter.Initialize(character, upgradeCharacteristicsView, false);
         characteristicsPresenter.SetEdit();
     }
@@ -104,14 +104,16 @@ public class LvlVediatorEditCharacter
         FirstCharacterSheet firstCharacterSheet = _lvlFactory.Get(TypeScene.FirstPage).GetComponent<FirstCharacterSheet>();
         SecondCharacterSheet secondCharacterSheet = _lvlFactory.Get(TypeScene.SecondPage).GetComponent<SecondCharacterSheet>();
         ThirdCharacterSheet thirdCharacterSheet = _lvlFactory.Get(TypeScene.ThirdPage).GetComponent<ThirdCharacterSheet>();
+        FourthCharacterSheet fourthCharacterSheet = _lvlFactory.Get(TypeScene.FourthPage).GetComponent<FourthCharacterSheet>();
 
         firstCharacterSheet.gameObject.SetActive(false);
         secondCharacterSheet.gameObject.SetActive(false);
         thirdCharacterSheet.gameObject.SetActive(false);
+        fourthCharacterSheet.gameObject.SetActive(false);
 
         TakePicturesPresenter picturesPresenter = (TakePicturesPresenter)_presenterFactory.Get(TypeScene.Pictures);
         picturesPresenter.WorkIsFinished += SaveAndReturnToMenu;
-        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, character);
+        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, fourthCharacterSheet, character);
     }
 
     private void TakePicturesAndExit(ICharacter character)
@@ -119,14 +121,16 @@ public class LvlVediatorEditCharacter
         FirstCharacterSheet firstCharacterSheet = _lvlFactory.Get(TypeScene.FirstPage).GetComponent<FirstCharacterSheet>();
         SecondCharacterSheet secondCharacterSheet = _lvlFactory.Get(TypeScene.SecondPage).GetComponent<SecondCharacterSheet>();
         ThirdCharacterSheet thirdCharacterSheet = _lvlFactory.Get(TypeScene.ThirdPage).GetComponent<ThirdCharacterSheet>();
+        FourthCharacterSheet fourthCharacterSheet = _lvlFactory.Get(TypeScene.FourthPage).GetComponent<FourthCharacterSheet>();
 
         firstCharacterSheet.gameObject.SetActive(false);
         secondCharacterSheet.gameObject.SetActive(false);
         thirdCharacterSheet.gameObject.SetActive(false);
+        fourthCharacterSheet.gameObject.SetActive(false);
 
         TakePicturesPresenter picturesPresenter = (TakePicturesPresenter)_presenterFactory.Get(TypeScene.Pictures);
         picturesPresenter.WorkIsFinished += SaveAndExit;
-        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, character);
+        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, fourthCharacterSheet, character);
     }
 
     private void SaveAndExit(ICharacter character)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterWithUpgrade : CharacterDecorator, ICharacter
 {
     private List<Characteristic> _characteristics;
-    private int _experienceSpent, _experienceUnspent, _experienceTotal, _psyrate;
+    private int _experienceSpent, _experienceUnspent, _experienceTotal, _psyrate, _infamy;
 
     public CharacterWithUpgrade(ICharacter character) : base(character)
     {
@@ -13,6 +13,7 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
         _experienceUnspent = character.ExperienceUnspent;
         _experienceTotal = character.ExperienceTotal;
         _psyrate = character.PsyRating;
+        _infamy = character.Infamy;
 
         _characteristics = new List<Characteristic>();
         foreach(Characteristic characteristic in _character.Characteristics)
@@ -20,10 +21,6 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
             _characteristics.Add(new Characteristic(characteristic));
         }
     }
-
-    public int Age => _character.Age;
-
-    public int InsanityPoints => _character.InsanityPoints;
 
     public int Wounds => _character.Wounds;
 
@@ -57,53 +54,40 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
 
     public int Run => _character.Run;
 
-    public string BonusBack => _character.BonusBack;
-
     public List<string> Mutation => _character.Mutation;
-
-    public List<Trait> Traits => _character.Traits;
-
-    public string Background => _character.Background;
-
-    public string Role => _character.Role;
-
-    public string AgeText => _character.AgeText;
-
-    public string Constitution => _character.Constitution;
-
-    public string Hair => _character.Hair;
-
-    public string Eyes => _character.Eyes;
-
-    public string Skeen => _character.Skeen;
-
-    public string PhysFeatures => _character.PhysFeatures;
-
-    public string MemoryOfHome => _character.MemoryOfHome;
-
-    public string MemoryOfBackground => _character.MemoryOfBackground;
-
-    public string Gender => _character.Gender;
-
-    public string Homeworld => _character.Homeworld;
-
-    public string Elite => _character.Elite;
-
-    public string Tradition => _character.Tradition;
 
     public int BonusToughness => _characteristics[3].Amount/10;
 
     public ICharacter GetCharacter => _character;
 
-    public string BonusHomeworld => _character.BonusHomeworld;
-
-    public string BonusRole => _character.BonusRole;
-
-    public int FatePoint => _character.FatePoint;
-
     public string Name => _character.Name;
 
-    public string Prophecy => _character.Prophecy;
+    public List<IName> ForeverFriendly => _character.ForeverFriendly;
+
+    public List<IName> ForeverHostile => _character.ForeverHostile;
+
+    public string Race => _character.Race;
+
+    public string Archetype => _character.Archetype;
+
+    public List<string> EliteAcrhetypes => _character.EliteAcrhetypes;
+
+    public string Motivation => _character.Motivation;
+
+    public string Disgrace => _character.Disgrace;
+
+    public string Pride => _character.Pride;
+
+    public string Stereotype => _character.Stereotype;
+
+    public bool CanChageGod => _character.CanChageGod;
+
+    public string God => _character.God;
+
+    public int Infamy => _infamy;
+
+    public string Description => _character.Description;
+    public string GodGifts => _character.GodGifts;
 
     public void UpgradeSkill(Skill upgradeSkill, int experienceSpentForSkill)
     {
@@ -115,6 +99,8 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
         else
             _skills.Add(new Skill(upgradeSkill, upgradeSkill.LvlLearned + 1));
 
+        if(experienceSpentForSkill > 0)
+            _upgrades.Add(new Trait(upgradeSkill.Name, upgradeSkill.LvlLearned + 1));
 
         _experienceSpent += experienceSpentForSkill;
         _experienceUnspent -= experienceSpentForSkill;
@@ -123,7 +109,10 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
 
     public void UpgradeTalent(Talent talent, int cost)
     {
-        _talents.Add(new Talent(talent));
+        if(cost > 0)
+            _upgrades.Add(new Trait(talent.Name, 1));
+
+        _talents.Add(new Talent(talent));        
         _experienceSpent += cost;
         _experienceUnspent -= cost;
         _experienceTotal = _experienceSpent + _experienceUnspent;
@@ -157,15 +146,32 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
     public void UpgradePerception(int costExp) => UpgradeCharacteristic(_characteristics[6], costExp);
     public void UpgradeWillpower(int costExp) => UpgradeCharacteristic(_characteristics[7], costExp);
     public void UpgradeFellowship(int costExp) => UpgradeCharacteristic(_characteristics[8], costExp);
-    public void UpgradeInfluence(int costExp) => UpgradeCharacteristic(_characteristics[9], costExp);
 
     public void SetExperience(int experience) => _experienceUnspent += experience;
 
+    public void UpgradeInfamy()
+    {
+        if (_character.Infamy < 40)
+        {
+            _infamy += 5;
+            _experienceSpent += 500;
+            _experienceUnspent -= 500;
+            _experienceTotal = _experienceSpent + _experienceUnspent;
+        }
+    }
+
     private void UpgradeCharacteristic(Characteristic characteristic, int costExp)
     {
+        
         characteristic.UpgradeLvl();
+        if(costExp > 0)
+            _upgrades.Add(new Trait(characteristic.Name, characteristic.LvlLearned));
+
+        Debug.Log($"cost exp = {costExp}, upgrades.count = {_upgrades.Count}");
         _experienceSpent += costExp;
         _experienceUnspent -= costExp;
         _experienceTotal = _experienceSpent + _experienceUnspent;
     }
+
+    
 }

@@ -1,5 +1,6 @@
 using Zenject;
 using System;
+using Unity.VisualScripting;
 
 public class PresenterFactory
 {
@@ -11,32 +12,21 @@ public class PresenterFactory
     {
         switch (type)
         {
-            case TypeScene.Homeworld:
-                return _diContainer.Instantiate<HomeworldPresenter>();
-
-            case TypeScene.HomeworldFinal:
-                return _diContainer.Instantiate<HomeworldFinalPanelPresenter>();
 
             case TypeScene.MainMenu:
                 return _diContainer.Instantiate<MainMenuPresenter>();
 
-            case TypeScene.Background:
-                return _diContainer.Instantiate<BackgroundPresenter>();
+            case TypeScene.Race:
+                return _diContainer.Instantiate<RacePresenter>();
 
-            case TypeScene.BackgroundFinal:
-                return _diContainer.Instantiate<BackgroundFinalPanelPresenter>();
+            case TypeScene.Archetype:
+                return _diContainer.Instantiate<ArchetypePresenter>();
 
-            case TypeScene.Role:
-                return _diContainer.Instantiate<RolePresenter>();
-
-            case TypeScene.RoleFinal:
-                return _diContainer.Instantiate<RoleFinalPresenter>();
+            case TypeScene.Motivations:
+                return _diContainer.Instantiate<MotivationPresenter>();
 
             case TypeScene.RandomCharacteristic:
                 return _diContainer.Instantiate<CharacteristicRandomPresenter>();
-
-            case TypeScene.ManualCharacteristic:
-                return _diContainer.Instantiate<CharacteristicManualPresenter>();
 
             case TypeScene.UpgradeCharacteristic:
                 return _diContainer.Instantiate<UpgradeCharacteristicsPresenter>();
@@ -49,9 +39,6 @@ public class PresenterFactory
 
             case TypeScene.UpgradePsycana:
                 return _diContainer.Instantiate<UpgradePsycanaPresenter>();
-
-            case TypeScene.Prophecy:
-                return _diContainer.Instantiate<ProphecyPresenter>();
 
             case TypeScene.Name:
                 return _diContainer.Instantiate<ChooseNamePresenter>();

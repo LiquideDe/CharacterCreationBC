@@ -14,12 +14,14 @@ public class Load
         string allText = File.ReadAllText(jsonFile[0]);
         //string[] data = File.ReadAllLines(path);
         allText = allText.Replace(Environment.NewLine, string.Empty);
-        string[] data = allText.Split(new[] {'{','}' }, StringSplitOptions.RemoveEmptyEntries);
 
-        for(int i = 0; i < data.Length; i++)
-        {
-            data[i] = $"{{ {data[i]} }}";
-        }
+        string[] notFormatData = allText.Split(new[] { '{', '}' }, StringSplitOptions.RemoveEmptyEntries);
+        List<string> data = new List<string>();
+
+
+        for(int i = 0; i < notFormatData.Length; i++)        
+            if (notFormatData[i].Length > 5)
+                data.Add($"{{{notFormatData[i]}}}");     
 
         SaveLoadCharacter loadCharacter = JsonUtility.FromJson<SaveLoadCharacter>(data[0]);
 
@@ -30,8 +32,9 @@ public class Load
         {
             SaveLoadCharacteristic characteristic = JsonUtility.FromJson<SaveLoadCharacteristic>(data[i]);
             characteristics.Add(characteristic);
+            Debug.Log($"{characteristic.name} = {characteristic.amount}, {characteristic.lvlLearnedChar}");
         }
-        //Debug.Log($"Первый объект Характеристика {data[min]}, последний объект {data[max-1]}, min = {min}, max = {max}");
+        
 
         List<SaveLoadSkill> skills = new List<SaveLoadSkill>();
         min = character.Characteristics.Count + 1;
@@ -59,7 +62,7 @@ public class Load
         
 
         List<Equipment> equipments = new List<Equipment>();       
-        for(int i = max; i < data.Length; i++)
+        for(int i = max; i < data.Count; i++)
         {
             JSONTypeReader typeReader = JsonUtility.FromJson<JSONTypeReader>(data[i]);
             if (typeReader.typeEquipment == Equipment.TypeEquipment.Thing.ToString())

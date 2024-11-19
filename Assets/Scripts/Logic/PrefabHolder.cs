@@ -4,10 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PrefabHolder", menuName = "Holder/PrefabHolder")]
 public class PrefabHolder : ScriptableObject
 {
-    [SerializeField] private GameObject _intermediatePrefab, _homeworldPrefab, _homeworldFinalPrefab, _mainMenuPrefab, _backgroundPrefab, _backgroundFinalPrefab;
-    [SerializeField] private GameObject _rolePrefab, _rolePrefabFinal, _chooseBetweenManualAndRandom, _characteristicRandomPrefab, _characteristicManual;
+    [SerializeField] private GameObject _intermediatePrefab, _mainMenuPrefab, _racePrefab, _archetypePrefab, _motivationPrefab;
+    [SerializeField] private GameObject _characteristicRandomPrefab;
     [SerializeField] private GameObject _upgradeCharacteristic, _upgradeSkill, _upgradeTalent, _upgradePsycana;
-    [SerializeField] private GameObject _prophecy, _name, _firstPrint, _secondPrint, _thirdPrint;
+    [SerializeField] private GameObject  _name, _firstPrint, _secondPrint, _thirdPrint, _fourthPrint;
     [SerializeField] private GameObject _loads, _inputExperience, _finalMenu, _listWithNewItems, _inputNewProperty, _editProperties;
     [SerializeField] private GameObject _editCharacteristicsAndEquipments;
     [SerializeField] private GameObject _newEquipment, _newMelee, _newRange, _newGrenade, _newArmor, _listWithNewItemsAndNewButton, _newImplant;
@@ -19,35 +19,20 @@ public class PrefabHolder : ScriptableObject
             case TypeScene.Intermediate:
                 return _intermediatePrefab;
 
-            case TypeScene.Homeworld:
-                return _homeworldPrefab;
-
-            case TypeScene.HomeworldFinal:
-                return _homeworldFinalPrefab;
-
             case TypeScene.MainMenu:
                 return _mainMenuPrefab;
 
-            case TypeScene.Background:
-                return _backgroundPrefab;
+            case TypeScene.Race:
+                return _racePrefab;
 
-            case TypeScene.BackgroundFinal:
-                return _backgroundFinalPrefab;
+            case TypeScene.Archetype:
+                return _archetypePrefab;
 
-            case TypeScene.Role:
-                return _rolePrefab;
-
-            case TypeScene.RoleFinal:
-                return _rolePrefabFinal;
-
-            case TypeScene.ChoiceBetweenManualAndRandom:
-                return _chooseBetweenManualAndRandom;
+            case TypeScene.Motivations:
+                return _motivationPrefab;
 
             case TypeScene.RandomCharacteristic:
                 return _characteristicRandomPrefab;
-
-            case TypeScene.ManualCharacteristic:
-                return _characteristicManual;
 
             case TypeScene.UpgradeCharacteristic:
                 return _upgradeCharacteristic;
@@ -61,9 +46,6 @@ public class PrefabHolder : ScriptableObject
             case TypeScene.UpgradePsycana:
                 return _upgradePsycana;
 
-            case TypeScene.Prophecy:
-                return _prophecy;
-
             case TypeScene.Name:
                 return _name;
 
@@ -75,6 +57,9 @@ public class PrefabHolder : ScriptableObject
 
             case TypeScene.ThirdPage:
                 return _thirdPrint;
+
+            case TypeScene.FourthPage:
+                return _fourthPrint;
 
             case TypeScene.Loads:
                 return _loads;

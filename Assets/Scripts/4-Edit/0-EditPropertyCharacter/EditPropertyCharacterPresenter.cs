@@ -45,14 +45,12 @@ public class EditPropertyCharacterPresenter : IPresenter
     private void Subscribe()
     {
         _view.AddFeature += ShowNewFeatures;
-        _view.AddInclination += ShowNewInclination;
         _view.AddMental += ShowInputMental;
         _view.AddMutation += ShowInputMutation;
         _view.ChangeFeatureLvl += ChangeFeatureLvl;
         _view.ChangePropertyCharacter += ChangePropertyCharacter;
         _view.Next += Next;
         _view.RemoveFeature += RemoveFeature;
-        _view.RemoveInclination += RemoveInclination;
         _view.RemoveMental += RemoveMental;
         _view.RemoveMutation += RemoveMutation;
     }
@@ -71,18 +69,6 @@ public class EditPropertyCharacterPresenter : IPresenter
         _audioManager.PlayCancel();
         _character.MentalDisorders.Remove(mentalName);
         _view.UpdateMental(_character.MentalDisorders);
-    }
-
-    private void RemoveInclination(string InclinationName)
-    {
-        _audioManager.PlayCancel();
-        _character.Inclinations.Remove(GameStat.inclinationReverseTranslate[InclinationName]);
-
-        List<string> inclinations = new List<string>();
-        foreach (GameStat.Inclinations inclination in _character.Inclinations)
-            inclinations.Add(GameStat.inclinationTranslate[inclination]);
-
-        _view.UpdateInclinations(inclinations);
     }
 
     private void RemoveFeature(string featureName)
@@ -168,48 +154,6 @@ public class EditPropertyCharacterPresenter : IPresenter
         CloseAllSmallWindows();
     }
 
-    private void ShowNewInclination()
-    {
-        _audioManager.PlayClick();
-        CloseAllSmallWindows();
-
-        _listWithNewItems = _lvlFactory.Get(TypeScene.ListWithNewItems).GetComponent<ListWithNewItems>();
-        List<string> namesInclination = new List<string>();
-        foreach(GameStat.Inclinations inclination in Enum.GetValues(typeof(GameStat.Inclinations)))
-        {
-            if (TryNotDoubleInclination(inclination) && inclination != GameStat.Inclinations.None && inclination != GameStat.Inclinations.Elite)
-                namesInclination.Add(GameStat.inclinationTranslate[inclination]);
-        }
-
-        _listWithNewItems.ChooseThis += AddInclination;
-        _listWithNewItems.CloseList += CloseList;
-        _listWithNewItems.Initialize(namesInclination, "Выберите новую склонность");
-    }
-
-    private void AddInclination(string name)
-    {
-        _audioManager.PlayDone();
-        _character.Inclinations.Add(GameStat.inclinationReverseTranslate[name]);
-        List<string> nameInclinations = new List<string>();
-        foreach (GameStat.Inclinations inclination in _character.Inclinations)
-        {
-            nameInclinations.Add(GameStat.inclinationTranslate[inclination]);
-        }
-        _view.UpdateInclinations(nameInclinations);
-        CloseAllSmallWindows();
-    }
-
-    private bool TryNotDoubleInclination(GameStat.Inclinations inclination)
-    {
-        foreach(GameStat.Inclinations incl in _character.Inclinations)
-        {
-            if (incl == inclination)
-                return false;
-        }
-
-        return true;
-    }
-
     private void ShowNewFeatures()
     {
         _audioManager.PlayClick();
@@ -251,14 +195,12 @@ public class EditPropertyCharacterPresenter : IPresenter
     private void Unscribe()
     {
         _view.AddFeature -= ShowNewFeatures;
-        _view.AddInclination -= ShowNewInclination;
         _view.AddMental -= ShowInputMental;
         _view.AddMutation -= ShowInputMutation;
         _view.ChangeFeatureLvl -= ChangeFeatureLvl;
         _view.ChangePropertyCharacter -= ChangePropertyCharacter;
         _view.Next -= Next;
         _view.RemoveFeature -= RemoveFeature;
-        _view.RemoveInclination -= RemoveInclination;
         _view.RemoveMental -= RemoveMental;
         _view.RemoveMutation -= RemoveMutation;
     }

@@ -9,10 +9,12 @@ public class Characteristic
     public GameStat.CharacteristicName InternalName { get => _name; }
     public int LvlLearned { get => _lvlLearned; set => _lvlLearned = value; }
     public int Amount { get => _amount; set => _amount = value; }
+    public string God => _god; 
 
-    public Characteristic(GameStat.CharacteristicName name)
+    public Characteristic(GameStat.CharacteristicName name, string god)
     {
         _name = name;
+        _god = god;
     }
 
     public Characteristic(GameStat.CharacteristicName name, int amount)
@@ -26,6 +28,7 @@ public class Characteristic
         _name = characteristic.InternalName;
         _lvlLearned = characteristic.LvlLearned;
         _amount = characteristic.Amount;
+        _god = characteristic.God;
     }
 
     public void UpgradeLvl()

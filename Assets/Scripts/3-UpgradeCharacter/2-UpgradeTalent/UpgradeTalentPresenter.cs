@@ -13,10 +13,9 @@ public class UpgradeTalentPresenter : IPresenter
     private AudioManager _audioManager;
     private CreatorTalents _creatorTalents;
     private Talent _talent;
-    private bool _isHideUnavailable = true;
     private bool _isEdit = false;
     private int _cost;
-    private GameStat.Inclinations _inclination;
+    private string _currentCategory = "Общие Таланты";
 
     [Inject]
     private void Construct(AudioManager audioManager, CreatorTalents creatorTalents)
@@ -30,8 +29,9 @@ public class UpgradeTalentPresenter : IPresenter
         _view = view;
         _character = character;
         Subscribe();
-        ShowTalents();
         _view.UpdateExperience($"{_character.ExperienceUnspent} ОО");
+        _view.SetCategories(_creatorTalents.Categories);
+        ShowTalents(_currentCategory);
     }
 
     public void SetEdit() => _isEdit = true;
@@ -42,11 +42,9 @@ public class UpgradeTalentPresenter : IPresenter
         _view.LearnTalent += LearnTalentDown;
         _view.Next += NextDown;
         _view.Prev += PrevDown;
-        _view.ShowAllTalents += ShowHideUnavailableTalents;
-        _view.ShowAsDefault += ShowTalents;
-        _view.ShowTalentsWithInclination += ShowTalents;
         _view.ShowThisTalent += ShowThisTalent;
-    }
+        _view.ShowThisCategory += ShowThisCategory;
+    }   
 
     private void Unscribe()
     {
@@ -54,10 +52,8 @@ public class UpgradeTalentPresenter : IPresenter
         _view.LearnTalent -= LearnTalentDown;
         _view.Next -= NextDown;
         _view.Prev -= PrevDown;
-        _view.ShowAllTalents -= ShowHideUnavailableTalents;
-        _view.ShowAsDefault -= ShowTalents;
-        _view.ShowTalentsWithInclination -= ShowTalents;
         _view.ShowThisTalent -= ShowThisTalent;
+        _view.ShowThisCategory -= ShowThisCategory;
     }
 
     private void CancelDown()
@@ -79,10 +75,10 @@ public class UpgradeTalentPresenter : IPresenter
             _audioManager.PlayDone();
             CharacterWithUpgrade character = new CharacterWithUpgrade(_character);
             character.UpgradeTalent(_talent, _cost);
-            _view.CleanTalent();
+            _view.CleanTalent();            
             _character = character;
             _view.UpdateExperience($"{_character.ExperienceUnspent} ОО");
-            ShowTalents(_inclination);
+            ShowTalents(_currentCategory);
         }
         else
             _audioManager.PlayWarning();
@@ -104,80 +100,23 @@ public class UpgradeTalentPresenter : IPresenter
         _view.DestroyView();
     }
 
-    private void ShowHideUnavailableTalents()
-    {
-        if (_isHideUnavailable)
-        {
-            _isHideUnavailable = false;
-            _view.SetButtonShowAllDeactive();
-        }
-        else
-        {
-            _isHideUnavailable = true;
-            _view.SetButtonShowAllActive();
-        }
-
-        ShowTalents(_inclination);
-    }
-
-    private void ShowTalents(GameStat.Inclinations inclination = GameStat.Inclinations.None)
+    
+    private void ShowTalents(string category)
     {
         List<Talent> talents = new List<Talent>();
         List<int> costs = new List<int>();
         List<bool> isCanTaken = new List<bool>();
-        _inclination = inclination;
         _audioManager.PlayClick();
-        foreach(Talent talent in _creatorTalents.Talents)
-        {
-            if (talent.IsCanTaken || _isEdit)
-            {
-                if(TryDontDouble(talent) || talent.IsRepeatable)
-                {
-                    if(inclination == GameStat.Inclinations.None)
+
+        foreach(Talent talent in _creatorTalents.Talents)        
+            if (talent.IsCanTaken || _isEdit)            
+                if(TryDontDouble(talent) || talent.IsRepeatable)                
+                    if (string.Compare(talent.Category, category, true) == 0)
                     {
-                        if (_isEdit)
-                        {
-                            talents.Add(talent);
-                            costs.Add(CalculateCostTalent(talent));
-                            isCanTaken.Add(true);
-                        }
-                        else if (!IsCanTaken(talent) && !_isHideUnavailable)
-                        {
-                            talents.Add(talent);
-                            costs.Add(CalculateCostTalent(talent));
-                            isCanTaken.Add(false);
-                        }
-                        else if (IsCanTaken(talent))
-                        {
-                            talents.Add(talent);
-                            costs.Add(CalculateCostTalent(talent));
-                            isCanTaken.Add(true);
-                        }
-                    }
-                    else
-                    {
-                        if (_isEdit)
-                        {
-                            talents.Add(talent);
-                            costs.Add(CalculateCostTalent(talent));
-                            isCanTaken.Add(true);
-                        }
-                        else if (!IsCanTaken(talent) && !_isHideUnavailable && TryTalentForInclination(talent, inclination))
-                        {
-                            talents.Add(talent);
-                            costs.Add(CalculateCostTalent(talent));
-                            isCanTaken.Add(false);
-                        }
-                        else if (IsCanTaken(talent) && TryTalentForInclination(talent, inclination))
-                        {
-                            talents.Add(talent);
-                            costs.Add(CalculateCostTalent(talent));
-                            isCanTaken.Add(true);
-                        }
-                    }
-                }                
-            }
-        }
+                        talents.Add(talent);
+                        costs.Add(CalculateCostTalent(talent));
+                        isCanTaken.Add(_isEdit || IsCanTaken(talent));                        
+                    }                    
 
         _view.Initialize(talents, costs, isCanTaken);
     }
@@ -196,23 +135,15 @@ public class UpgradeTalentPresenter : IPresenter
     {
         if(_isEdit)
             return 0;
-        int sum = 0;
-        foreach (GameStat.Inclinations incl in _character.Inclinations)
-        {
-            if (incl == talent.Inclinations[0] || incl == talent.Inclinations[1])
-            {
-                sum++;
-            }
-        }
-        
-        return 300 * (1 + talent.Rank) - 150 * (talent.Rank + sum);        
+        //Debug.Log($"talent = {talent.Name}, rank = {talent.Rank}");
+        return GameStat.CalculateCostTalent(talent, _character);       
     }
 
     private bool IsCanTaken(Talent talent)
     {
         if (TryFindRequireCharacteristic(_character.Characteristics, talent) && TryFindRequireSkill(_character.Skills, talent) && TryFindRequireImplant(_character.Implants, talent) && 
-            TryFindRequireTalents(_character.Talents, talent) && _character.InsanityPoints >= talent.RequirementInsanity && 
-            _character.CorruptionPoints >= talent.RequirementCorruption && _character.PsyRating >= talent.RequirementPsyRate)
+            TryFindRequireTalents(_character.Talents, talent)  && _character.CorruptionPoints >= talent.RequirementCorruption && 
+            _character.PsyRating >= talent.RequirementPsyRate)
         {
             return true;
         }
@@ -280,8 +211,6 @@ public class UpgradeTalentPresenter : IPresenter
         {
             for (int j = 0; j < implantsOfCharacter.Count; j++)
             {
-                if (talent.Name == "Использование Механодендритов Боевые")
-                    Debug.Log($"implantCharacter = {implantsOfCharacter.Count}");
                 if (string.Compare(talent.RequirementImplants[i].Name, implantsOfCharacter[j].Name, true) == 0)
                 {
                     sum += 1;
@@ -322,14 +251,6 @@ public class UpgradeTalentPresenter : IPresenter
         return false;
         
     }
-
-    private bool TryTalentForInclination(Talent talent, GameStat.Inclinations inclination)
-    {
-        if (talent.Inclinations[0] == inclination || talent.Inclinations[1] == inclination)
-            return true;
-
-        return false;
-    }
     
     private void ShowThisTalent(Talent talent)
     {
@@ -337,5 +258,12 @@ public class UpgradeTalentPresenter : IPresenter
         _talent = talent;
         _cost = CalculateCostTalent(talent);
         _view.ShowTalent(talent, IsCanTaken(talent), _cost);
-    } 
+    }
+
+    private void ShowThisCategory(string name)
+    {
+        _audioManager.PlayClick();
+        _currentCategory = name;
+        ShowTalents(name);
+    }
 }

@@ -9,7 +9,7 @@ public class CanvasIntermediate : MonoBehaviour
     [SerializeField] Button button;
     AudioManager _audioWork;
     public delegate void NextTask();
-    NextTask nextTask;
+    NextTask _nextTask;
 
     [Inject]
     public void Construct(AudioManager audioWork)
@@ -25,14 +25,14 @@ public class CanvasIntermediate : MonoBehaviour
 
     public void OpenIntermediatePanel(NextTask nextTask, string text)
     {
-        this.nextTask = nextTask;
+        _nextTask = nextTask;
         descriptionText.text = text;
     }
 
     public void ButtonPressed()
     {
         _audioWork.PlayDone();
-        nextTask?.Invoke();
+        _nextTask?.Invoke();
         Destroy(gameObject);
     }
 

@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Character : ICharacter
 {
-    private string _name, _god;
+    private string _name, _god, _description;
     private int _corruptionPoints, _wounds, _psyRating, _halfMove, _fullMove, _natisk, _run, _fatigue,
         _experienceTotal, _experienceUnspent, _experienceSpent;
+    private int _infamy;
     private float _carryWeight, _liftWeight, _pushWeight;
     private List<Characteristic> _characteristics = new List<Characteristic>();
     private List<Talent> _talents = new List<Talent>();
@@ -25,7 +26,9 @@ public class Character : ICharacter
     private string _motivation, _disgrace, _pride, _stereotype;
     private string _race;
     private string _archetype;
+    private string _godGifts;
     private bool _canChangeGod;
+    private List<Trait> _upgrades = new List<Trait>();
 
     public Character(CreatorSkills skills)
     {
@@ -84,6 +87,14 @@ public class Character : ICharacter
 
     public string God => _god;
 
+    public int Infamy => _infamy;
+
+    public List<Trait> Upgrades => _upgrades;
+
+    public string Description => _description;
+
+    public string GodGifts => _godGifts; 
+
     #endregion
 
 
@@ -100,14 +111,30 @@ public class Character : ICharacter
             }
         }
 
+        
+
+        List<string> listUpgrades = loadCharacter.upgrades.Split(new char[] { '/' }).ToList();
+        if (CheckString(listUpgrades))
+        {
+            List<string> listUpgradesLvl = loadCharacter.upgradesLvl.Split(new char[] { '/' }).ToList();
+            for (int i = 0; i < listUpgrades.Count; i++)
+            {
+                int.TryParse(listUpgradesLvl[i], out int lvl);
+                _upgrades.Add(new Trait(listUpgrades[i], lvl));
+            }
+        }
+        _description = loadCharacter.description;
         _experienceSpent = loadCharacter.experienceSpent;
         _experienceTotal = loadCharacter.experienceTotal;
         _experienceUnspent = loadCharacter.experienceUnspent;
         _fatigue = loadCharacter.fatigue;
         _fullMove = loadCharacter.fullMove;
         _halfMove = loadCharacter.halfMove;
-
+        _godGifts = loadCharacter.godGifts;
         _implants.AddRange(implants);
+        _infamy = loadCharacter.infamy;
+        _god = loadCharacter.god;
+        _canChangeGod = loadCharacter.canChangeGod;
 
         
         _liftWeight = loadCharacter.liftWeight;
@@ -147,8 +174,8 @@ public class Character : ICharacter
 
         for(int i = 0; i < characteristics.Count; i++)
         {
-            this._characteristics[i].Amount = characteristics[i].amount;
-            this._characteristics[i].LvlLearned = characteristics[i].lvlLearnedChar;
+            _characteristics[i].Amount = characteristics[i].amount;
+            _characteristics[i].LvlLearned = characteristics[i].lvlLearnedChar;
         }
 
         foreach(Skill skill in _skills)
@@ -165,6 +192,11 @@ public class Character : ICharacter
 
         _psyRating = loadCharacter.psyRating;
         _equipments.AddRange(equipments);
+    }
+
+    public void UpdateData(SaveLoadCharacter saveLoadCharacter)
+    {
+
     }
 
     public void ChangeCorruption(int amount) => _corruptionPoints += amount;
@@ -208,14 +240,14 @@ public class Character : ICharacter
 
     private void CreateCharacteristics()
     {
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.WeaponSkill)); //0
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.BallisticSkill)); //1
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Strength)); //2
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Toughness)); //3
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Agility)); //4
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Intelligence)); //5
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Perception)); //6
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Willpower)); //7
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Fellowship)); //8
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.WeaponSkill, "Неделимый")); //0
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.BallisticSkill, "Неделимый")); //1
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Strength, "Кхорн")); //2
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Toughness, "Нургл")); //3
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Agility, "Неделимый")); //4
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Intelligence, "Неделимый")); //5
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Perception, "Неделимый")); //6
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Willpower, "Тзинч")); //7
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Fellowship, "Слаанеш")); //8
     }
 }

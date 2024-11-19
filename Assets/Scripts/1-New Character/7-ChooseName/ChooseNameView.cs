@@ -7,10 +7,10 @@ using System;
 
 public class ChooseNameView : CanDestroyView
 {
-    [SerializeField] TMP_InputField inputName;
-    [SerializeField] Toggle toggleMale, toggleFemale;
-    [SerializeField] Button _buttonGenerate, _buttonNext;
+    [SerializeField] TMP_InputField _inputName, _inputDescription;
+    [SerializeField] Button _buttonNext;
 
+    public string InputDescription => _inputDescription.text;
     public event Action GenerateName;
     public event Action GoNext;
     public event Action<string> ChooseSex;
@@ -18,39 +18,17 @@ public class ChooseNameView : CanDestroyView
 
     private void OnEnable()
     {
-        _buttonGenerate.onClick.AddListener(GenerateNamePressed);
         _buttonNext.onClick.AddListener(GoNextPressed);
-        toggleMale.onValueChanged.AddListener(ChooseSexPressed);
-        inputName.onDeselect.AddListener(ChooseNameInputed);
+        _inputName.onDeselect.AddListener(ChooseNameInputed);
     }
 
     private void OnDisable()
     {
-        _buttonGenerate.onClick.RemoveAllListeners();
         _buttonNext.onClick.RemoveAllListeners();
-        toggleMale.onValueChanged.RemoveAllListeners();
-        inputName.onDeselect.RemoveAllListeners();
+        _inputName.onDeselect.RemoveAllListeners();
     }
-
-    public void SetName(string text) => inputName.text = text;
-
-    private void GenerateNamePressed() => GenerateName?.Invoke();
 
     private void GoNextPressed() => GoNext?.Invoke();
-
-    private void ChooseSexPressed(bool isOn)
-    {
-        string gender;
-        if (isOn)
-        {
-            gender = "Ì";
-        }
-        else
-        {
-            gender = "Æ";
-        }
-        ChooseSex?.Invoke(gender);
-    }
 
     private void ChooseNameInputed(string text) => ChooseName?.Invoke(text);
 

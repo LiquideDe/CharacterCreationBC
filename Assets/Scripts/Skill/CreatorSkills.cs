@@ -22,11 +22,9 @@ public class CreatorSkills
             
             for (int j = 0; j < knowledges.Count; j++)
             {
-                Debug.Log($"knowledge = {knowledges[j]}, место {dirs[i]}");
                 string[] data = File.ReadAllLines(knowledges[j]);
                 JSONSkillLoader skillLoader = JsonUtility.FromJson<JSONSkillLoader>(data[0]);
                 string typeName = new DirectoryInfo(System.IO.Path.GetDirectoryName(knowledges[j])).Name;
-                Debug.Log($"skillLoader = {skillLoader.name}, type = {typeName}");
                 _skills.Add(new Knowledge(skillLoader, typeName));
             }
         }

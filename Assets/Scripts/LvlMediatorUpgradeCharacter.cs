@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class LvlMediatorUpgradeCharacter
 {
@@ -88,14 +89,16 @@ public class LvlMediatorUpgradeCharacter
         FirstCharacterSheet firstCharacterSheet = _lvlFactory.Get(TypeScene.FirstPage).GetComponent<FirstCharacterSheet>();
         SecondCharacterSheet secondCharacterSheet = _lvlFactory.Get(TypeScene.SecondPage).GetComponent<SecondCharacterSheet>();
         ThirdCharacterSheet thirdCharacterSheet = _lvlFactory.Get(TypeScene.ThirdPage).GetComponent<ThirdCharacterSheet>();
+        FourthCharacterSheet fourthCharacterSheet = _lvlFactory.Get(TypeScene.FourthPage).GetComponent<FourthCharacterSheet>();
 
         firstCharacterSheet.gameObject.SetActive(false);
         secondCharacterSheet.gameObject.SetActive(false);
         thirdCharacterSheet.gameObject.SetActive(false);
+        fourthCharacterSheet.gameObject.SetActive(false);
 
         TakePicturesPresenter picturesPresenter = (TakePicturesPresenter)_presenterFactory.Get(TypeScene.Pictures);
         picturesPresenter.WorkIsFinished += SaveAndReturnToMenu;
-        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, character);
+        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, fourthCharacterSheet, character);
     }
 
     private void TakePicturesAndExit(ICharacter character)
@@ -103,14 +106,16 @@ public class LvlMediatorUpgradeCharacter
         FirstCharacterSheet firstCharacterSheet = _lvlFactory.Get(TypeScene.FirstPage).GetComponent<FirstCharacterSheet>();
         SecondCharacterSheet secondCharacterSheet = _lvlFactory.Get(TypeScene.SecondPage).GetComponent<SecondCharacterSheet>();
         ThirdCharacterSheet thirdCharacterSheet = _lvlFactory.Get(TypeScene.ThirdPage).GetComponent<ThirdCharacterSheet>();
+        FourthCharacterSheet fourthCharacterSheet = _lvlFactory.Get(TypeScene.FourthPage).GetComponent<FourthCharacterSheet>();
 
         firstCharacterSheet.gameObject.SetActive(false);
         secondCharacterSheet.gameObject.SetActive(false);
         thirdCharacterSheet.gameObject.SetActive(false);
+        fourthCharacterSheet.gameObject.SetActive(false);
 
         TakePicturesPresenter picturesPresenter = (TakePicturesPresenter)_presenterFactory.Get(TypeScene.Pictures);
         picturesPresenter.WorkIsFinished += SaveAndExit;
-        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, character);
+        picturesPresenter.Initialize(firstCharacterSheet, secondCharacterSheet, thirdCharacterSheet, fourthCharacterSheet, character);
     }
 
     private void SaveAndExit(ICharacter character)

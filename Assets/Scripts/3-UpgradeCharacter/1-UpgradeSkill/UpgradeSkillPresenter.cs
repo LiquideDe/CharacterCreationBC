@@ -178,7 +178,7 @@ public class UpgradeSkillPresenter : IPresenter
                 return skill1.Name.CompareTo(skill2.Name);
             });
 
-        _creatorView.Initialize(skills, _character.Inclinations);
+        _creatorView.Initialize(skills, _character);
     }
 
 
@@ -201,6 +201,6 @@ public class UpgradeSkillPresenter : IPresenter
             {
                 return skill1.Name.CompareTo(skill2.Name);
             });
-        _creatorView.Initialize(skills, _character.Inclinations);
+        _creatorView.Initialize(skills, _character);
     }
 }

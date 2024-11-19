@@ -10,6 +10,7 @@ public class LvlMediatorInstaller : MonoInstaller
         Container.Bind<LvlFactory>().AsSingle();
         Container.Bind<PresenterFactory>().AsSingle();
         Container.Bind<CharacterFactory>().AsSingle();
+        Container.Bind<CreatorFactory>().AsSingle();
         Container.Bind<LvlMediatorNewCharacter>().AsSingle();
         Container.Bind<LvlMediatorUpgradeCharacter>().AsSingle();
         Container.Bind<LvlVediatorEditCharacter>().AsSingle();

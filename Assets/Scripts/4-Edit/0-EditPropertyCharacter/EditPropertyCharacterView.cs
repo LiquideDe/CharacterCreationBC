@@ -84,29 +84,11 @@ public class EditPropertyCharacterView : CanDestroyView
     public void Initialize(Character character)
     {
         inputName.text = character.Name;
-        inputHome.text = character.Homeworld;
-        inputBack.text = character.Background;
-        inputRole.text = character.Role;
-        inputProph.text = character.Prophecy;
-        inputElite.text = character.Elite;
-        inputGender.text = character.Gender;
-        inputAge.text = character.Age.ToString();
-        inputSkeen.text = character.Skeen;
-        inputBody.text = character.Constitution;
-        inputHair.text = character.Hair;
-        inputPhysFeat.text = character.PhysFeatures;
-        inputEyes.text = character.Eyes;
-        inputTraditions.text = character.Tradition;
-        inputRememberHome.text = character.MemoryOfHome;
-        inputRememberBack.text = character.MemoryOfBackground;
+
 
         UpdateFeatures(character.Traits);
 
         List<string> nameInclinations = new List<string>();
-        foreach(GameStat.Inclinations inclination in character.Inclinations)
-        {
-            nameInclinations.Add(GameStat.inclinationTranslate[inclination]);
-        }
         UpdateInclinations(nameInclinations);
         UpdateMental(character.MentalDisorders);
         UpdateMutation(character.Mutation);
@@ -189,21 +171,6 @@ public class EditPropertyCharacterView : CanDestroyView
         SaveLoadCharacter saveLoadCharacter = new SaveLoadCharacter();
 
         saveLoadCharacter.name = inputName.text;
-        saveLoadCharacter.homeworld = inputHome.text;
-        saveLoadCharacter.background = inputBack.text;
-        saveLoadCharacter.role = inputRole.text;
-        saveLoadCharacter.prophecy = inputProph.text;
-        saveLoadCharacter.elite = inputElite.text;
-        saveLoadCharacter.gender = inputGender.text;
-        saveLoadCharacter.age = age;
-        saveLoadCharacter.skeen = inputSkeen.text;
-        saveLoadCharacter.constitution = inputBody.text;
-        saveLoadCharacter.hair = inputHair.text;
-        saveLoadCharacter.physFeatures = inputPhysFeat.text;
-        saveLoadCharacter.eyes = inputEyes.text;
-        saveLoadCharacter.tradition = inputTraditions.text;
-        saveLoadCharacter.memoryOfHome = inputRememberHome.text;
-        saveLoadCharacter.memoryOfBackground = inputRememberBack.text;
 
         ChangePropertyCharacter?.Invoke(saveLoadCharacter);
     }

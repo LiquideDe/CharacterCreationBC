@@ -9,12 +9,13 @@ public class UpgradeCharacteristicsView : CanDestroyView
 {
     [SerializeField]
     Button _buttonIncreaseWeapon, _buttonIncreaseBallistic, _buttonIncreaseStrength, _buttonIncreaseToughness,
-        _buttonIncreaseAgility, _buttonIncreaseIntelligence, _buttonIncreasePerception, _buttonIncreaseWillpower, _buttonIncreaseFellowship;
+        _buttonIncreaseAgility, _buttonIncreaseIntelligence, _buttonIncreasePerception, _buttonIncreaseWillpower, _buttonIncreaseFellowship, 
+        _buttonIncreaseInfamy;
 
     [SerializeField] Button _buttonNext, _buttonPrev, _buttonCancelUpgrade;
 
     [SerializeField] TextMeshProUGUI _textAmountWeapon, _textAmountBallistic, _textAmountStrength, _textAmountToughness,
-        _textAmountAgility, _textAmountIntelligence, _textAmountPerception, _textAmountWillpower, _textAmountFellowship;
+        _textAmountAgility, _textAmountIntelligence, _textAmountPerception, _textAmountWillpower, _textAmountFellowship, _textInfamy;
 
     [SerializeField]
     TextMeshProUGUI _textCostWeapon, _textCostBallistic, _textCostStrength, _textCostToughness,
@@ -38,6 +39,7 @@ public class UpgradeCharacteristicsView : CanDestroyView
     public event Action UpgradePerception;
     public event Action UpgradeWillpower;
     public event Action UpgradeFellowship;
+    public event Action UpgradeInfamy;
 
     private void OnEnable()
     {
@@ -50,11 +52,12 @@ public class UpgradeCharacteristicsView : CanDestroyView
         _buttonIncreasePerception.onClick.AddListener(IncreasePerception);
         _buttonIncreaseWillpower.onClick.AddListener(IncreaseWillpower);
         _buttonIncreaseFellowship.onClick.AddListener(IncreaseFellowship);
+        _buttonIncreaseInfamy.onClick.AddListener(IncreaseInfamy);
 
         _buttonNext.onClick.AddListener(DoneDown);
         _buttonPrev.onClick.AddListener(ReturnToPrevDown);
         _buttonCancelUpgrade.onClick.AddListener(CancelUpgradeDown);
-    }
+    }    
 
     private void OnDisable()
     {
@@ -67,6 +70,7 @@ public class UpgradeCharacteristicsView : CanDestroyView
         _buttonIncreasePerception.onClick.RemoveAllListeners();
         _buttonIncreaseWillpower.onClick.RemoveAllListeners();
         _buttonIncreaseFellowship.onClick.RemoveAllListeners();
+        _buttonIncreaseInfamy.onClick.RemoveAllListeners();
 
         _buttonNext.onClick.RemoveAllListeners();
         _buttonPrev.onClick.RemoveAllListeners();
@@ -92,6 +96,8 @@ public class UpgradeCharacteristicsView : CanDestroyView
         _textAmountWillpower, _textCostWillpower, _buttonIncreaseWillpower);
     public void SetFellowship(int amount, int lvlLearned, string cost) => SetParametersToPanel(_listImagesFellowship, lvlLearned, amount, cost,
         _textAmountFellowship, _textCostFellowship, _buttonIncreaseFellowship);
+
+    public void SetInfamy(int amount) => _textInfamy.text = amount.ToString();
 
     public void SetVisibleButtonReturnBack(bool isActive) => _buttonPrev.gameObject.SetActive(isActive);
 
@@ -135,4 +141,6 @@ public class UpgradeCharacteristicsView : CanDestroyView
     private void ReturnToPrevDown() => ReturnToPrev?.Invoke();
     private void DoneDown() => Next?.Invoke();
     private void CancelUpgradeDown() => CancelUpgrade?.Invoke();
+
+    private void IncreaseInfamy() => UpgradeInfamy?.Invoke();
 }

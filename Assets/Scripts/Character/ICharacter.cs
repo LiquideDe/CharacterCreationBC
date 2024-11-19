@@ -31,7 +31,7 @@ public interface ICharacter
 
     public List<IName> ForeverFriendly { get; }
     public List<IName> ForeverHostile { get; }
-
+    public int Infamy { get; }
     public string Race {  get; }
     public string Archetype { get; }
     public List<string> EliteAcrhetypes { get; }
@@ -42,6 +42,11 @@ public interface ICharacter
     public string Stereotype { get; }
     public bool CanChageGod { get; }
     public string God { get; }
+
+    public List<Trait> Upgrades { get; }
+
+    public string Description { get; }
+    public string GodGifts { get; }
 
 }
     

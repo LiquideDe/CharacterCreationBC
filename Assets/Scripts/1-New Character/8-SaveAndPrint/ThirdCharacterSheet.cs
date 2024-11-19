@@ -9,7 +9,7 @@ public class ThirdCharacterSheet : TakeScreenshot
     [SerializeField] private TextMeshProUGUI _text;
     private CreatorTalents _creatorTalents;
     private CreatorPsyPowers _creatorPsyPowers;
-    private CreatorTraits _creatorFeatures;
+    private CreatorTraits _creatorTraits;
     private int _page;
 
     [Inject]
@@ -17,7 +17,7 @@ public class ThirdCharacterSheet : TakeScreenshot
     {
         _creatorTalents = creatorTalents;
         _creatorPsyPowers = creatorPsyPowers;
-        _creatorFeatures = creatorFeatures;
+        _creatorTraits = creatorFeatures;
     }
 
     public void Initialize(ICharacter character)
@@ -31,18 +31,10 @@ public class ThirdCharacterSheet : TakeScreenshot
 
         foreach(MechImplant implant in character.Implants)        
             if (implant.Description.Length > 1)
-                _text.text += $"<b>{implant.Name}</b> - {implant.Description}";
+                _text.text += $"<b>{implant.Name}</b> - {implant.Description}\n \n";
 
-        foreach (Trait feature in character.Traits)
-            _text.text += $"<b>{feature.Name}</b> - {_creatorFeatures.GetTrait(feature.Name).Description}";
-
-        _text.text += $"{character.Tradition} \n \n";
-
-        _text.text += $"{character.BonusHomeworld} \n \n";
-
-        _text.text += $"{character.BonusBack} \n \n";
-
-        _text.text += $"{character.BonusRole} \n \n";
+        foreach (Trait trait in character.Traits)
+            _text.text += $"<b>{trait.Name}</b> - {_creatorTraits.GetTrait(trait.Name).Description} \n \n";
 
 
         StartCoroutine(TakePauseForText());

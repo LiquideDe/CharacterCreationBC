@@ -10,14 +10,14 @@ public class UpgradeSkillCreatorView : MonoBehaviour
     [SerializeField] UpgradeSkillView _view;
     private List<SkillPanel> _skillPanels = new List<SkillPanel>();
     private List<GameObject> _horizontalLines = new List<GameObject>();
-    private List<GameStat.Inclinations> _inclinationsCharacter;
+    private ICharacter _character;
 
-    public void Initialize(List<Skill> skills, List<GameStat.Inclinations> inclinationsCharacter)
+    public void Initialize(List<Skill> skills, ICharacter character)
     {
+        _character = character;
         if (_skillPanels.Count > 0)
             ClearAll();
 
-        _inclinationsCharacter = inclinationsCharacter;
         for ( int i = 0; i < skills.Count; i += 3)
         {
             if (i + 2 < skills.Count)
@@ -56,9 +56,10 @@ public class UpgradeSkillCreatorView : MonoBehaviour
         foreach(Skill skill in skills)
         {
             SkillPanel skillPanel = Instantiate(_skillPanelPrefab, horizontal.transform);
-            skillPanel.Initialize(skill,((skill.LvlLearned + 1) * 300) - (100 * skill.CalculateInclinations(_inclinationsCharacter) * (skill.LvlLearned + 1)));
+            skillPanel.Initialize(skill, GameStat.CalculateCostSkill(skill, _character));
 
             _skillPanels.Add(skillPanel);
         }
     }
+
 }

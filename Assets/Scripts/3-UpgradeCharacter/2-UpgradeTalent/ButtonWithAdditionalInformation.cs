@@ -12,33 +12,10 @@ public class ButtonWithAdditionalInformation : Button, IPointerEnterHandler, IPo
     [SerializeField] Sprite _active, _nonActive;
     [SerializeField] Image _image;
     public event Action<string> ShowDescription;
-    public event Action<GameStat.Inclinations> ShowThisInclination;
+    public event Action<string> ShowThisCategory;
     public event Action HidePanel;
-    private GameStat.Inclinations _inclination;
-    private string _textDescription;
-    private Dictionary<GameStat.Inclinations, string> _inclinationToShort = new Dictionary<GameStat.Inclinations, string>() 
-    {
-        {GameStat.Inclinations.Agility, "Л" },
-        {GameStat.Inclinations.Ballistic, "НС" },
-        {GameStat.Inclinations.Defense, "З" },
-        {GameStat.Inclinations.Fellowship, "О" },
-        {GameStat.Inclinations.Fieldcraft, "Пол" },
-        {GameStat.Inclinations.Finesse, "Изо" },
-        {GameStat.Inclinations.Intelligence, "Инт" },
-        {GameStat.Inclinations.Knowledge, "Поз" },
-        {GameStat.Inclinations.Leadership, "Лид" },
-        {GameStat.Inclinations.Offense, "Нап" },
-        {GameStat.Inclinations.Perception, "Вос" },
-        {GameStat.Inclinations.Psyker, "Пса" },
-        {GameStat.Inclinations.Social, "Общ" },
-        {GameStat.Inclinations.Strength, "С" },
-        {GameStat.Inclinations.Tech, "Тех" },
-        {GameStat.Inclinations.Toughness, "Вын" },
-        {GameStat.Inclinations.Weapon, "НР" },
-        {GameStat.Inclinations.Willpower, "СВ" }
-    };
+    private string _textDescription, _category;
 
-    public GameStat.Inclinations Inclinations => _inclination;
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
@@ -55,14 +32,14 @@ public class ButtonWithAdditionalInformation : Button, IPointerEnterHandler, IPo
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
-        ShowThisInclination?.Invoke(_inclination);
+        ShowThisCategory?.Invoke(_category);
     }
 
-    public void Initialize(GameStat.Inclinations inclination)
+    public void Initialize(string category)
     {
-        _inclination = inclination;
-        _textDescription = $"Показать таланты связанные с {GameStat.inclinationTranslate[_inclination]}";
-        textName.text = _inclinationToShort[inclination];
+        _category = category;
+        _textDescription = $"Показать таланты из {category}";
+        textName.text = category;
     }
 
     public void SetActive() => _image.sprite = _active;

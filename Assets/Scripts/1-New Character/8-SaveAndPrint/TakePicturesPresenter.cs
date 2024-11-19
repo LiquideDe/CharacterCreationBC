@@ -9,17 +9,20 @@ public class TakePicturesPresenter : IPresenter
     private FirstCharacterSheet _first;
     private SecondCharacterSheet _second;
     private ThirdCharacterSheet _third;
+    private FourthCharacterSheet _fourth;
     private ICharacter _character;
 
-    public void Initialize(FirstCharacterSheet first, SecondCharacterSheet second, ThirdCharacterSheet third, ICharacter character)
+    public void Initialize(FirstCharacterSheet first, SecondCharacterSheet second, ThirdCharacterSheet third,FourthCharacterSheet fourth, ICharacter character)
     {
         _first = first;
         _second = second;
         _third = third;
+        _fourth = fourth;
         _character = character;
         _first.WorkIsFinished += FirstIsFinished;
         _second.WorkIsFinished += SecondIsFinished;
         _third.WorkIsFinished += ThirdIsFinished;
+        _fourth.WorkIsFinished += FourthIsFinished;
         _first.gameObject.SetActive(true);
         _first.Initialize(_character);
     }
@@ -37,6 +40,12 @@ public class TakePicturesPresenter : IPresenter
     }
 
     private void ThirdIsFinished()
+    {
+        _fourth.gameObject.SetActive(true);
+        _fourth.Initialize(_character);
+    }
+
+    private void FourthIsFinished() 
     {
         WorkIsFinished?.Invoke(_character);
     }

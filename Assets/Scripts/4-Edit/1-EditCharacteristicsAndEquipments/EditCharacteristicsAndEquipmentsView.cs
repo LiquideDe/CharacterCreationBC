@@ -169,7 +169,6 @@ public class EditCharacteristicsAndEquipmentsView : CanDestroyView
         _textHalfmove.text = $"{character.HalfMove}";
         _textWounds.text = $"{character.Wounds}";
         _textCorruption.text = $"{character.CorruptionPoints}";
-        _textMadness.text = $"{character.InsanityPoints}";
         _textInfluence.text = $"{character.Characteristics[9].Amount}";
         _textFellowship.text = $"{character.Characteristics[8].Amount}";
         _textWillpower.text = $"{character.Characteristics[7].Amount}";
@@ -177,7 +176,6 @@ public class EditCharacteristicsAndEquipmentsView : CanDestroyView
         _textIntelligence.text = $"{character.Characteristics[5].Amount}";
         _textAgility.text = $"{character.Characteristics[4].Amount}";
         _textToughness.text = $"{character.Characteristics[3].Amount}";
-        _textFatepoint.text = $"{character.FatePoint}";
     }
 
     public void UpdateEquipment(List<Equipment> equipments)

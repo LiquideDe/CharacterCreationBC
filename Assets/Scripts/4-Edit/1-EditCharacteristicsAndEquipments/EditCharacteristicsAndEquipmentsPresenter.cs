@@ -189,14 +189,14 @@ public class EditCharacteristicsAndEquipmentsPresenter : IPresenter
     private void DecreaseFatepoint()
     {
         _audioManager.PlayClick();
-        _character.ChangeFatepoints(-1);
+        //_character.ChangeFatepoints(-1);
         _view.UpdateTextFields(_character);
     }
 
     private void DecreaseMadness()
     {
         _audioManager.PlayClick();
-        _character.ChangeMadness(-1);
+        //_character.ChangeMadness(-1);
         _view.UpdateTextFields(_character);
     }
 
@@ -265,14 +265,14 @@ public class EditCharacteristicsAndEquipmentsPresenter : IPresenter
     private void IncreaseFatepoint()
     {
         _audioManager.PlayClick();
-        _character.ChangeFatepoints(1);
+        //_character.ChangeFatepoints(1);
         _view.UpdateTextFields(_character);
     }
 
     private void IncreaseMadness()
     {
         _audioManager.PlayClick();
-        _character.ChangeMadness(1);
+        //_character.ChangeMadness(1);
         _view.UpdateTextFields(_character);
     }
 

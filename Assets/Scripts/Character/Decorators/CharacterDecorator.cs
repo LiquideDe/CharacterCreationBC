@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,20 +7,22 @@ using UnityEngine;
 public abstract class CharacterDecorator
 {
     protected ICharacter _character;
-    protected List<GameStat.Inclinations> _inclinations = new List<GameStat.Inclinations>();
     protected List<Skill> _skills = new List<Skill>();
     protected List<Talent> _talents = new List<Talent>();
-    protected List<Equipment> _equipment = new List<Equipment>();
+    protected List<Equipment> _equipments = new List<Equipment>();
     protected List<MechImplant> _mechImplants = new List<MechImplant>();
     protected List<PsyPower> _psyPowers = new List<PsyPower>();
+    protected List<Trait> _traits = new List<Trait>();
+    protected List<Trait> _upgrades = new List<Trait>();
 
     public CharacterDecorator(ICharacter character)
     {
         _character = character;
     }
 
+
+
     public List<PsyPower> PsyPowers => GetPsyPowers();
-    public List<GameStat.Inclinations> Inclinations => GetInclinations();
 
     public List<Skill> Skills => GetSkills();
 
@@ -28,6 +31,37 @@ public abstract class CharacterDecorator
     public List<MechImplant> Implants => GetMechImplants();
 
     public List<Equipment> Equipments => GetEquipments();
+
+    public List<Trait> Traits => GetTraits();
+
+    public List<Trait> Upgrades => GetUpgrades();
+
+    private List<Trait> GetUpgrades()
+    {
+        List<Trait> oldUpgrades = new List<Trait>(_character.Upgrades);
+
+        List<Trait> unionTraits = new List<Trait>();
+
+        unionTraits.AddRange(oldUpgrades);
+        unionTraits.AddRange(_upgrades);
+
+        return unionTraits;
+    }
+
+    private List<Trait> GetTraits()
+    {
+        List<Trait> traits = new List<Trait>(_character.Traits);
+
+        List<Trait> unionTraits = new List<Trait>();
+
+        unionTraits.AddRange(_traits);
+
+        foreach (Trait skill in traits)
+            if (TryNotDouble(_skills, skill.Name))
+                unionTraits.Add(skill);
+
+        return unionTraits;
+    }
 
     private List<Skill> GetSkills()
     {
@@ -65,10 +99,10 @@ public abstract class CharacterDecorator
 
         List<Equipment> unionEquipment = new List<Equipment>();
 
-        unionEquipment.AddRange(_equipment);
+        unionEquipment.AddRange(_equipments);
 
         foreach (Equipment equipment in equipments)
-            if (TryNotDouble(_equipment,equipment.Name))
+            if (TryNotDouble(_equipments,equipment.Name))
                 unionEquipment.Add(equipment);
 
         return unionEquipment;
@@ -87,21 +121,6 @@ public abstract class CharacterDecorator
                 unionImplants.Add(implant);
 
         return unionImplants;
-    }
-
-    private List<GameStat.Inclinations> GetInclinations()
-    {
-        List<GameStat.Inclinations> inclinations = new List<GameStat.Inclinations>(_character.Inclinations);
-
-        List<GameStat.Inclinations> unionInclination = new List<GameStat.Inclinations>();
-
-        unionInclination.AddRange(_inclinations);
-
-        foreach(GameStat.Inclinations inclination in inclinations)        
-            if (!unionInclination.Contains(inclination))
-                unionInclination.Add(inclination);        
-
-        return unionInclination;
     }
 
     private List<PsyPower> GetPsyPowers()

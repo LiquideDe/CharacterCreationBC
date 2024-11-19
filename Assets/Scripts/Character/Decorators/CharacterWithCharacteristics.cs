@@ -5,16 +5,16 @@ using UnityEngine;
 public class CharacterWithCharacteristics : CharacterDecorator, ICharacter
 {
     private List<Characteristic> _characteristics;
+    private int _infamy, _wounds;
     private List<float> _parametrsForWeight = new List<float>() { 0.9f, 2.25f, 4.5f, 9f, 18f, 27f, 36f, 45f, 56f, 67f, 78f, 90f, 112f, 225f, 337f, 450f, 675f, 900f, 1350f, 1800f, 2250f };
     public CharacterWithCharacteristics(ICharacter character) : base(character)
     {
+        _characteristics = new List<Characteristic>(character.Characteristics);
+        _infamy = character.Infamy;
+        _wounds = character.Wounds;
     }
 
-    public int Age => _character.Age;
-
-    public int InsanityPoints => _character.InsanityPoints;
-
-    public int Wounds => _character.Wounds;
+    public int Wounds => _wounds;
 
     public int CorruptionPoints => _character.CorruptionPoints;
 
@@ -45,74 +45,54 @@ public class CharacterWithCharacteristics : CharacterDecorator, ICharacter
     public List<string> MentalDisorders => _character.MentalDisorders;
 
     public int Run => GetHalfMove() * 6;
-
-    public string BonusBack => _character.BonusBack;
-
     public List<string> Mutation => _character.Mutation;
-
-    public List<Trait> Traits => _character.Traits;
-
-    public string Background => _character.Background;
-
-    public string Role => _character.Role;
-
-    public string AgeText => _character.AgeText;
-
-    public string Constitution => _character.Constitution;
-
-    public string Hair => _character.Hair;
-
-    public string Eyes => _character.Eyes;
-
-    public string Skeen => _character.Skeen;
-
-    public string PhysFeatures => _character.PhysFeatures;
-
-    public string MemoryOfHome => _character.MemoryOfHome;
-
-    public string MemoryOfBackground => _character.MemoryOfBackground;
-
-    public string Gender => _character.Gender;
-
-    public string Homeworld => _character.Homeworld;
-
-    public string Elite => _character.Elite;
-
-    public string Tradition => _character.Tradition;
 
     public int BonusToughness => (int)_characteristics[3].Amount/10;
 
     public ICharacter GetCharacter => _character;
 
-    public string BonusHomeworld => _character.BonusHomeworld;
-
-    public string BonusRole => _character.BonusRole;
-
-    public int FatePoint => _character.FatePoint;
-
     public string Name => _character.Name;
 
-    public string Prophecy => _character.Prophecy;
+    public List<IName> ForeverFriendly => _character.ForeverFriendly;
+
+    public List<IName> ForeverHostile => _character.ForeverHostile;
+
+    public int Infamy => _infamy;
+
+    public string Race => _character.Race;
+
+    public string Archetype => _character.Archetype;
+
+    public List<string> EliteAcrhetypes => throw new System.NotImplementedException();
+
+    public string Motivation => _character.Motivation;
+
+    public string Disgrace => _character.Disgrace;
+
+    public string Pride => _character.Pride;
+
+    public string Stereotype => throw new System.NotImplementedException();
+
+    public bool CanChageGod => _character.CanChageGod;
+
+    public string God => _character.God;
+
+    public string Description => throw new System.NotImplementedException();
+
+    public string GodGifts => _character.GodGifts;
 
     public void SetCharacteristics(List<int> characteristics)
-    {
-        _characteristics = new List<Characteristic>();
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.WeaponSkill, GameStat.Inclinations.Weapon, GameStat.Inclinations.Offense)); //0
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.BallisticSkill, GameStat.Inclinations.Ballistic, GameStat.Inclinations.Finesse)); //1
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Strength, GameStat.Inclinations.Strength, GameStat.Inclinations.Offense)); //2
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Toughness, GameStat.Inclinations.Toughness, GameStat.Inclinations.Defense)); //3
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Agility, GameStat.Inclinations.Agility, GameStat.Inclinations.Finesse)); //4
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Intelligence, GameStat.Inclinations.Intelligence, GameStat.Inclinations.Knowledge)); //5
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Perception, GameStat.Inclinations.Perception, GameStat.Inclinations.Fieldcraft)); //6
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Willpower, GameStat.Inclinations.Willpower, GameStat.Inclinations.Psyker)); //7
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Fellowship, GameStat.Inclinations.Fellowship, GameStat.Inclinations.Social)); //8
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Influence, GameStat.Inclinations.None, GameStat.Inclinations.None));
-
+    {   
         for(int i = 0; i < characteristics.Count; i++)
         {
             _characteristics[i].Amount = characteristics[i];
         }
     }
+
+    public void SetWounds(int wound) => _wounds = wound;
+
+    public void SetInfamy(int infamy) => _infamy = infamy;
+    
 
     private int GetHalfMove() => _characteristics[4].Amount / 10;
 

@@ -11,7 +11,7 @@ public class CreatorTraits
     public CreatorTraits()
     {
         List<string> dirs = new List<string>();
-        dirs.AddRange(Directory.GetDirectories($"{Application.dataPath}/StreamingAssets/Features"));
+        dirs.AddRange(Directory.GetDirectories($"{Application.dataPath}/StreamingAssets/Traits"));
         foreach(string path in dirs)
         {
             _traits.Add(new Trait(GameStat.ReadText(path + "/Название.txt"), GameStat.ReadText(path + "/Описание.txt")));

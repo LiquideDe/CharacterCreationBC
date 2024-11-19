@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 public class MechImplant : IName
 {
-    public enum PartsOfBody { Head, RightHand, LeftHand, Body, RightLeg, LeftLeg, All};
+    public enum PartsOfBody { Head, RightHand, LeftHand, Body, RightLeg, LeftLeg, Legs, Hands, All};
     private string _name;
     private string _textDescription;
     public PartsOfBody Place { get; set; }

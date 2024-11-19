@@ -5,26 +5,38 @@ using UnityEngine;
 
 public class CreatorTalents
 {
-    private List<Talent> talents = new List<Talent>();
-
-    public List<Talent> Talents { get => talents; }
+    private List<Talent> _talents = new List<Talent>();
+    private List<string> _categories = new List<string>();    
 
     public CreatorTalents()
     {
-        List<string> dirs = new List<string>();
-        dirs.AddRange(Directory.GetDirectories($"{Application.dataPath}/StreamingAssets/Talents"));
-        for (int i = 0; i < dirs.Count; i++)
+        List<string> dirsCategory = new List<string>();
+        dirsCategory.AddRange(Directory.GetDirectories($"{Application.dataPath}/StreamingAssets/Talents"));
+        for (int i = 0; i < dirsCategory.Count; i++)
         {
-            if (!dirs[i].Contains("Elite") && !dirs[i].Contains("Example"))
+            if (!dirsCategory[i].Contains("Example"))
             {
-                talents.Add(new Talent(dirs[i], true));
+                List<string> dirs = new List<string>();
+                dirs.AddRange(Directory.GetDirectories(dirsCategory[i]));
+                DirectoryInfo directoryInfo = new DirectoryInfo(dirsCategory[i]);
+                _categories.Add(directoryInfo.Name);
+                foreach (string dir in dirs) 
+                {
+
+                    _talents.Add(new Talent(dir, directoryInfo.Name));
+                }
+                
             }
         }
     }
 
+    public List<Talent> Talents => _talents;
+
+    public List<string> Categories => _categories; 
+
     public Talent GetTalent(string name)
     {
-        foreach (Talent talent in talents)
+        foreach (Talent talent in _talents)
         {
             if (string.Compare(talent.Name, name,true) == 0)
             {

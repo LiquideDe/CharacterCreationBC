@@ -3,14 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 public class Talent : ISkillTalentEtcForList, IName
 {
     private string _name;
     private string _textDescription, _shortDescription, _listOfRequrements;
-    private GameStat.Inclinations[] _inclinations = new GameStat.Inclinations[2];
     private List<Characteristic> _requirementCharacteristics = new List<Characteristic>();
     private List<Skill> _requirementSkills = new List<Skill>();
     private List<MechImplant> _requirementImplants = new List<MechImplant>();
@@ -19,36 +17,16 @@ public class Talent : ISkillTalentEtcForList, IName
     private int _requirementInsanity = 0, _requirementCorruption = 0;
     private bool _isRepeatable, _isCanTaken;
     private int _rank;
+    private string _god, _category;
 
-    public string Name => _name;
-    public string Description => _textDescription;
-    public string ListRequirments => _listOfRequrements;
-    public GameStat.Inclinations[] Inclinations => _inclinations; 
-    public string ShortDescription => _shortDescription; 
-    public bool IsCanTaken => _isCanTaken;
-    public bool IsRepeatable => _isRepeatable;
-
-    public List<Characteristic> RequirementCharacteristics => _requirementCharacteristics;
-
-    public List<Skill> RequirementSkills => _requirementSkills;
-
-    public List<MechImplant> RequirementImplants => _requirementImplants;
-
-    public List<Talent> RequirementTalents => _requirementTalents;
-
-    public int RequirementPsyRate => _requirementPsyRate; 
-    public int RequirementInsanity => _requirementInsanity;
-    public int RequirementCorruption => _requirementCorruption;
-
-    public int Rank => _rank;
-
-    public Talent(string path, bool fullTalent)
+    public Talent(string path, string category)
     {
+        
         string[] data = File.ReadAllLines(path + "/Param.JSON");
+        _category = category;
         JSONTalentReader talentReader = JsonUtility.FromJson<JSONTalentReader>(data[0]);
+        _god = talentReader.god;
         _name = talentReader.name;
-        _inclinations[0] = (GameStat.Inclinations)Enum.Parse(typeof(GameStat.Inclinations), talentReader.inclinationFirst);
-        _inclinations[1] = (GameStat.Inclinations)Enum.Parse(typeof(GameStat.Inclinations), talentReader.inclinationSecond);
         _rank = talentReader.rank;
         _isCanTaken = talentReader.canActivate;
         _isRepeatable = talentReader.repeatable;
@@ -136,24 +114,39 @@ public class Talent : ISkillTalentEtcForList, IName
             {
                 _requirementPsyRate = 0;
             }
-        }        
+        }
+
     }
 
-    private string CheckLastSymbol(string text)
-    {
-        if (text.EndsWith(","))
-        {
-            string tempstring = text.TrimEnd(',');
-            return tempstring + ". ";
-        }
-        else
-        {
-            return text;
-        }
-    }
+    public string Name => _name;
+    public string Description => _textDescription;
+    public string ListRequirments => _listOfRequrements;
+    public string ShortDescription => _shortDescription; 
+    public bool IsCanTaken => _isCanTaken;
+    public bool IsRepeatable => _isRepeatable;
+
+    public List<Characteristic> RequirementCharacteristics => _requirementCharacteristics;
+
+    public List<Skill> RequirementSkills => _requirementSkills;
+
+    public List<MechImplant> RequirementImplants => _requirementImplants;
+
+    public List<Talent> RequirementTalents => _requirementTalents;
+
+    public int RequirementPsyRate => _requirementPsyRate; 
+    public int RequirementInsanity => _requirementInsanity;
+    public int RequirementCorruption => _requirementCorruption;
+
+    public int Rank => _rank;
+
+    public string God => _god;
+
+    public string Category => _category;
+
+    
     public Talent(string name)
     {
-        this._name = name;
+        _name = name;
     }
 
     public Talent(Talent talent)
@@ -161,11 +154,11 @@ public class Talent : ISkillTalentEtcForList, IName
         _textDescription = talent.Description;
         _shortDescription = talent.ShortDescription;
         _name = talent.Name;
-        _inclinations[0] = talent.Inclinations[0];
-        _inclinations[1] = talent.Inclinations[1];
         _isCanTaken = talent.IsCanTaken;
         _isRepeatable = talent.IsRepeatable;
-        
+        _god = talent.God;
+        _category = talent.Category;
+        _rank = talent.Rank;
     }
 
     public bool CheckTalentRepeat(List<Talent> talentsOfCharacter)
@@ -183,8 +176,19 @@ public class Talent : ISkillTalentEtcForList, IName
         
         return true;
     }
-    
+
+    private string CheckLastSymbol(string text)
+    {
+        if (text.EndsWith(","))
+        {
+            string tempstring = text.TrimEnd(',');
+            return tempstring + ". ";
+        }
+        else
+        {
+            return text;
+        }
+    }
 
 
-    
 }

@@ -11,11 +11,9 @@ public class UpgradeCharacteristicsPresenter : IPresenter
     private ICharacter _character;
     private UpgradeCharacteristicsView _view;
     private AudioManager _audioManager;
-    private readonly List<float> _multCostWithZeroInclinations = new List<float>() { 2, 3, 4, 6, 10 };
-    private readonly List<float> _multCostWithOneInclinations = new List<float>() { 1, 2, 3, 4, 6 };
-    private readonly List<float> _multCostWithTwoInclinations = new List<float>() { 0.4f, 1, 2, 3, 5 };
+    
 
-    private List<List<float>> _listWithMultsForCost = new List<List<float>>();
+    
     private bool _isEdit = false;
 
     [Inject]
@@ -23,9 +21,6 @@ public class UpgradeCharacteristicsPresenter : IPresenter
 
     public void Initialize(ICharacter character, UpgradeCharacteristicsView view, bool isNewCharacter)
     {
-        _listWithMultsForCost.Add(_multCostWithZeroInclinations);
-        _listWithMultsForCost.Add(_multCostWithOneInclinations);
-        _listWithMultsForCost.Add(_multCostWithTwoInclinations);
         _character = character;
         _view = view;
         _view.SetVisibleButtonReturnBack(isNewCharacter);
@@ -69,6 +64,8 @@ public class UpgradeCharacteristicsPresenter : IPresenter
 
         _view.SetFellowship(_character.Characteristics[8].Amount, _character.Characteristics[8].LvlLearned,
             ChooseTextByLvlLearned(_character.Characteristics[8]));
+
+        _view.SetInfamy(_character.Infamy);
     }
 
     private string ChooseTextByLvlLearned(Characteristic characteristic)
@@ -81,21 +78,10 @@ public class UpgradeCharacteristicsPresenter : IPresenter
 
     private int CalculateCost(Characteristic characteristic)
     {
-        if (_isEdit)
-        {
-            return 0;
-        }
+        if (_isEdit)        
+            return 0;        
 
-        int sumInclinations = 0;
-        foreach (GameStat.Inclinations incl in _character.Inclinations)
-        {
-            if (incl == characteristic.Inclinations[0] || incl == characteristic.Inclinations[1])
-            {
-                sumInclinations++;
-            }
-        }
-
-        return (int)(250 * _listWithMultsForCost[sumInclinations][characteristic.LvlLearned]);
+        return GameStat.CalculateCostCharacteristic(characteristic, _character);        
     }
 
     private void Subcribe()
@@ -109,11 +95,12 @@ public class UpgradeCharacteristicsPresenter : IPresenter
         _view.UpgradePerception += UpgradePerception;
         _view.UpgradeWillpower += UpgradeWillpower;
         _view.UpgradeFellowship += UpgradeFellowship;
+        _view.UpgradeInfamy += UpgradeInfamy;
 
         _view.Next += GoToNext;
         _view.ReturnToPrev += ReturnPrev;
         _view.CancelUpgrade += CancelUpgrade;
-    }
+    }    
 
     private void Unscribe()
     {
@@ -149,6 +136,20 @@ public class UpgradeCharacteristicsPresenter : IPresenter
     private void UpgradeBallistic() => TryUpgradeSomeCharacteristic(_character.Characteristics[1]);
 
     private void UpgradeWeapon() => TryUpgradeSomeCharacteristic(_character.Characteristics[0]);
+
+    private void UpgradeInfamy()
+    {
+        if(_character.Infamy < 40 && _character.ExperienceUnspent >= 500)
+        {
+            _audioManager.PlayClick();
+            CharacterWithUpgrade character = new CharacterWithUpgrade(_character);
+            character.UpgradeInfamy();
+            _character = character;
+            _view.SetInfamy(character.Infamy);
+        }
+        else
+            _audioManager.PlayWarning();   
+    }
 
     private void TryUpgradeSomeCharacteristic(Characteristic characteristic)
     {
