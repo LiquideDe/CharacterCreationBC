@@ -11,7 +11,6 @@ public class CharacterWithArchetype : CharacterDecorator, ICharacter
     public CharacterWithArchetype(ICharacter character) : base(character)
     {
         _characteristics = new List<Characteristic>(_character.Characteristics);
-        _expForPsy += character.ExperienceUnspent;
     }
 
     public int Wounds => _wounds;
@@ -36,7 +35,7 @@ public class CharacterWithArchetype : CharacterDecorator, ICharacter
 
     public int ExperienceTotal => _character.ExperienceTotal;
 
-    public int ExperienceUnspent => _expForPsy;
+    public int ExperienceUnspent => _character.ExperienceUnspent;
 
     public int ExperienceSpent => _character.ExperienceSpent;
 
@@ -81,6 +80,8 @@ public class CharacterWithArchetype : CharacterDecorator, ICharacter
     public string Description => throw new System.NotImplementedException();
 
     public string GodGifts => _character.GodGifts;
+
+    public int ExpForPsy => _expForPsy;
 
     public void SetArchetype(string archetype) => _archetype = archetype;
 

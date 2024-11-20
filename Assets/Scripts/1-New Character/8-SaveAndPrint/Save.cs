@@ -32,6 +32,11 @@ public class Save
         saveLoad.infamy = character.Infamy;
         saveLoad.god = character.God;
         saveLoad.canChangeGod = character.CanChageGod;
+        saveLoad.archetype = character.Archetype;
+        saveLoad.pride = character.Pride;
+        saveLoad.disgrace = character.Disgrace;
+        saveLoad.motivation = character.Motivation;
+
 
         saveLoad.talents = "";
         foreach (Talent talent in character.Talents)
@@ -80,7 +85,8 @@ public class Save
         saveLoad.traitsLvl = DeleteLastChar(saveLoad.traitsLvl);
 
         saveLoad.upgrades = "";
-        foreach(Trait upgrade in character.Upgrades)
+        saveLoad.upgradesLvl = "";
+        foreach (Trait upgrade in character.Upgrades)
         {
             saveLoad.upgrades += upgrade.Name;
             saveLoad.upgrades += "/";

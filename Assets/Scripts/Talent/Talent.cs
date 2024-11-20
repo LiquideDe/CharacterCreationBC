@@ -17,7 +17,7 @@ public class Talent : ISkillTalentEtcForList, IName
     private int _requirementInsanity = 0, _requirementCorruption = 0;
     private bool _isRepeatable, _isCanTaken;
     private int _rank;
-    private string _god, _category;
+    private string _god, _category, _requirementRace="";
 
     public Talent(string path, string category)
     {
@@ -114,6 +114,11 @@ public class Talent : ISkillTalentEtcForList, IName
             {
                 _requirementPsyRate = 0;
             }
+
+            if(File.Exists(path + "/ReqRace.txt"))
+            {
+                _requirementRace = GameStat.ReadText(path + "/ReqRace.txt");
+            }
         }
 
     }
@@ -134,7 +139,6 @@ public class Talent : ISkillTalentEtcForList, IName
     public List<Talent> RequirementTalents => _requirementTalents;
 
     public int RequirementPsyRate => _requirementPsyRate; 
-    public int RequirementInsanity => _requirementInsanity;
     public int RequirementCorruption => _requirementCorruption;
 
     public int Rank => _rank;
@@ -142,6 +146,8 @@ public class Talent : ISkillTalentEtcForList, IName
     public string God => _god;
 
     public string Category => _category;
+
+    public string RequirementRace => _requirementRace;
 
     
     public Talent(string name)

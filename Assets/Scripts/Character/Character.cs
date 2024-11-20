@@ -135,6 +135,11 @@ public class Character : ICharacter
         _infamy = loadCharacter.infamy;
         _god = loadCharacter.god;
         _canChangeGod = loadCharacter.canChangeGod;
+        _archetype = loadCharacter.archetype;
+        _pride = loadCharacter.pride;
+        _disgrace = loadCharacter.disgrace;
+        _motivation = loadCharacter.motivation;
+        _description = loadCharacter.description;
 
         
         _liftWeight = loadCharacter.liftWeight;

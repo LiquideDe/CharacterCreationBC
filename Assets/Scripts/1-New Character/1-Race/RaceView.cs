@@ -204,6 +204,8 @@ public class RaceView : ViewWithButtonsDoneAndCancel
                 _textNameSkills.text = "Броня";
             else if (list[0] is Equipment)
                 _textNameSkills.text = "Снаряжение";
+            else if (list[0] is MechImplant)
+                _textNameSkills.text = "Импланты";
             else
                 _textNameSkills.text = "Не смогли распознать";
     }    
@@ -245,6 +247,11 @@ public class RaceView : ViewWithButtonsDoneAndCancel
                     _textDescriptionSkill.text = $"{equipment.Name} \n {equipment.Description}";
                     _chosenSkill = equipment;
                 }
+                else if(skill is MechImplant implant)
+                {
+                    _textDescriptionSkill.text = $"{implant.Name} \n {implant.Description}";
+                    _chosenSkill = implant;
+                }
                 
                 break;
             }
@@ -267,11 +274,10 @@ public class RaceView : ViewWithButtonsDoneAndCancel
         if(possibleSkill is Skill skill)
         {
             Skill skillInList = (Skill)possibleSkillInList;
-            if (skillInList.LvlLearned == skill.LvlLearned)
-                return true;
+            if (skillInList.LvlLearned != skill.LvlLearned)
+                return false;
         }
-
-        return false;
+        return true;
         
     }
 

@@ -136,14 +136,32 @@ public class LvlMediatorNewCharacter
         PsycanaCreatorView psycanaCreatorView = gameObject.GetComponent<PsycanaCreatorView>();
         UpgradePsycanaPresenter presenter = (UpgradePsycanaPresenter)_presenterFactory.Get(TypeScene.UpgradePsycana);
 
+        CharacterWithArchetype characterWitArchetype = FindCharacterWithArchetype(_character);
+        CharacterWithUpgrade character = new CharacterWithUpgrade(_character);
+        if (character.ExperienceUnspent < 0)
+            character.SetExperience(character.ExperienceUnspent * -1);
+
+        character.SetExperience(characterWitArchetype.ExpForPsy);
         presenter.ReturnToTalent += CharacterHasCharacteristics;
         presenter.GoNext += CharacterHasPsyPowers;
-        presenter.Initialize(_character, psycanaCreatorView, upgradePsycana);
+        presenter.Initialize(character, psycanaCreatorView, upgradePsycana);
+    }
+
+    private CharacterWithArchetype FindCharacterWithArchetype(ICharacter character)
+    {
+        if(character is CharacterWithArchetype finded)
+            return finded;
+
+        return FindCharacterWithArchetype(character.GetCharacter);
     }
 
     private void CharacterHasPsyPowers(ICharacter character)
     {
-        _character = character;
+        CharacterWithUpgrade characterUpgrade = (CharacterWithUpgrade)character;
+        if (characterUpgrade.ExperienceUnspent > 0)
+            characterUpgrade.SetExperience(-1 * character.ExperienceUnspent);
+        characterUpgrade.SetExperience(_character.ExperienceUnspent);
+        _character = characterUpgrade;
         ShowMessageBeforeTrainingCharacteristics();
     }
 

@@ -28,7 +28,7 @@ public class LvlMediator
         MainMenuPresenter mainMenuPresenter = (MainMenuPresenter)_presenterFactory.Get(TypeScene.MainMenu);
         mainMenuPresenter.NewCharacter += NewCharacterOpen;
         mainMenuPresenter.UpgradeCharacter += UpgradeCharacterOpen;
-        mainMenuPresenter.EditCharacter += EditCharacterOpen;
+        //mainMenuPresenter.EditCharacter += EditCharacterOpen;
         mainMenuPresenter.Initialize(mainMenuView);
     }
     private void Subscribe()

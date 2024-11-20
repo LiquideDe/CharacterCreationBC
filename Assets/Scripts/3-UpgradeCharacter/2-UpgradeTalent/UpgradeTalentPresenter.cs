@@ -143,7 +143,7 @@ public class UpgradeTalentPresenter : IPresenter
     {
         if (TryFindRequireCharacteristic(_character.Characteristics, talent) && TryFindRequireSkill(_character.Skills, talent) && TryFindRequireImplant(_character.Implants, talent) && 
             TryFindRequireTalents(_character.Talents, talent)  && _character.CorruptionPoints >= talent.RequirementCorruption && 
-            _character.PsyRating >= talent.RequirementPsyRate)
+            _character.PsyRating >= talent.RequirementPsyRate && IsRequirementRace(talent))
         {
             return true;
         }
@@ -248,8 +248,18 @@ public class UpgradeTalentPresenter : IPresenter
         if (sum == amountReq)        
             return true;
         
+        return false;        
+    }
+
+    private bool IsRequirementRace(Talent talent)
+    {
+        if(talent.RequirementRace.Length == 0)
+            return true;
+
+        if(string.Compare(talent.RequirementRace, _character.Race, true) == 0)
+            return true;
+
         return false;
-        
     }
     
     private void ShowThisTalent(Talent talent)
