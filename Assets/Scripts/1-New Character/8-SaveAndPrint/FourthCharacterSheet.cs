@@ -13,6 +13,7 @@ public class FourthCharacterSheet : TakeScreenshot
     private readonly int _amountLines = 38;
     private int _khorn = 0, _slaanesh = 0, _nurgl = 0, _tzeentch = 0, _undevided = 0;
     private CreatorTalents _creatorTalents;
+    private ICharacter _character;
 
     [Inject]
     private void Construct(CreatorTalents creatorTalents) => _creatorTalents = creatorTalents;
@@ -28,7 +29,6 @@ public class FourthCharacterSheet : TakeScreenshot
 
         int maxLines = 0;
         bool isLineFull = false;
-        Debug.Log($"Count Upgrades = {character.Upgrades.Count}");
         if (_amountLines > character.Upgrades.Count)
             maxLines = character.Upgrades.Count;
         else
@@ -48,7 +48,7 @@ public class FourthCharacterSheet : TakeScreenshot
         _textTzeentch.text = _tzeentch.ToString();
         _textUndevided.text = _undevided.ToString();
 
-        StartScreenshot(PageName.Fourth.ToString());
+        StartScreenshot(PageName.Fourth.ToString(), character.Name);
     }
 
     private void FillUpgrades(TextMeshProUGUI textUpgrade, TextMeshProUGUI textCost, TextMeshProUGUI textGod, int startId, int endId)

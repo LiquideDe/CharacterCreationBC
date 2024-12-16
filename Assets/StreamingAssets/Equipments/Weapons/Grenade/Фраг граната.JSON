@@ -1,1 +1,1 @@
-{"name":"Фраг граната","description":"","damage":"2к10В","rarity":"ОБ","weaponClass":"Метательное","properties":"Взрыв(3)","penetration":0,"weight":0.5,"amount" : 1, "typeEquipment" : "Grenade"}
+{"name":"Фраг граната","description":"","damage":"2к10+0В","rarity":"-2","weaponClass":"Граната","properties":"Взрыв(3),Разрывное","typeEquipment":"Grenade","penetration":0,"amount":1,"weight":0.5}

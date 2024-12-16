@@ -1,0 +1,260 @@
+{
+    "name": "Линда",
+    "talents": "Эрудит-Инфернал/Ненависть Экклезиархия/Нечестивая Преданность/Миньон Хаоса Высший Демон/Мудрость Древних/Пресыщенный/Идеальная Память/Выучка с Оружием Цепное/Выучка с Оружием Шоковое/Выучка с Оружием Твёрдотельное/Выучка с Оружием Мельта/Выучка с Оружием Плазма/Козел Отпущения/Аура Хаоса/Звериные Ноги/Разделенное Внимание",
+    "mutation": "",
+    "equipments": "",
+    "psyPowers": "",
+    "traits": "Лидер Культа/Быстрый И Мертвый/Ловит на Лету/Демонический/Страх/Сверхъестественная Сила",
+    "traitsLvl": "0/0/0/3/2/3",
+    "elite": "",
+    "foreverFriendly": "",
+    "foreverHostile": "",
+    "race": "",
+    "archetype": "Ересиарх",
+    "motivation": "Могущество",
+    "disgrace": "Лживость",
+    "pride": "Красота",
+    "minions": "",
+    "mentalDisorders": "",
+    "upgrades": "Общительность/Сила Воли/Интеллект/Медика",
+    "upgradesLvl": "1/1/1/1",
+    "description": "",
+    "godGifts": "",
+    "god": "Слаанеш",
+    "wounds": 10,
+    "psyRating": 0,
+    "halfMove": 3,
+    "fullMove": 6,
+    "natisk": 9,
+    "run": 18,
+    "fatigue": 7,
+    "experienceTotal": 1000,
+    "experienceUnspent": 50,
+    "experienceSpent": 950,
+    "amountImplants": 0,
+    "amountSkills": 20,
+    "corruption": 37,
+    "infamy": 25,
+    "carryWeight": 0.0,
+    "liftWeight": 0.0,
+    "pushWeight": 180.0,
+    "canChangeGod": true
+}
+{
+    "name": "Навык Рукопашной",
+    "amount": 38,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Навык Стрельбы",
+    "amount": 41,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Сила",
+    "amount": 37,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Выносливость",
+    "amount": 40,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Ловкость",
+    "amount": 38,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Интеллект",
+    "amount": 53,
+    "lvlLearnedChar": 1
+}
+{
+    "name": "Восприятие",
+    "amount": 38,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Сила Воли",
+    "amount": 44,
+    "lvlLearnedChar": 1
+}
+{
+    "name": "Общительность",
+    "amount": 42,
+    "lvlLearnedChar": 1
+}
+{
+    "name": "Империум",
+    "lvlLearned": 1
+}
+{
+    "name": "Имперский Флот",
+    "lvlLearned": 1
+}
+{
+    "name": "Варп",
+    "lvlLearned": 2
+}
+{
+    "name": "Демонология",
+    "lvlLearned": 3
+}
+{
+    "name": "Ересь",
+    "lvlLearned": 2
+}
+{
+    "name": "Боевой жаргон",
+    "lvlLearned": 1
+}
+{
+    "name": "Истинный язык",
+    "lvlLearned": 1
+}
+{
+    "name": "Метки Ксеносов",
+    "lvlLearned": 1
+}
+{
+    "name": "Оккультизм",
+    "lvlLearned": 2
+}
+{
+    "name": "Летописец",
+    "lvlLearned": 1
+}
+{
+    "name": "Бдительность",
+    "lvlLearned": 1
+}
+{
+    "name": "Дознание",
+    "lvlLearned": 2
+}
+{
+    "name": "Допрос",
+    "lvlLearned": 1
+}
+{
+    "name": "Командование",
+    "lvlLearned": 2
+}
+{
+    "name": "Медика",
+    "lvlLearned": 1
+}
+{
+    "name": "Обаяние",
+    "lvlLearned": 1
+}
+{
+    "name": "Обман",
+    "lvlLearned": 2
+}
+{
+    "name": "Проницательность",
+    "lvlLearned": 1
+}
+{
+    "name": "Уклонение",
+    "lvlLearned": 1
+}
+{
+    "name": "Управление Наземная",
+    "lvlLearned": 1
+}
+{
+    "name": "Плазменный Пистолет",
+    "description": "",
+    "weaponClass": "Пистолет",
+    "rof": "О/2/-",
+    "damage": "1к10+7Э",
+    "reload": "3Полн",
+    "properties": "Максимальное, Перегревающееся",
+    "rarity": "2",
+    "typeEquipment": "Range",
+    "range": 30,
+    "penetration": 8,
+    "clip": 10,
+    "amount": 1,
+    "weight": 3.0
+}
+{
+    "name": "Мельтаган",
+    "description": "",
+    "weaponClass": "Ручное",
+    "rof": "О/-/-",
+    "damage": "2к10+10Э",
+    "reload": "2Полн",
+    "properties": "Неточное, Мельта",
+    "rarity": "2",
+    "typeEquipment": "Range",
+    "range": 20,
+    "penetration": 12,
+    "clip": 5,
+    "amount": 1,
+    "weight": 8.0
+}
+{
+    "name": "Нейральный Кнут",
+    "description": "",
+    "properties": "Гибкое, Шоковое",
+    "type": "Melee",
+    "weaponClass": "Рукопашное",
+    "damage": "1к10+1Р",
+    "rarity": "2",
+    "typeEquipment": "Melee",
+    "penetration": 0,
+    "amount": 1,
+    "weight": 0.30000001192092898
+}
+{
+    "name": "Панцирный шлем",
+    "description": "Покрывает только голову.Броня 6, максимальная ловкость 100.",
+    "descriptionArmor": "Покрывает только голову.",
+    "rarity": "",
+    "typeEquipment": "Armor",
+    "head": 6,
+    "hands": 0,
+    "body": 0,
+    "legs": 0,
+    "maxAgility": 100,
+    "armorPoint": 6,
+    "amount": 1,
+    "bonusStrength": 0,
+    "weight": 1.5
+}
+{
+    "name": "Легкий панцирь",
+    "description": "Покрывает все тело кроме головы.Броня 6, максимальная ловкость 55.",
+    "descriptionArmor": "Покрывает все тело кроме головы.",
+    "rarity": "",
+    "typeEquipment": "Armor",
+    "head": 0,
+    "hands": 5,
+    "body": 6,
+    "legs": 5,
+    "maxAgility": 55,
+    "armorPoint": 6,
+    "amount": 1,
+    "bonusStrength": 0,
+    "weight": 12.0
+}
+{
+    "name": "Гололит",
+    "description": "Тяжелая установка для проецирования трехмерных голографических изображений. Может использоваться как для вывода трехмерных изображений с разнообразных сенсоров и фидов, так и для брифингов. Последнее требует теста на Tech-Use +0 и хотя бы часа работы для подготовки презентации, но дает +10 на тесты Command для проведения брифингов, +20 если брифинг касается операции на местности, требующей продвинутого трехмерного ориентирование, вроде ульевого хаба или космического корабля. \r\nPoor.Q: изображение гололита рябит и покрывается помехами; все бонусы от его использования уменьшаются вдвое.\r\nGood.Q: создает голографическое изображение настолько четкое, что его невозможно отличить от реальности, или миниатюризован до размеров, что помещается в руке или может быть интегрирован в броню с ретинальным дисплеем для управления (весит 1 кг).\r\nBest.Q: имеет оба эффекта Good.Q; при подключении через MIU персонаж, имеющий кортикальный имплант высшего качества или Импланты Механикум, способен создавать новые голографические проекции «на ходу», при условии, что они не больше 3×3×3м.\r\n",
+    "rarity": "2",
+    "typeEquipment": "Thing",
+    "weight": 35.0,
+    "amount": 1
+}
+{
+    "name": "Нечестивые Тома",
+    "description": "Книги, свитки, таблички, или инфопланшеты, заполненные экзотическими и тайными знаниями, вроде нечестивых проповедей из Книги Лоргара, трактатов о колдовских техниках, или гриммуаров истинных имен демонов. Дает бонус +20 на тесты ритуалов и исследований, использующих один из следующих Навыков (только один для каждого набора): Scholastic Lore (Occult), Forbidden Lore (Daemons), Forbidden Lore (Heresy), Forbidden Lore (Psykers), Forbidden Lore (Warp), Forbidden Lore (Mechanicum), Forbidden Lore (Xenos Occult). Качество модифицирует все связанные тесты: Poor.Q: +10, Good.Q: +25, Best.Q: +30. ",
+    "rarity": "3",
+    "typeEquipment": "Thing",
+    "weight": 1.0,
+    "amount": 2
+}

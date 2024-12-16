@@ -11,6 +11,7 @@ public class ThirdCharacterSheet : TakeScreenshot
     private CreatorPsyPowers _creatorPsyPowers;
     private CreatorTraits _creatorTraits;
     private int _page;
+    private string _nameCharacter;
 
     [Inject]
     private void Construct(CreatorTalents creatorTalents, CreatorPsyPowers creatorPsyPowers, CreatorTraits creatorFeatures)
@@ -22,7 +23,7 @@ public class ThirdCharacterSheet : TakeScreenshot
 
     public void Initialize(ICharacter character)
     {
-        _character = character;
+        _nameCharacter = character.Name;
         foreach(Talent talent in character.Talents)        
             _text.text += $"<b>{talent.Name}</b> - {_creatorTalents.GetTalent(talent.Name).Description} \n \n";        
 
@@ -51,11 +52,11 @@ public class ThirdCharacterSheet : TakeScreenshot
         {
             _page = 1;
             base.PageSaved += PageSavedDown;
-            StartScreenshot(PageName.Third.ToString(), true);
+            StartScreenshot(PageName.Third.ToString(), _nameCharacter, true);
         }
         else
         {
-            StartScreenshot(PageName.Third.ToString());
+            StartScreenshot(PageName.Third.ToString(), _nameCharacter);
         }
         
     }
@@ -77,8 +78,8 @@ public class ThirdCharacterSheet : TakeScreenshot
     private void StartNextScreenshot()
     {
         if (_page == _text.textInfo.pageCount)
-            StartScreenshot($"{PageName.Third}+{_page}");
+            StartScreenshot($"{PageName.Third}+{_page}", _nameCharacter);
         else
-            StartScreenshot($"{PageName.Third}+{_page}", true);
+            StartScreenshot($"{PageName.Third}+{_page}", _nameCharacter, true);
     }
 }

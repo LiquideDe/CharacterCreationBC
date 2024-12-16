@@ -18,6 +18,9 @@ public class CreatorFactory
             case TypeCreator.Arhetype:
                 return _diContainer.Instantiate<CreatorArchetype>();
 
+            case TypeCreator.Minion:
+                return _diContainer.Instantiate<CreatorMinion>();
+
             default:
                 throw new System.Exception("Нет такого типа TypeCreator");
         }
@@ -27,5 +30,6 @@ public class CreatorFactory
 public enum TypeCreator
 {
     Race,
-    Arhetype
+    Arhetype,
+    Minion
 }

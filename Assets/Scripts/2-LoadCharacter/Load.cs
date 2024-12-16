@@ -55,6 +55,7 @@ public class Load
             //Debug.Log($"Первый Имплант {data[min]}, последний объект {data[max - 1]}, min = {min}, max = {max}");
             for (int i = min; i < max; i++)
             {
+                //Debug.Log(data[i]);
                 SaveLoadImplant implant = JsonUtility.FromJson<SaveLoadImplant>(data[i]);
                 implants.Add(new MechImplant(implant));
             }

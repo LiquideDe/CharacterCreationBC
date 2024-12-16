@@ -9,15 +9,18 @@ public class TakeScreenshot : MonoBehaviour
 {
     public event Action WorkIsFinished;
     public event Action PageSaved;
-    protected ICharacter _character;
+    private string _characterName;
     List<byte[]> savedImages = new List<byte[]>();
     [SerializeField] RectTransform rectImage;
     public enum PageName { First, Second, Third, Fourth}
     private string _pageName;
     bool _isManyPages;
 
-    protected void StartScreenshot(string pageName, bool isManyPages = false)
+
+
+    protected void StartScreenshot(string pageName, string characterName, bool isManyPages = false)
     {
+        _characterName = characterName;
         _pageName = pageName;
         _isManyPages = isManyPages;
         StartCoroutine(StartSaveImages());
@@ -106,9 +109,9 @@ public class TakeScreenshot : MonoBehaviour
         g.DrawImageUnscaled(bitmaps[1], newImage.Width - bitmaps[1].Width, 0);
         g.DrawImageUnscaled(bitmaps[2], 0, 0);
         g.DrawImageUnscaled(bitmaps[3], 0, newImage.Height - bitmaps[3].Height);
-        if(!Directory.Exists($"{Application.dataPath}/StreamingAssets/CharacterSheets/{_character.Name}"))
-            Directory.CreateDirectory($"{Application.dataPath}/StreamingAssets/CharacterSheets/{_character.Name}");
-        newImage.Save($"{Application.dataPath}/StreamingAssets/CharacterSheets/{_character.Name}/CharacterSheet{_pageName}.png", System.Drawing.Imaging.ImageFormat.Png);
+        if(!Directory.Exists($"{Application.dataPath}/StreamingAssets/CharacterSheets/{_characterName}"))
+            Directory.CreateDirectory($"{Application.dataPath}/StreamingAssets/CharacterSheets/{_characterName}");
+        newImage.Save($"{Application.dataPath}/StreamingAssets/CharacterSheets/{_characterName}/CharacterSheet{_pageName}.png", System.Drawing.Imaging.ImageFormat.Png);
         if(_isManyPages == false)
         {
             WorkIsFinished?.Invoke();

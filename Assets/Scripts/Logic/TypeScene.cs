@@ -29,5 +29,16 @@ public enum TypeScene
     NewGrenade,
     NewEquipment,
     NewImplant,
-    NewArmor
+    NewArmor,
+    ChooseTypeMinion,
+    ManualCharacteristicMinion,
+    RandomCharacteristicMinion,
+    ChooseSkillMinion,
+    ChooseTalentMinion,
+    ChoosePsycanaMinion,
+    ChooseTraitMinion,
+    ChooseArmorMinion,
+    RedistributionMinion,
+    ChooseNameMinion,
+    PrintMinion
 }

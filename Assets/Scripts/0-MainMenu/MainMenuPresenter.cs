@@ -7,6 +7,7 @@ public class MainMenuPresenter : IPresenter
     public event Action NewCharacter;
     public event Action EditCharacter;
     public event Action UpgradeCharacter;
+    public event Action NewMinion;
 
     private AudioManager _audioManager;
     private MainMenuView _mainMenuView;
@@ -28,13 +29,15 @@ public class MainMenuPresenter : IPresenter
         _mainMenuView.NewCharacter += PressNewCharacter;
         _mainMenuView.EditCharacter += PressEditCharacter;
         _mainMenuView.UpgradeCharacter += PressUpgradeCharacter;
-    }
+        _mainMenuView.NewMinion += PressNewMinion;
+    }    
 
     private void Unscribe()
     {
         _mainMenuView.NewCharacter -= PressNewCharacter;
         _mainMenuView.EditCharacter -= PressEditCharacter;
         _mainMenuView.UpgradeCharacter -= PressUpgradeCharacter;
+        _mainMenuView.NewMinion -= PressNewMinion;
     }
 
     private void PressNewCharacter()
@@ -69,5 +72,14 @@ public class MainMenuPresenter : IPresenter
         NewCharacter = null;
         EditCharacter = null;
         UpgradeCharacter = null;
+    }
+
+    private void PressNewMinion()
+    {
+        _audioManager.PlayClick();
+        Unscribe();
+        _mainMenuView.DestroyView();
+        NewMinion?.Invoke();
+        RemoveAllListeners();
     }
 }

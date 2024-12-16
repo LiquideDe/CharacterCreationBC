@@ -56,7 +56,10 @@ public class UpgradeSkillCreatorView : MonoBehaviour
         foreach(Skill skill in skills)
         {
             SkillPanel skillPanel = Instantiate(_skillPanelPrefab, horizontal.transform);
-            skillPanel.Initialize(skill, GameStat.CalculateCostSkill(skill, _character));
+            if(_character == null)
+                skillPanel.Initialize(skill, 1);
+            else
+                skillPanel.Initialize(skill, GameStat.CalculateCostSkill(skill, _character));
 
             _skillPanels.Add(skillPanel);
         }

@@ -153,6 +153,7 @@ public class Save
                 armorReader.name = armor.Name;
                 armorReader.typeEquipment = armor.TypeEq.ToString(); ;
                 armorReader.weight = armor.Weight;
+                armorReader.bonusStrength = armor.BonusStrength;
                 data.Add(JsonUtility.ToJson(armorReader, true));
             }
             else if(equipment.TypeEq == Equipment.TypeEquipment.Grenade)

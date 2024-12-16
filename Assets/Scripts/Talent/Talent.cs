@@ -18,6 +18,8 @@ public class Talent : ISkillTalentEtcForList, IName
     private bool _isRepeatable, _isCanTaken;
     private int _rank;
     private string _god, _category, _requirementRace="";
+    private Trait _getTrait;
+    private bool _isGetTrait = false;
 
     public Talent(string path, string category)
     {
@@ -32,6 +34,14 @@ public class Talent : ISkillTalentEtcForList, IName
         _isRepeatable = talentReader.repeatable;
         _textDescription = GameStat.ReadText(path + "/Описание.txt");
         _shortDescription = GameStat.ReadText(path + "/Краткое описание.txt");
+
+        if (Directory.Exists(path + "/Get"))
+        {
+            _isGetTrait = true;
+            int.TryParse(GameStat.ReadText(path + "/Get/Уровень.txt"), out int lvl);
+            _getTrait = new Trait(GameStat.ReadText(path + "/Get/Название.txt"), lvl);
+        }
+
         if(Directory.Exists(path + "/Req"))
         {
             _listOfRequrements = "Требования для Таланта.\n";
@@ -119,6 +129,8 @@ public class Talent : ISkillTalentEtcForList, IName
             {
                 _requirementRace = GameStat.ReadText(path + "/ReqRace.txt");
             }
+
+            
         }
 
     }
@@ -149,7 +161,9 @@ public class Talent : ISkillTalentEtcForList, IName
 
     public string RequirementRace => _requirementRace;
 
-    
+    public Trait GetTrait => _getTrait; 
+    public bool IsGetTrait => _isGetTrait; 
+
     public Talent(string name)
     {
         _name = name;
@@ -165,6 +179,8 @@ public class Talent : ISkillTalentEtcForList, IName
         _god = talent.God;
         _category = talent.Category;
         _rank = talent.Rank;
+        _isGetTrait = talent.IsGetTrait;
+        _getTrait = talent.GetTrait;
     }
 
     public bool CheckTalentRepeat(List<Talent> talentsOfCharacter)

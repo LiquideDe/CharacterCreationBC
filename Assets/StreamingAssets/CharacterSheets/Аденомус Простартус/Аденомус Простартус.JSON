@@ -1,0 +1,225 @@
+{
+    "name": "Аденомус Простартус",
+    "talents": "Пресыщенный/Вскочить/Бой Вслепую/Амбидекстр/Безоружный Воин/Усиленные Чувства Зрение/Усиленные Чувства Слух/Бугрящиеся Мышцы/Быстрое Выхватывание/Сопротивление Жара/Сопротивление Холод/Сопротивление Яд/Стальные Нервы/Тренировка Легиона",
+    "mutation": "",
+    "equipments": "",
+    "psyPowers": "",
+    "traits": "Находчивый/Амфибия/Размер/Сверхъестественная Сила/Сверхъестественная Выносливость",
+    "traitsLvl": "0/0/1/4/4",
+    "elite": "",
+    "foreverFriendly": "",
+    "foreverHostile": "",
+    "race": "",
+    "archetype": "Изгой",
+    "motivation": "Бессмертие",
+    "disgrace": "Вероломство",
+    "pride": "Прозорливость",
+    "minions": "",
+    "mentalDisorders": "",
+    "upgrades": "Атлетика",
+    "upgradesLvl": "2",
+    "description": "Я молчиливый, поэтому вам не доверяю",
+    "godGifts": "",
+    "god": "Неделимый",
+    "wounds": 21,
+    "psyRating": 0,
+    "halfMove": 4,
+    "fullMove": 8,
+    "natisk": 12,
+    "run": 24,
+    "fatigue": 8,
+    "experienceTotal": 500,
+    "experienceUnspent": 150,
+    "experienceSpent": 350,
+    "amountImplants": 0,
+    "amountSkills": 13,
+    "corruption": 0,
+    "infamy": 21,
+    "carryWeight": 0.0,
+    "liftWeight": 0.0,
+    "pushWeight": 224.0,
+    "canChangeGod": true
+}
+{
+    "name": "Навык Рукопашной",
+    "amount": 43,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Навык Стрельбы",
+    "amount": 47,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Сила",
+    "amount": 47,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Выносливость",
+    "amount": 45,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Ловкость",
+    "amount": 45,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Интеллект",
+    "amount": 43,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Восприятие",
+    "amount": 48,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Сила Воли",
+    "amount": 43,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Общительность",
+    "amount": 37,
+    "lvlLearnedChar": 0
+}
+{
+    "name": "Архивраг",
+    "lvlLearned": 1
+}
+{
+    "name": "Война",
+    "lvlLearned": 1
+}
+{
+    "name": "Адептус Астартес",
+    "lvlLearned": 1
+}
+{
+    "name": "Ересь Хоруса и Долгая Война",
+    "lvlLearned": 1
+}
+{
+    "name": "Акробатика",
+    "lvlLearned": 1
+}
+{
+    "name": "Атлетика",
+    "lvlLearned": 2
+}
+{
+    "name": "Бдительность",
+    "lvlLearned": 1
+}
+{
+    "name": "Выживание",
+    "lvlLearned": 1
+}
+{
+    "name": "Навигация Наземная",
+    "lvlLearned": 1
+}
+{
+    "name": "Парирование",
+    "lvlLearned": 1
+}
+{
+    "name": "Проницательность",
+    "lvlLearned": 1
+}
+{
+    "name": "Уклонение",
+    "lvlLearned": 1
+}
+{
+    "name": "Управление Наземная",
+    "lvlLearned": 1
+}
+{
+    "name": "Легионный Пиломеч",
+    "description": "",
+    "properties": "Разрывное",
+    "type": "Melee",
+    "weaponClass": "Рукопашное",
+    "damage": "1к10+2Р",
+    "rarity": "2",
+    "typeEquipment": "Melee",
+    "penetration": 3,
+    "amount": 1,
+    "weight": 3.5999999046325685
+}
+{
+    "name": "Легионная Фраг граната",
+    "description": "",
+    "damage": "2к10+2В",
+    "rarity": "0",
+    "weaponClass": "Граната",
+    "properties": "Взрыв(4),Разрывное",
+    "typeEquipment": "Grenade",
+    "penetration": 0,
+    "amount": 4,
+    "weight": 1.0
+}
+{
+    "name": "Легионный Дробовик",
+    "description": "Одно из простейших оружий в арсенале Астартес, этот тяжелый дробовик, тем не менее, ужасающе эффективен на ближней дистанции. ",
+    "weaponClass": "Ручное",
+    "rof": "О/2/-",
+    "damage": "1к10+8У",
+    "reload": "Полн",
+    "properties": "Разлет,Надежное",
+    "rarity": "2",
+    "typeEquipment": "Range",
+    "range": 30,
+    "penetration": 0,
+    "clip": 10,
+    "amount": 1,
+    "weight": 10.0
+}
+{
+    "name": "Мк III Железный",
+    "description": "Самый тяжелый из массовых силовых доспехов, Железный экстенсивно бронирован спереди ценой защиты сзади, что обеспечило ему популярность в абордажных операциях, даже после выхода более продвинутых моделей. Его второй профиль АР используется против атак с задней арки 180°. Авточувства этого доспеха дают бонус в +5 вместо +10, а угол обзора ограничен 120°. Его штраф к тестам Скрытности увеличивается до –20. Бонус к Силе +25.",
+    "descriptionArmor": "Покрывает все тело.",
+    "rarity": "",
+    "typeEquipment": "Armor",
+    "head": 9,
+    "hands": 9,
+    "body": 12,
+    "legs": 9,
+    "maxAgility": 100,
+    "armorPoint": 9,
+    "amount": 1,
+    "bonusStrength": 0,
+    "weight": 300.0
+}
+{
+    "name": "Легионный Болт пистолет",
+    "description": "Большой угрожающий пистолет, способный буквально разнести человеку голову одним выстрелом. Это оружие, как правило, можно встретить в руках офицеров и высококлассных наемников, и, конечно же, как запасное оружие большинства Астартес. ",
+    "weaponClass": "Пистолет",
+    "rof": "О/2/-",
+    "damage": "1к10+9В",
+    "reload": "Полн",
+    "properties": "Разрывное",
+    "rarity": "2",
+    "typeEquipment": "Range",
+    "range": 30,
+    "penetration": 4,
+    "clip": 8,
+    "amount": 1,
+    "weight": 3.0
+}
+{
+    "name": "Боевой Нож Астартес",
+    "description": "",
+    "properties": "",
+    "type": "Melee",
+    "weaponClass": "Рукопашное",
+    "damage": "1к10",
+    "rarity": "1",
+    "typeEquipment": "Melee",
+    "penetration": 2,
+    "amount": 1,
+    "weight": 2.0
+}

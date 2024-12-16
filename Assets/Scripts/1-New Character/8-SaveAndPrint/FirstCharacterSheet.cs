@@ -2,59 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.TextCore.Text;
 
 
 public class FirstCharacterSheet : CharacterSheetWithCharacteristics
 {
     [SerializeField] private SkillList[] skillSquares;
     [SerializeField]
-    private TextMeshProUGUI textName, textArchetype, textPride, textMotivation, textDisgrace, textDescription, textTalents;
+    private TextMeshProUGUI textName, _textDescription, _textMutationText, _textCorruptionPoints, _textGifts,
+        _textSpentExperience, _textUnspentExperience, _textTotalExperience;
 
-    public override void Initialize(ICharacter character)
+    public void Initialize(ICharacter character)
     {
-        base.Initialize(character);
+        base.Initialize(character.Characteristics, character.Equipments, character.Traits, character.Infamy);
         gameObject.SetActive(true);
-        _character = character;
         textName.text = character.Name;
-        textArchetype.text = character.Archetype;
-        textPride.text = character.Pride;
-        textMotivation.text = character.Motivation;
-        textDisgrace.text = character.Disgrace;
-        textDescription.text = character.Description;
+        _textDescription.text = $"Арехти: <b>{character.Archetype}</b>. Гордость: <b>{character.Pride}</b>. Порок: <b>{character.Disgrace}</b>. " +
+            $"Мотивация: <b>{character.Motivation}</b>. Описание: <b>{character.Description}</b>.";
 
-        
-        foreach (Talent talent in character.Talents)        
-                textTalents.text += $", {talent.Name}";  
-        
-        foreach (Trait feature in character.Traits)
-        {
-            if(feature.Lvl > 0)
-            {
-                textTalents.text += $", {feature.Name}({feature.Lvl})";
-            }
-            else
-            {
-                textTalents.text += $", {feature.Name}";
-            }
-            
-        }
-        char[] myChar = { ' ', ',' };
-        textTalents.text = textTalents.text.TrimStart(myChar);
+        _textGifts.text = character.GodGifts;
+        _textSpentExperience.text = character.ExperienceSpent.ToString();
+        _textUnspentExperience.text = character.ExperienceUnspent.ToString();
+        _textTotalExperience.text = character.ExperienceTotal.ToString();
 
         foreach (Skill skill in character.Skills)
         {
-            if(skill.LvlLearned > 0)
+            if (skill.LvlLearned > 0)
             {
                 ActivateSquare(skill);
             }
         }
 
-        StartScreenshot(PageName.First.ToString());
+        foreach (string mut in character.Mutation)
+        {
+            _textMutationText.text += mut + '\n';
+        }
+
+        if (character.CorruptionPoints > 0)
+        {
+            _textCorruptionPoints.text = character.CorruptionPoints.ToString();
+        }
+        else
+        {
+            _textCorruptionPoints.text = "";
+        }
+
+        StartScreenshot(PageName.First.ToString(), character.Name);
     }
 
     private void ActivateSquare(Skill skill)
     {
-        if(!skill.IsKnowledge)
+        if (!skill.IsKnowledge)
         {
             foreach (SkillList skillList in skillSquares)
             {
@@ -80,8 +78,7 @@ public class FirstCharacterSheet : CharacterSheetWithCharacteristics
                     }
                 }
             }
-        }        
+        }
     }
 
-    
 }

@@ -119,6 +119,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -236,7 +249,7 @@ TextureImporter:
         width: 637
         height: 639
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,6 +257,27 @@ TextureImporter:
       bones: []
       spriteID: 7d2ccd8165cccd648afb9985b09547f0
       internalID: -1525920522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsMinus
+      rect:
+        serializedVersion: 2
+        x: 2964
+        y: 5471
+        width: 640
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2155f8c2bdf124b813eedcceec56f3
+      internalID: -1222567772
       vertices: []
       indices: 
       edges: []
@@ -267,6 +301,7 @@ TextureImporter:
       ButtonsCancel: 889733952
       ButtonsGoBack: 1800005418
       ButtonsHelp: -1525920522
+      ButtonsMinus: -1222567772
       ButtonsPlus: -1385960231
       ButtonsRandom: -676601769
   mipmapLimitGroupName: 

@@ -41,3 +41,10 @@ MonoBehaviour:
   _newArmor: {fileID: 6408959074878856044, guid: 200800e4c62c2b74c89822d315900ef8, type: 3}
   _listWithNewItemsAndNewButton: {fileID: 3325932088576600271, guid: e9ee30b5d5698fd478382c48bd943bd4, type: 3}
   _newImplant: {fileID: 1076729413628794959, guid: d5843230159ea5640a19f36660e9cb63, type: 3}
+  _chooseTypeMinion: {fileID: 3663744221754701622, guid: 45db503b9a78e4e4fa17ed48d7ab9a9c, type: 3}
+  _manualCharacteristicMinion: {fileID: 2102762940027791329, guid: cd0e151df757a54438bebde0b18a3961, type: 3}
+  _randomCharactiristicMinion: {fileID: 4140500304742512251, guid: e19bd7fc3e889504c8dd6fe522a76104, type: 3}
+  _redistributionMinion: {fileID: 2231515117413884242, guid: 7d18bb0a7b85a81429fc01edf5201b1d, type: 3}
+  _chooseTraitMinion: {fileID: 2677749728940173869, guid: 327572af727be7844ae0ccd9b60453e4, type: 3}
+  _printMinionCharacter: {fileID: 1208508479131090912, guid: 8b0287598ad57c749a95ef055821bd6d, type: 3}
+  _chooseArmorAndWeapon: {fileID: 1461280015124852172, guid: 87ccdc1baf95d8141b2c97472405f12f, type: 3}

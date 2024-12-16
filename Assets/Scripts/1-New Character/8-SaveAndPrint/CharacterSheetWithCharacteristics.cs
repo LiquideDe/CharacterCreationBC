@@ -21,9 +21,14 @@ public class CharacterSheetWithCharacteristics : TakeScreenshot
     [SerializeField] private GameObject[] circlesFellowship;
     private List<GameObject[]> circlesGroups;
 
-    public virtual void Initialize(ICharacter character)
+    public string BonusStrength => textStrengthBonus.text;
+    public string BonusToughness => textToughnessBonus.text;
+    public string BonusAgility => textAgilityBonus.text;
+    public string Strength => textStrength.text;
+    public string BonusWillpower => textWillpowerBonus.text;
+
+    public virtual void Initialize(List<Characteristic> characteristics, List<Equipment> equipments, List<Trait> traits, int infamy)
     {
-        _character = character;
         circlesGroups = new List<GameObject[]>
         {
             circlesWeapon,
@@ -37,20 +42,25 @@ public class CharacterSheetWithCharacteristics : TakeScreenshot
             circlesFellowship
         };
 
-        textWeapon.text = character.Characteristics[0].Amount.ToString();
-        textBallistic.text = character.Characteristics[1].Amount.ToString();
-        textStrength.text = character.Characteristics[2].Amount.ToString();
-        textToughness.text = character.Characteristics[3].Amount.ToString();
-        textAgility.text = character.Characteristics[4].Amount.ToString();
-        textIntelligence.text = character.Characteristics[5].Amount.ToString();
-        textPerception.text = character.Characteristics[6].Amount.ToString();
-        textWillpower.text = character.Characteristics[7].Amount.ToString();
-        textFelloweship.text = character.Characteristics[8].Amount.ToString();
-        textInfamy.text = character.Infamy.ToString();
+        int bonusStrenthFromArmor = 0;
+        foreach (Equipment equipment in equipments)
+            if (equipment is Armor armor)
+                bonusStrenthFromArmor += armor.BonusStrength;
+
+        InsertTwoDigitNumber(textWeapon,characteristics[0].Amount);
+        InsertTwoDigitNumber(textBallistic, characteristics[1].Amount);
+        InsertTwoDigitNumber(textStrength, characteristics[2].Amount + bonusStrenthFromArmor);
+        InsertTwoDigitNumber(textToughness, characteristics[3].Amount);
+        InsertTwoDigitNumber(textAgility, characteristics[4].Amount);
+        InsertTwoDigitNumber(textIntelligence, characteristics[5].Amount);
+        InsertTwoDigitNumber(textPerception, characteristics[6].Amount);
+        InsertTwoDigitNumber(textWillpower, characteristics[7].Amount);
+        InsertTwoDigitNumber(textFelloweship, characteristics[8].Amount);
+        InsertTwoDigitNumber(textInfamy, infamy);
 
         for (int i = 0; i < circlesGroups.Count; i++)
         {
-            for (int j = 0; j < character.Characteristics[i].LvlLearned; j++)
+            for (int j = 0; j < characteristics[i].LvlLearned; j++)
             {
                 circlesGroups[i][j].SetActive(true);
             }
@@ -65,9 +75,8 @@ public class CharacterSheetWithCharacteristics : TakeScreenshot
         int superPerception = 0;
         int superWillpower = 0;
         int superFelloweship = 0;
-        Debug.Log($"Count = {_character.Traits.Count}");
 
-        foreach(Trait trait in _character.Traits)
+        foreach(Trait trait in traits)
         {
             if (string.Compare(trait.Name, "Сверхъестественная Сила") == 0)            
                 superStrength = trait.Lvl;
@@ -95,32 +104,40 @@ public class CharacterSheetWithCharacteristics : TakeScreenshot
         }
 
         if (superStrength > 0)
-            textStrengthBonus.text = $"{superStrength + (int)_character.Characteristics[GameStat.CharacteristicToInt["Сила"]].Amount / 10}";
+            textStrengthBonus.text = $"{superStrength + (int)(characteristics[GameStat.CharacteristicToInt["Сила"]].Amount + bonusStrenthFromArmor )/ 10}";
         else textStrengthBonus.text = "";
 
         if (superToughness > 0)
-            textToughnessBonus.text = $"{superToughness + (int)_character.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount / 10}";
+            textToughnessBonus.text = $"{superToughness + (int)characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount / 10}";
         else textToughnessBonus.text = "";
 
         if (superAgility > 0)
-            textAgilityBonus.text = $"{superAgility + (int)_character.Characteristics[GameStat.CharacteristicToInt["Ловкость"]].Amount / 10}";
+            textAgilityBonus.text = $"{superAgility + (int)characteristics[GameStat.CharacteristicToInt["Ловкость"]].Amount / 10}";
         else textAgilityBonus.text = "";
 
         if (superIntelligence > 0)
-            textIntelligenceBonus.text = $"{superIntelligence + (int)_character.Characteristics[GameStat.CharacteristicToInt["Интеллект"]].Amount / 10}";
+            textIntelligenceBonus.text = $"{superIntelligence + (int)characteristics[GameStat.CharacteristicToInt["Интеллект"]].Amount / 10}";
         else textIntelligenceBonus.text = "";
 
         if (superPerception > 0)
-            textPerceptionBonus.text = $"{superPerception + (int)_character.Characteristics[GameStat.CharacteristicToInt["Восприятие"]].Amount / 10}";
+            textPerceptionBonus.text = $"{superPerception + (int)characteristics[GameStat.CharacteristicToInt["Восприятие"]].Amount / 10}";
         else textPerceptionBonus.text = "";
 
         if (superWillpower > 0)
-            textWillpowerBonus.text = $"{superWillpower + (int)_character.Characteristics[GameStat.CharacteristicToInt["Сила Воли"]].Amount / 10}";
+            textWillpowerBonus.text = $"{superWillpower + (int)characteristics[GameStat.CharacteristicToInt["Сила Воли"]].Amount / 10}";
         else textWillpowerBonus.text = "";
 
         if (superFelloweship > 0)
-            textFelloweshipBonus.text = $"{superFelloweship + (int)_character.Characteristics[GameStat.CharacteristicToInt["Общительность"]].Amount / 10}";
+            textFelloweshipBonus.text = $"{superFelloweship + (int)characteristics[GameStat.CharacteristicToInt["Общительность"]].Amount / 10}";
         else textFelloweshipBonus.text = "";
 
+    }
+
+    private void InsertTwoDigitNumber(TextMeshProUGUI textMesh, int amount)
+    {
+        if (amount < 10)
+            textMesh.text = $"0{amount}";
+        else
+            textMesh.text = $"{amount}";
     }
 }

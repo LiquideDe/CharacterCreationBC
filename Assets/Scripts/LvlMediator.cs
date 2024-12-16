@@ -10,15 +10,17 @@ public class LvlMediator
     private LvlMediatorNewCharacter _mediatorNewCharacter;
     private LvlMediatorUpgradeCharacter _mediatorUpgrade;
     private LvlVediatorEditCharacter _mediatorEditCharacter;
+    private LvlMediatorMinion _mediatorMinion;
 
     public LvlMediator(LvlFactory lvlFactory, PresenterFactory presenterFactory, LvlMediatorNewCharacter mediatorNewCharacter, 
-        LvlMediatorUpgradeCharacter mediatorUpgrade, LvlVediatorEditCharacter mediatorEditCharacter)
+        LvlMediatorUpgradeCharacter mediatorUpgrade, LvlVediatorEditCharacter mediatorEditCharacter, LvlMediatorMinion mediatorMinion)
     {
         _lvlFactory = lvlFactory;
         _presenterFactory = presenterFactory;
         _mediatorNewCharacter = mediatorNewCharacter;
         _mediatorUpgrade = mediatorUpgrade;
         _mediatorEditCharacter = mediatorEditCharacter;
+        _mediatorMinion = mediatorMinion;
         Subscribe();
     }
 
@@ -29,8 +31,10 @@ public class LvlMediator
         mainMenuPresenter.NewCharacter += NewCharacterOpen;
         mainMenuPresenter.UpgradeCharacter += UpgradeCharacterOpen;
         //mainMenuPresenter.EditCharacter += EditCharacterOpen;
+        mainMenuPresenter.NewMinion += NewMinion;
         mainMenuPresenter.Initialize(mainMenuView);
-    }
+    }    
+
     private void Subscribe()
     {
         _mediatorNewCharacter.ReturnToMenu += MainMenu;
@@ -55,15 +59,19 @@ public class LvlMediator
         if (isUpgrade)
             loadsPresenter.ReturnCharacter += ShowUpgradeCharacter;
         else
-            loadsPresenter.ReturnCharacter += ShowEcitCharacter;
+            loadsPresenter.ReturnCharacter += ShowEditCharacter;
 
         loadsPresenter.Initialize(loadsView);
     }
 
-    private void ShowEcitCharacter(ICharacter character) => _mediatorEditCharacter.Initialize(character);
+    private void ShowEditCharacter(ICharacter character) => _mediatorEditCharacter.Initialize(character);
 
     private void ShowUpgradeCharacter(ICharacter character) => _mediatorUpgrade.Initialize(character);
-    
 
-    
+    private void NewMinion()
+    {
+        _mediatorMinion.ShowChooseTypeMinion();
+        _mediatorMinion.ReturnToMenu += MainMenu;
+    }
+
 }

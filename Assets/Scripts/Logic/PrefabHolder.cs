@@ -11,6 +11,8 @@ public class PrefabHolder : ScriptableObject
     [SerializeField] private GameObject _loads, _inputExperience, _finalMenu, _listWithNewItems, _inputNewProperty, _editProperties;
     [SerializeField] private GameObject _editCharacteristicsAndEquipments;
     [SerializeField] private GameObject _newEquipment, _newMelee, _newRange, _newGrenade, _newArmor, _listWithNewItemsAndNewButton, _newImplant;
+    [SerializeField] private GameObject _chooseTypeMinion, _manualCharacteristicMinion, _randomCharactiristicMinion, _redistributionMinion;
+    [SerializeField] private GameObject _chooseTraitMinion, _printMinionCharacter, _chooseArmorAndWeapon;
 
     public GameObject Get(TypeScene typeScene)
     {
@@ -102,6 +104,27 @@ public class PrefabHolder : ScriptableObject
 
             case TypeScene.NewImplant:
                 return _newImplant;
+
+            case TypeScene.ChooseTypeMinion:
+                return _chooseTypeMinion;
+
+            case TypeScene.ManualCharacteristicMinion:
+                return _manualCharacteristicMinion;
+
+            case TypeScene.RandomCharacteristicMinion:
+                return _randomCharactiristicMinion;
+
+            case TypeScene.RedistributionMinion:
+                return _redistributionMinion;
+
+            case TypeScene.ChooseTraitMinion:
+                return _chooseTraitMinion;
+
+            case TypeScene.PrintMinion:
+                return _printMinionCharacter;
+
+            case TypeScene.ChooseArmorMinion:
+                return _chooseArmorAndWeapon;
 
             default:
                 throw new ArgumentException(nameof(TypeScene));

@@ -21,6 +21,7 @@ public class CharacteristicRandomView : CanDestroyView
     public event Action ReturnToMotivation;
     public event Action CharacteristicsIsReady, DonePressed;
     public event Action GenerateRandom;
+    public event Action ToughnessIsChanged;
 
     public CharacteristicCard WeaponSkill => _weaponSkill; 
     public CharacteristicCard BallisticSkill => _ballisticSkill; 
@@ -43,6 +44,7 @@ public class CharacteristicRandomView : CanDestroyView
         _ballisticSkill.AmountFromRandomIsSeted += CheckAllRandomsAreSeted;
         _strength.AmountFromRandomIsSeted += CheckAllRandomsAreSeted;
         _toughness.AmountFromRandomIsSeted += CheckAllRandomsAreSeted;
+        _toughness.AmountFromRandomIsSeted += ToughnessIsChangedPress;
         _agility.AmountFromRandomIsSeted += CheckAllRandomsAreSeted;
         _intelligence.AmountFromRandomIsSeted += CheckAllRandomsAreSeted;
         _perception.AmountFromRandomIsSeted += CheckAllRandomsAreSeted;
@@ -61,6 +63,7 @@ public class CharacteristicRandomView : CanDestroyView
         _ballisticSkill.AmountFromRandomIsSeted -= CheckAllRandomsAreSeted;
         _strength.AmountFromRandomIsSeted -= CheckAllRandomsAreSeted;
         _toughness.AmountFromRandomIsSeted -= CheckAllRandomsAreSeted;
+        _toughness.AmountFromRandomIsSeted -= ToughnessIsChangedPress;
         _agility.AmountFromRandomIsSeted -= CheckAllRandomsAreSeted;
         _intelligence.AmountFromRandomIsSeted -= CheckAllRandomsAreSeted;
         _perception.AmountFromRandomIsSeted -= CheckAllRandomsAreSeted;
@@ -121,4 +124,6 @@ public class CharacteristicRandomView : CanDestroyView
     private void PrevPress() => ReturnToMotivation?.Invoke();
 
     private void GenerateRandomPressed() => GenerateRandom?.Invoke();
+
+    private void ToughnessIsChangedPress() => ToughnessIsChanged?.Invoke();
 }

@@ -116,6 +116,22 @@ public class CharacterWithUpgrade : CharacterDecorator, ICharacter
         _experienceSpent += cost;
         _experienceUnspent -= cost;
         _experienceTotal = _experienceSpent + _experienceUnspent;
+        
+        if (talent.IsGetTrait)
+        {
+            bool isFinded = false;
+            foreach (Trait trait in Traits)
+                if (string.Compare(trait.Name, talent.GetTrait.Name, true) == 0)
+                {
+                    _traits.Add(new Trait(trait, trait.Lvl + talent.GetTrait.Lvl));
+                    isFinded = true;
+                    break;
+                }
+
+            if (isFinded == false)
+                _traits.Add(new Trait(talent.GetTrait.Name, talent.GetTrait.Lvl));
+        }          
+                
     }
 
     public void UpgradePsyPower(PsyPower psyPower, bool isEdit)

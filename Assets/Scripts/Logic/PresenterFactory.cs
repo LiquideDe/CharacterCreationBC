@@ -61,6 +61,33 @@ public class PresenterFactory
             case TypeScene.EditCharacteristicsAndEquipments:
                 return _diContainer.Instantiate<EditCharacteristicsAndEquipmentsPresenter>();
 
+            case TypeScene.ChooseTypeMinion:
+                return _diContainer.Instantiate<ChooseTypeMinionPresenter>();
+
+            case TypeScene.ManualCharacteristicMinion:
+                return _diContainer.Instantiate<ManualCharacteristicsMinionPresenter>();
+
+            case TypeScene.RandomCharacteristicMinion:
+                return _diContainer.Instantiate<SetRandomCharacteristicMinionPresenter>();
+
+            case TypeScene.RedistributionMinion:
+                return _diContainer.Instantiate<RedistributionPointsMinionPresenter>();
+
+            case TypeScene.ChooseSkillMinion:
+                return _diContainer.Instantiate<MinionUpgradeSkillPresenter>();
+
+            case TypeScene.ChooseTalentMinion:
+                return _diContainer.Instantiate<UpgradeTalentMinionPresenter>();
+
+            case TypeScene.ChooseTraitMinion:
+                return _diContainer.Instantiate<ChooseTraitsMinionPresenter>();
+
+            case TypeScene.ChooseNameMinion:
+                return _diContainer.Instantiate<ChooseNameMinionPresenter>();
+
+            case TypeScene.ChooseArmorMinion:
+                return _diContainer.Instantiate<ChooseArmorWeaponMinionPresenter>();
+
             default:
                 throw new ArgumentException(nameof(type));
         }
