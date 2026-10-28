@@ -5,7 +5,7 @@ public class Equipment : IName
     private int amount;
     public enum TypeEquipment
     {
-        Thing, Melee, Range, Armor, Special, Grenade
+        Thing, Melee, Range, Armor, Special, Grenade, Shield
     }
     protected TypeEquipment typeEquipment;
     public Equipment(string nameEquipment, string description, string rarity, int amount=1, float weight = 0)
@@ -44,6 +44,6 @@ public class Equipment : IName
             return nameEquipment;
         }
 
-        return $"{nameEquipment}-{amount} øò.";
+        return $"{nameEquipment}-{amount} ÑˆÑ‚.";
     }
 }

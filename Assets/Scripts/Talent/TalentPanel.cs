@@ -29,7 +29,7 @@ public class TalentPanel : MonoBehaviour, IPointerDownHandler, IItemForList
     {
         Talent talent = (Talent)skillTalentEtcForList;
         textName.text = talent.Name;
-        textCost.text = $"{cost} нн";
+        textCost.text = $"{cost} п·п·";
         textShortDescr.text = talent.ShortDescription;
         if (!isCanTaken)
         {

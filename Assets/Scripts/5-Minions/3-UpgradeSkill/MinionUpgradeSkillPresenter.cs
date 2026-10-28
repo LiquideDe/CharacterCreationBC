@@ -40,7 +40,7 @@ public class MinionUpgradeSkillPresenter : IPresenter
         
         Subscribe();
         ShowSkills();
-        _view.UpgradeExpireinceText($"{_character.SkillPoints} Î");
+        _view.UpgradeExpireinceText($"{_character.SkillPoints} Ðž");
     }
 
     private void Subscribe()
@@ -90,7 +90,7 @@ public class MinionUpgradeSkillPresenter : IPresenter
                 minion.UpgradeSkill(skill, 1);
                 _character = minion;
                 ShowSkills();
-                _view.UpgradeExpireinceText($"{_character.SkillPoints} Î");
+                _view.UpgradeExpireinceText($"{_character.SkillPoints} Ðž");
             }
             else if (skill.LvlLearned + 1 == _typeMinion.MaxSkillLvl + 1 && _character.SkillsOverPrice > 0)
             {
@@ -100,7 +100,7 @@ public class MinionUpgradeSkillPresenter : IPresenter
                 minion.SkillsOverPrice--;
                 _character = minion;
                 ShowSkills();
-                _view.UpgradeExpireinceText($"{_character.SkillPoints} Î");
+                _view.UpgradeExpireinceText($"{_character.SkillPoints} Ðž");
             }
             else _audioManager.PlayWarning();
         }
@@ -115,7 +115,7 @@ public class MinionUpgradeSkillPresenter : IPresenter
             _audioManager.PlayCancel();
             _character = _character.Minion;
             ShowSkills();
-            _view.UpgradeExpireinceText($"{_character.SkillPoints} Î");
+            _view.UpgradeExpireinceText($"{_character.SkillPoints} Ðž");
         }
         else
             _audioManager.PlayWarning();

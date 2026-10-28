@@ -35,7 +35,7 @@ public class CreatorImplant
             }
         }
 
-        Debug.Log($"!!!!ВНИМАНИЕ!!!! Не нашли имплант {name}");
+        Debug.Log($"!!!!Р’РќРРњРђРќРР•!!!! РќРµ РЅР°С€Р»Рё РёРјРїР»Р°РЅС‚ {name}");
         return null;
     }
 }

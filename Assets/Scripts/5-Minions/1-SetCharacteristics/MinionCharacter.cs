@@ -20,15 +20,15 @@ public class MinionCharacter : IMinion
     {
         _characteristics = new List<Characteristic>()
         {
-            new Characteristic(GameStat.CharacteristicName.WeaponSkill, "Неделимый"), //0
-        new Characteristic(GameStat.CharacteristicName.BallisticSkill, "Неделимый"), //1
-        new Characteristic(GameStat.CharacteristicName.Strength, "Кхорн"), //2
-        new Characteristic(GameStat.CharacteristicName.Toughness, "Нургл"), //3
-        new Characteristic(GameStat.CharacteristicName.Agility, "Неделимый"), //4
-        new Characteristic(GameStat.CharacteristicName.Intelligence, "Неделимый"), //5
-        new Characteristic(GameStat.CharacteristicName.Perception, "Неделимый"), //6
-        new Characteristic(GameStat.CharacteristicName.Willpower, "Тзинч"), //7
-        new Characteristic(GameStat.CharacteristicName.Fellowship, "Слаанеш"), //8
+            new Characteristic(GameStat.CharacteristicName.WeaponSkill, "РќРµРґРµР»РёРјС‹Р№"), //0
+        new Characteristic(GameStat.CharacteristicName.BallisticSkill, "РќРµРґРµР»РёРјС‹Р№"), //1
+        new Characteristic(GameStat.CharacteristicName.Strength, "РљС…РѕСЂРЅ"), //2
+        new Characteristic(GameStat.CharacteristicName.Toughness, "РќСѓСЂРіР»"), //3
+        new Characteristic(GameStat.CharacteristicName.Agility, "РќРµРґРµР»РёРјС‹Р№"), //4
+        new Characteristic(GameStat.CharacteristicName.Intelligence, "РќРµРґРµР»РёРјС‹Р№"), //5
+        new Characteristic(GameStat.CharacteristicName.Perception, "РќРµРґРµР»РёРјС‹Р№"), //6
+        new Characteristic(GameStat.CharacteristicName.Willpower, "РўР·РёРЅС‡"), //7
+        new Characteristic(GameStat.CharacteristicName.Fellowship, "РЎР»Р°Р°РЅРµС€"), //8
         };
         _characteristicPoints = minion.CharacteristicPoints;
         _skillPoints = minion.SkillPoints;

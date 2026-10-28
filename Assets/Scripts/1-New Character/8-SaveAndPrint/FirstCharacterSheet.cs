@@ -9,21 +9,15 @@ public class FirstCharacterSheet : CharacterSheetWithCharacteristics
 {
     [SerializeField] private SkillList[] skillSquares;
     [SerializeField]
-    private TextMeshProUGUI textName, _textDescription, _textMutationText, _textCorruptionPoints, _textGifts,
-        _textSpentExperience, _textUnspentExperience, _textTotalExperience;
+    private TextMeshProUGUI textName, _textDescription;
 
     public void Initialize(ICharacter character)
     {
         base.Initialize(character.Characteristics, character.Equipments, character.Traits, character.Infamy);
         gameObject.SetActive(true);
         textName.text = character.Name;
-        _textDescription.text = $"Арехти: <b>{character.Archetype}</b>. Гордость: <b>{character.Pride}</b>. Порок: <b>{character.Disgrace}</b>. " +
-            $"Мотивация: <b>{character.Motivation}</b>. Описание: <b>{character.Description}</b>.";
-
-        _textGifts.text = character.GodGifts;
-        _textSpentExperience.text = character.ExperienceSpent.ToString();
-        _textUnspentExperience.text = character.ExperienceUnspent.ToString();
-        _textTotalExperience.text = character.ExperienceTotal.ToString();
+        _textDescription.text = $"РђСЂС…РµС‚РёРї: <b>{character.Archetype}</b>. Р“РѕСЂРґРѕСЃС‚СЊ: <b>{character.Pride}</b>. РџРѕСЂРѕРє: <b>{character.Disgrace}</b>. " +
+            $"РњРѕС‚РёРІР°С†РёСЏ: <b>{character.Motivation}</b>. РћРїРёСЃР°РЅРёРµ: <b>{character.Description}</b>.";
 
         foreach (Skill skill in character.Skills)
         {
@@ -31,20 +25,6 @@ public class FirstCharacterSheet : CharacterSheetWithCharacteristics
             {
                 ActivateSquare(skill);
             }
-        }
-
-        foreach (string mut in character.Mutation)
-        {
-            _textMutationText.text += mut + '\n';
-        }
-
-        if (character.CorruptionPoints > 0)
-        {
-            _textCorruptionPoints.text = character.CorruptionPoints.ToString();
-        }
-        else
-        {
-            _textCorruptionPoints.text = "";
         }
 
         StartScreenshot(PageName.First.ToString(), character.Name);

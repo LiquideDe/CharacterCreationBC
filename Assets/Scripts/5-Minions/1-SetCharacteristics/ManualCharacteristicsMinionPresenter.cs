@@ -21,26 +21,26 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
         _typeMinion = minion;
         _view = view;
         Subscribe();
-        _view.SetWillpower(_minion.Characteristics[GameStat.CharacteristicToInt["Сила Воли"]].Amount);
-        _view.SetWeapon(_minion.Characteristics[GameStat.CharacteristicToInt["Навык Рукопашной"]].Amount);
-        _view.SetToughness(_minion.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount);
-        _view.SetStrength(_minion.Characteristics[GameStat.CharacteristicToInt["Сила"]].Amount);
-        _view.SetPerception(_minion.Characteristics[GameStat.CharacteristicToInt["Восприятие"]].Amount);
-        _view.SetIntelligence(_minion.Characteristics[GameStat.CharacteristicToInt["Интеллект"]].Amount);
-        _view.SetFellowship(_minion.Characteristics[GameStat.CharacteristicToInt["Общительность"]].Amount);
-        _view.SetBallistic(_minion.Characteristics[GameStat.CharacteristicToInt["Навык Стрельбы"]].Amount);
-        _view.SetAgility(_minion.Characteristics[GameStat.CharacteristicToInt["Ловкость"]].Amount);
+        _view.SetWillpower(_minion.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount);
+        _view.SetWeapon(_minion.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount);
+        _view.SetToughness(_minion.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount);
+        _view.SetStrength(_minion.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р°"]].Amount);
+        _view.SetPerception(_minion.Characteristics[GameStat.CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount);
+        _view.SetIntelligence(_minion.Characteristics[GameStat.CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount);
+        _view.SetFellowship(_minion.Characteristics[GameStat.CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount);
+        _view.SetBallistic(_minion.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"]].Amount);
+        _view.SetAgility(_minion.Characteristics[GameStat.CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount);
 
         
         if(_typeMinion.UpperLimitCharacteristics.Count > 0)
         {
-            _view.SetMinMax($"Характеристики не могут быть выше {_typeMinion.MaxCharacteristic}. Следующие характеристики не могут быть выше {_typeMinion.UpperLimitCharacteristics[0].Lvl}",
+            _view.SetMinMax($"РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РІС‹С€Рµ {_typeMinion.MaxCharacteristic}. РЎР»РµРґСѓСЋС‰РёРµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РІС‹С€Рµ {_typeMinion.UpperLimitCharacteristics[0].Lvl}",
                 _typeMinion.UpperLimitCharacteristics);
         }
 
         if(_typeMinion.LowerLimitCharacteristics.Count > 0)
         {
-            _view.SetMinMax($"Характеристики не могут быть выше {_typeMinion.MaxCharacteristic}. Следующие характеристики не могут быть ниже {_typeMinion.LowerLimitCharacteristics[0].Lvl}", 
+            _view.SetMinMax($"РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РІС‹С€Рµ {_typeMinion.MaxCharacteristic}. РЎР»РµРґСѓСЋС‰РёРµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РЅРёР¶Рµ {_typeMinion.LowerLimitCharacteristics[0].Lvl}", 
                 _typeMinion.LowerLimitCharacteristics);
         }
     }
@@ -110,10 +110,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusAgility()
     {
-        if (IsCanCharacteristicLess("Ловкость"))
+        if (IsCanCharacteristicLess("Р›РѕРІРєРѕСЃС‚СЊ"))
         {
-            MinusCharacteristic("Ловкость");
-            _view.SetAgility(_minion.Characteristics[GameStat.CharacteristicToInt["Ловкость"]].Amount);            
+            MinusCharacteristic("Р›РѕРІРєРѕСЃС‚СЊ");
+            _view.SetAgility(_minion.Characteristics[GameStat.CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount);            
         }
         else 
             _audioManager.PlayWarning();
@@ -121,10 +121,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusBallistic()
     {
-        if (IsCanCharacteristicLess("Навык Стрельбы"))
+        if (IsCanCharacteristicLess("РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"))
         {
-            MinusCharacteristic("Навык Стрельбы");
-            _view.SetBallistic(_minion.Characteristics[GameStat.CharacteristicToInt["Навык Стрельбы"]].Amount);
+            MinusCharacteristic("РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹");
+            _view.SetBallistic(_minion.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -132,10 +132,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusFellowship()
     {
-        if (IsCanCharacteristicLess("Общительность"))
+        if (IsCanCharacteristicLess("РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"))
         {
-            MinusCharacteristic("Общительность");
-            _view.SetFellowship(_minion.Characteristics[GameStat.CharacteristicToInt["Общительность"]].Amount);
+            MinusCharacteristic("РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ");
+            _view.SetFellowship(_minion.Characteristics[GameStat.CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -143,10 +143,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusIntelligence()
     {
-        if (IsCanCharacteristicLess("Интеллект"))
+        if (IsCanCharacteristicLess("РРЅС‚РµР»Р»РµРєС‚"))
         {
-            MinusCharacteristic("Интеллект");
-            _view.SetIntelligence(_minion.Characteristics[GameStat.CharacteristicToInt["Интеллект"]].Amount);
+            MinusCharacteristic("РРЅС‚РµР»Р»РµРєС‚");
+            _view.SetIntelligence(_minion.Characteristics[GameStat.CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -154,10 +154,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusPerception()
     {
-        if (IsCanCharacteristicLess("Восприятие"))
+        if (IsCanCharacteristicLess("Р’РѕСЃРїСЂРёСЏС‚РёРµ"))
         {
-            MinusCharacteristic("Восприятие");
-            _view.SetPerception(_minion.Characteristics[GameStat.CharacteristicToInt["Восприятие"]].Amount);
+            MinusCharacteristic("Р’РѕСЃРїСЂРёСЏС‚РёРµ");
+            _view.SetPerception(_minion.Characteristics[GameStat.CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -165,10 +165,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusStrength()
     {
-        if (IsCanCharacteristicLess("Сила"))
+        if (IsCanCharacteristicLess("РЎРёР»Р°"))
         {
-            MinusCharacteristic("Сила");
-            _view.SetStrength(_minion.Characteristics[GameStat.CharacteristicToInt["Сила"]].Amount);
+            MinusCharacteristic("РЎРёР»Р°");
+            _view.SetStrength(_minion.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р°"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -176,11 +176,11 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusToughness()
     {
-        if (IsCanCharacteristicLess("Выносливость"))
+        if (IsCanCharacteristicLess("Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"))
         {
-            MinusCharacteristic("Выносливость");
-            _view.SetToughness(_minion.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount);
-            _view.SetWounds(_minion.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount / 10 * 2 + 2);
+            MinusCharacteristic("Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ");
+            _view.SetToughness(_minion.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount);
+            _view.SetWounds(_minion.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount / 10 * 2 + 2);
         }
         else
             _audioManager.PlayWarning();
@@ -188,10 +188,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusWeapon()
     {
-        if (IsCanCharacteristicLess("Навык Рукопашной"))
+        if (IsCanCharacteristicLess("РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"))
         {
-            MinusCharacteristic("Навык Рукопашной");
-            _view.SetWeapon(_minion.Characteristics[GameStat.CharacteristicToInt["Навык Рукопашной"]].Amount);
+            MinusCharacteristic("РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№");
+            _view.SetWeapon(_minion.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -199,10 +199,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void MinusWillpower()
     {
-        if (IsCanCharacteristicLess("Сила Воли"))
+        if (IsCanCharacteristicLess("РЎРёР»Р° Р’РѕР»Рё"))
         {
-            MinusCharacteristic("Сила Воли");
-            _view.SetWillpower(_minion.Characteristics[GameStat.CharacteristicToInt["Сила Воли"]].Amount);
+            MinusCharacteristic("РЎРёР»Р° Р’РѕР»Рё");
+            _view.SetWillpower(_minion.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -210,10 +210,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusAgility()
     {
-        if (IsCanCharacteristicMore("Ловкость"))
+        if (IsCanCharacteristicMore("Р›РѕРІРєРѕСЃС‚СЊ"))
         {
-            PlusCharacteristic("Ловкость");
-            _view.SetAgility(_minion.Characteristics[GameStat.CharacteristicToInt["Ловкость"]].Amount);
+            PlusCharacteristic("Р›РѕРІРєРѕСЃС‚СЊ");
+            _view.SetAgility(_minion.Characteristics[GameStat.CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -221,10 +221,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusBallistic()
     {
-        if (IsCanCharacteristicMore("Навык Стрельбы"))
+        if (IsCanCharacteristicMore("РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"))
         {
-            PlusCharacteristic("Навык Стрельбы");
-            _view.SetBallistic(_minion.Characteristics[GameStat.CharacteristicToInt["Навык Стрельбы"]].Amount);
+            PlusCharacteristic("РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹");
+            _view.SetBallistic(_minion.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -232,10 +232,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusFellowship()
     {
-        if (IsCanCharacteristicMore("Общительность"))
+        if (IsCanCharacteristicMore("РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"))
         {
-            PlusCharacteristic("Общительность");
-            _view.SetFellowship(_minion.Characteristics[GameStat.CharacteristicToInt["Общительность"]].Amount);
+            PlusCharacteristic("РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ");
+            _view.SetFellowship(_minion.Characteristics[GameStat.CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -243,10 +243,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusIntelligence()
     {
-        if (IsCanCharacteristicMore("Интеллект"))
+        if (IsCanCharacteristicMore("РРЅС‚РµР»Р»РµРєС‚"))
         {
-            PlusCharacteristic("Интеллект");
-            _view.SetIntelligence(_minion.Characteristics[GameStat.CharacteristicToInt["Интеллект"]].Amount);
+            PlusCharacteristic("РРЅС‚РµР»Р»РµРєС‚");
+            _view.SetIntelligence(_minion.Characteristics[GameStat.CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -254,10 +254,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusPerception()
     {
-        if (IsCanCharacteristicMore("Восприятие"))
+        if (IsCanCharacteristicMore("Р’РѕСЃРїСЂРёСЏС‚РёРµ"))
         {
-            PlusCharacteristic("Восприятие");
-            _view.SetPerception(_minion.Characteristics[GameStat.CharacteristicToInt["Восприятие"]].Amount);
+            PlusCharacteristic("Р’РѕСЃРїСЂРёСЏС‚РёРµ");
+            _view.SetPerception(_minion.Characteristics[GameStat.CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -265,10 +265,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusStrength()
     {
-        if (IsCanCharacteristicMore("Сила"))
+        if (IsCanCharacteristicMore("РЎРёР»Р°"))
         {
-            PlusCharacteristic("Сила");
-            _view.SetStrength(_minion.Characteristics[GameStat.CharacteristicToInt["Сила"]].Amount);
+            PlusCharacteristic("РЎРёР»Р°");
+            _view.SetStrength(_minion.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р°"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -276,11 +276,11 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusToughness()
     {
-        if (IsCanCharacteristicMore("Выносливость"))
+        if (IsCanCharacteristicMore("Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"))
         {
-            PlusCharacteristic("Выносливость");
-            _view.SetToughness(_minion.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount);
-            _view.SetWounds(_minion.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount/10 * 2 + 2);
+            PlusCharacteristic("Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ");
+            _view.SetToughness(_minion.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount);
+            _view.SetWounds(_minion.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount/10 * 2 + 2);
         }
         else
             _audioManager.PlayWarning();
@@ -288,10 +288,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusWeapon()
     {
-        if (IsCanCharacteristicMore("Навык Рукопашной"))
+        if (IsCanCharacteristicMore("РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"))
         {
-            PlusCharacteristic("Навык Рукопашной");
-            _view.SetWeapon(_minion.Characteristics[GameStat.CharacteristicToInt["Навык Рукопашной"]].Amount);
+            PlusCharacteristic("РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№");
+            _view.SetWeapon(_minion.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount);
         }
         else
             _audioManager.PlayWarning();
@@ -299,10 +299,10 @@ public class ManualCharacteristicsMinionPresenter : IPresenter
 
     private void PlusWillpower()
     {
-        if (IsCanCharacteristicMore("Сила Воли"))
+        if (IsCanCharacteristicMore("РЎРёР»Р° Р’РѕР»Рё"))
         {
-            PlusCharacteristic("Сила Воли");
-            _view.SetWillpower(_minion.Characteristics[GameStat.CharacteristicToInt["Сила Воли"]].Amount);
+            PlusCharacteristic("РЎРёР»Р° Р’РѕР»Рё");
+            _view.SetWillpower(_minion.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount);
         }
         else
             _audioManager.PlayWarning();

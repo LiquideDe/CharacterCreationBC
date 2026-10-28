@@ -32,23 +32,23 @@ public class Talent : ISkillTalentEtcForList, IName
         _rank = talentReader.rank;
         _isCanTaken = talentReader.canActivate;
         _isRepeatable = talentReader.repeatable;
-        _textDescription = GameStat.ReadText(path + "/Описание.txt");
-        _shortDescription = GameStat.ReadText(path + "/Краткое описание.txt");
+        _textDescription = GameStat.ReadText(path + "/РћРїРёСЃР°РЅРёРµ.txt");
+        _shortDescription = GameStat.ReadText(path + "/РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ.txt");
 
         if (Directory.Exists(path + "/Get"))
         {
             _isGetTrait = true;
-            int.TryParse(GameStat.ReadText(path + "/Get/Уровень.txt"), out int lvl);
-            _getTrait = new Trait(GameStat.ReadText(path + "/Get/Название.txt"), lvl);
+            int.TryParse(GameStat.ReadText(path + "/Get/РЈСЂРѕРІРµРЅСЊ.txt"), out int lvl);
+            _getTrait = new Trait(GameStat.ReadText(path + "/Get/РќР°Р·РІР°РЅРёРµ.txt"), lvl);
         }
 
         if(Directory.Exists(path + "/Req"))
         {
-            _listOfRequrements = "Требования для Таланта.\n";
+            _listOfRequrements = "РўСЂРµР±РѕРІР°РЅРёСЏ РґР»СЏ РўР°Р»Р°РЅС‚Р°.\n";
             path += "/Req";
             if (Directory.Exists(path + "/Characteristics"))
             {
-                _listOfRequrements += "Характеристики:";
+                _listOfRequrements += "РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:";
                 foreach (GameStat.CharacteristicName charName in Enum.GetValues(typeof(GameStat.CharacteristicName)))
                 {                    
                     string searchFile = $"{path}/Characteristics/{charName}.txt";
@@ -64,7 +64,7 @@ public class Talent : ISkillTalentEtcForList, IName
 
             if(Directory.Exists(path + "/Skills"))
             {
-                _listOfRequrements += "Навыки:";
+                _listOfRequrements += "РќР°РІС‹РєРё:";
                 string[] files = Directory.GetFiles(path + "/Skills", "*.JSON");
                 foreach(string file in files)
                 {
@@ -80,7 +80,7 @@ public class Talent : ISkillTalentEtcForList, IName
             {
                 string textImplants = GameStat.ReadText(path + "/ReqImplants.txt");
                 var implants = textImplants.Split(new char[] { '/' }).ToList();
-                _listOfRequrements += " Импланты:";
+                _listOfRequrements += " РРјРїР»Р°РЅС‚С‹:";
                 foreach (string implant in implants)
                 {
                     _requirementImplants.Add(new MechImplant(implant));
@@ -94,7 +94,7 @@ public class Talent : ISkillTalentEtcForList, IName
             {
                 string textTalents = GameStat.ReadText(path + "/ReqTalents.txt");
                 var talents = textTalents.Split(new char[] { '/' }).ToList();
-                _listOfRequrements += "Таланты:";
+                _listOfRequrements += "РўР°Р»Р°РЅС‚С‹:";
                 foreach (string talent in talents)
                 {
                     _requirementTalents.Add(new Talent(talent));
@@ -106,19 +106,19 @@ public class Talent : ISkillTalentEtcForList, IName
             if (File.Exists(path + "/ReqCorruption.txt"))
             {
                 _requirementCorruption = int.Parse(GameStat.ReadText(path + "/ReqCorruption.txt"));
-                _listOfRequrements += $" Очков Порчи {_requirementCorruption}.";
+                _listOfRequrements += $" РћС‡РєРѕРІ РџРѕСЂС‡Рё {_requirementCorruption}.";
             }
 
             if (File.Exists(path + "/ReqInsanity.txt"))
             {
                 _requirementInsanity = int.Parse(GameStat.ReadText(path + "/ReqInsanity.txt"));
-                _listOfRequrements += $" Очков Безумия {_requirementInsanity}.";
+                _listOfRequrements += $" РћС‡РєРѕРІ Р‘РµР·СѓРјРёСЏ {_requirementInsanity}.";
             }
 
             if(File.Exists(path + "/ReqPsy.txt"))
             {
                 _requirementPsyRate = int.Parse(GameStat.ReadText(path + "/ReqPsy.txt"));
-                _listOfRequrements += $" Пси Рейтинг {_requirementPsyRate}.";
+                _listOfRequrements += $" РџСЃРё Р РµР№С‚РёРЅРі {_requirementPsyRate}.";
             }
             else
             {

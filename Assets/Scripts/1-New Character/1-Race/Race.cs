@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Race : BackgroundCharacter, IHistoryCharacter
 {
-    private string _god = "Неделимый";
+    private string _god = "РќРµРґРµР»РёРјС‹Р№";
     private int _amountCubes;
     private int _startCharacteristic;
     private List<IName> _foreverFriendly = new List<IName>();
@@ -20,8 +20,8 @@ public class Race : BackgroundCharacter, IHistoryCharacter
     {
 
 
-        int.TryParse(GameStat.ReadText(path + "/Количество кубов.txt"), out _amountCubes);
-        int.TryParse(GameStat.ReadText(path + "/Стартовые Характеристики.txt"), out _startCharacteristic);
+        int.TryParse(GameStat.ReadText(path + "/РљРѕР»РёС‡РµСЃС‚РІРѕ РєСѓР±РѕРІ.txt"), out _amountCubes);
+        int.TryParse(GameStat.ReadText(path + "/РЎС‚Р°СЂС‚РѕРІС‹Рµ РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё.txt"), out _startCharacteristic);
 
         if (Directory.Exists(path + "/Get"))
         {

@@ -114,7 +114,7 @@ public class PsycanaCreatorView : MonoBehaviour
             }
         }
 
-        Debug.Log($"!!!!! Не смогли найти PsyPanel под номером {id}");
+        Debug.Log($"!!!!! РќРµ СЃРјРѕРіР»Рё РЅР°Р№С‚Рё PsyPanel РїРѕРґ РЅРѕРјРµСЂРѕРј {id}");
         return null;
     }
 

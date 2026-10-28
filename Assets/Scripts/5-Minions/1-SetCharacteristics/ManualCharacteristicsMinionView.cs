@@ -92,7 +92,7 @@ public class ManualCharacteristicsMinionView : CanDestroyView
     public void SetWillpower(int amount) => _textAmountWillpower.text = $"{amount}";
     public void SetFellowship(int amount) => _textAmountFellowship.text = $"{amount}";
 
-    public void SetWounds(int amount) => _textWounds.text = $"«‰ÓÓ‚¸Â —ÎÛ„Ë {amount}";
+    public void SetWounds(int amount) => _textWounds.text = $"–ó–¥–æ—Ä–æ–≤—å–µ –°–ª—É–≥–∏ {amount}";
 
     public void SetMinMax(string text,List<Trait> restrictions)
     {
@@ -103,7 +103,7 @@ public class ManualCharacteristicsMinionView : CanDestroyView
         }
     }
 
-    public void SetPoints(int points) => _textPoints.text = $"Œ˜ÍÓ‚ ŒÒÚ‡ÎÓÒ¸ {points}";
+    public void SetPoints(int points) => _textPoints.text = $"–û—á–∫–æ–≤ –û—Å—Ç–∞–ª–æ—Å—å {points}";
 
     public void ShowButton() => _buttonNext.gameObject.SetActive(true);
 

@@ -51,6 +51,6 @@ public class TalentList : UniversalList
             }                
         }
 
-        throw new Exception($"Не нашли талант с именем {name}");
+        throw new Exception($"РќРµ РЅР°С€Р»Рё С‚Р°Р»Р°РЅС‚ СЃ РёРјРµРЅРµРј {name}");
     }
 }

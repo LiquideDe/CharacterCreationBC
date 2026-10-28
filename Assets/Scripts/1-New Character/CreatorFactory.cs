@@ -22,7 +22,7 @@ public class CreatorFactory
                 return _diContainer.Instantiate<CreatorMinion>();
 
             default:
-                throw new System.Exception("Нет такого типа TypeCreator");
+                throw new System.Exception("РќРµС‚ С‚Р°РєРѕРіРѕ С‚РёРїР° TypeCreator");
         }
     }
 }

@@ -57,35 +57,35 @@ public class ChooseTypeMinionView : CanDestroyView
 
     private void ChooseDaemonHighPressed()
     {
-        ChooseDaemon?.Invoke("Высший");
+        ChooseDaemon?.Invoke("Р’С‹СЃС€РёР№");
         Destroy(gameObject);
     }
 
     private void ChooseDaemonAveragePressed() { 
-        ChooseDaemon?.Invoke("Обычный");
+        ChooseDaemon?.Invoke("РћР±С‹С‡РЅС‹Р№");
         Destroy(gameObject);
     }
 
-    private void ChooseDaemonLowPressed()  { ChooseDaemon?.Invoke("Низший"); Destroy(gameObject); }
+    private void ChooseDaemonLowPressed()  { ChooseDaemon?.Invoke("РќРёР·С€РёР№"); Destroy(gameObject); }
 
     private void ChooseMachineHighPressed() {
-        ChooseMachine?.Invoke("Высший");
+        ChooseMachine?.Invoke("Р’С‹СЃС€РёР№");
         Destroy(gameObject);
     }
-    private void ChooseMachineAveragePressed() { ChooseMachine?.Invoke("Обычный"); Destroy(gameObject); }
+    private void ChooseMachineAveragePressed() { ChooseMachine?.Invoke("РћР±С‹С‡РЅС‹Р№"); Destroy(gameObject); }
 
-    private void ChooseMachineLowPressed() { ChooseMachine?.Invoke("Низишй"); Destroy(gameObject); }
+    private void ChooseMachineLowPressed() { ChooseMachine?.Invoke("РќРёР·РёС€Р№"); Destroy(gameObject); }
 
-    private void ChooseBeastHighPressed() { ChooseBeast?.Invoke("Высший"); Destroy(gameObject); }
+    private void ChooseBeastHighPressed() { ChooseBeast?.Invoke("Р’С‹СЃС€РёР№"); Destroy(gameObject); }
 
-    private void ChooseBeastAveragePressed() { ChooseBeast?.Invoke("Обычный"); Destroy(gameObject); }
+    private void ChooseBeastAveragePressed() { ChooseBeast?.Invoke("РћР±С‹С‡РЅС‹Р№"); Destroy(gameObject); }
 
-    private void ChooseBeastLowPressed() { ChooseBeast?.Invoke("Низший"); Destroy(gameObject); }
+    private void ChooseBeastLowPressed() { ChooseBeast?.Invoke("РќРёР·С€РёР№"); Destroy(gameObject); }
 
-    private void ChooseHumanHighPressed() { ChooseHuman?.Invoke("Высший"); Destroy(gameObject); }
+    private void ChooseHumanHighPressed() { ChooseHuman?.Invoke("Р’С‹СЃС€РёР№"); Destroy(gameObject); }
 
-    private void ChooseHumanAveragePressed() { ChooseHuman?.Invoke("Обычный"); Destroy(gameObject); }
+    private void ChooseHumanAveragePressed() { ChooseHuman?.Invoke("РћР±С‹С‡РЅС‹Р№"); Destroy(gameObject); }
 
-    private void ChooseHumanLowPressed() { ChooseHuman?.Invoke("Низший"); Destroy(gameObject); }
+    private void ChooseHumanLowPressed() { ChooseHuman?.Invoke("РќРёР·С€РёР№"); Destroy(gameObject); }
 
 }

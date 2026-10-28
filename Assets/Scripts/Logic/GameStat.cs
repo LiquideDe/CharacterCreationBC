@@ -28,39 +28,39 @@ public static class GameStat
 
     public static Dictionary<CharacteristicName, string> characterTranslate = new Dictionary<CharacteristicName, string>()
     {
-        { CharacteristicName.WeaponSkill,"Навык Рукопашной" },
-        { CharacteristicName.BallisticSkill,"Навык Стрельбы" },
-        { CharacteristicName.Strength,"Сила" },
-        { CharacteristicName.Toughness,"Выносливость" },
-        { CharacteristicName.Agility,"Ловкость" },
-        { CharacteristicName.Intelligence,"Интеллект" },
-        { CharacteristicName.Perception,"Восприятие" },
-        { CharacteristicName.Willpower,"Сила Воли" },
-        { CharacteristicName.Fellowship,"Общительность" }
+        { CharacteristicName.WeaponSkill,"РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№" },
+        { CharacteristicName.BallisticSkill,"РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹" },
+        { CharacteristicName.Strength,"РЎРёР»Р°" },
+        { CharacteristicName.Toughness,"Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ" },
+        { CharacteristicName.Agility,"Р›РѕРІРєРѕСЃС‚СЊ" },
+        { CharacteristicName.Intelligence,"РРЅС‚РµР»Р»РµРєС‚" },
+        { CharacteristicName.Perception,"Р’РѕСЃРїСЂРёСЏС‚РёРµ" },
+        { CharacteristicName.Willpower,"РЎРёР»Р° Р’РѕР»Рё" },
+        { CharacteristicName.Fellowship,"РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ" }
 
     };
 
     public static Dictionary<string, int> CharacteristicToInt = new Dictionary<string, int>()
     {
-        { "Навык Рукопашной", 0 },
-        { "Навык Стрельбы", 1 },
-        { "Сила" , 2},
-        { "Выносливость", 3 },
-        { "Ловкость", 4 },
-        { "Интеллект",5 },
-        { "Восприятие" , 6 },
-        { "Сила Воли", 7 },
-        { "Общительность", 8 }
+        { "РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№", 0 },
+        { "РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹", 1 },
+        { "РЎРёР»Р°" , 2},
+        { "Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ", 3 },
+        { "Р›РѕРІРєРѕСЃС‚СЊ", 4 },
+        { "РРЅС‚РµР»Р»РµРєС‚",5 },
+        { "Р’РѕСЃРїСЂРёСЏС‚РёРµ" , 6 },
+        { "РЎРёР»Р° Р’РѕР»Рё", 7 },
+        { "РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ", 8 }
 
     };
 
     public static Dictionary<string, string> KnowledgeTranslate = new Dictionary<string, string>()
     {
-        {"Trade", "Ремесло" },
-        {"CommonLore", "Общие знания" },
-        {"ForbiddenLore", "Запретные знания" },
-        {"ScholasticLore", "Ученые знания" },
-        {"Linguistics", "Лингвистика" }
+        {"Trade", "Р РµРјРµСЃР»Рѕ" },
+        {"CommonLore", "РћР±С‰РёРµ Р·РЅР°РЅРёСЏ" },
+        {"ForbiddenLore", "Р—Р°РїСЂРµС‚РЅС‹Рµ Р·РЅР°РЅРёСЏ" },
+        {"ScholasticLore", "РЈС‡РµРЅС‹Рµ Р·РЅР°РЅРёСЏ" },
+        {"Linguistics", "Р›РёРЅРіРІРёСЃС‚РёРєР°" }
     };
 
     public enum CharacteristicName { None, WeaponSkill, BallisticSkill, Strength, Toughness, Agility, Intelligence, Perception, Willpower, Fellowship}    
@@ -102,7 +102,7 @@ public static class GameStat
                 return 0;
         }
         
-        if (string.Compare(skillGod, "Неделимый", true) == 0 || string.Compare(characterGod, "Неделимый", true) == 0)
+        if (string.Compare(skillGod, "РќРµРґРµР»РёРјС‹Р№", true) == 0 || string.Compare(characterGod, "РќРµРґРµР»РёРјС‹Р№", true) == 0)
         {
             amountMult = 1;
         }
@@ -110,19 +110,19 @@ public static class GameStat
         {
             amountMult = 2;
         }         
-        else if (string.Compare(skillGod, "Кхорн", true) == 0 && string.Compare(characterGod, "Нургл") == 0)
+        else if (string.Compare(skillGod, "РљС…РѕСЂРЅ", true) == 0 && string.Compare(characterGod, "РќСѓСЂРіР»") == 0)
         {
             amountMult = 1;
         }
-        else if (string.Compare(skillGod, "Нургл", true) == 0 && string.Compare(characterGod, "Кхорн") == 0)
+        else if (string.Compare(skillGod, "РќСѓСЂРіР»", true) == 0 && string.Compare(characterGod, "РљС…РѕСЂРЅ") == 0)
         {
             amountMult = 1;
         }
-        else if (string.Compare(skillGod, "Слаанеш", true) == 0 && string.Compare(characterGod, "Тзинч") == 0)
+        else if (string.Compare(skillGod, "РЎР»Р°Р°РЅРµС€", true) == 0 && string.Compare(characterGod, "РўР·РёРЅС‡") == 0)
         {
             amountMult = 1;
         }
-        else if (string.Compare(skillGod, "Тзинч", true) == 0 && string.Compare(characterGod, "Слаанеш") == 0)
+        else if (string.Compare(skillGod, "РўР·РёРЅС‡", true) == 0 && string.Compare(characterGod, "РЎР»Р°Р°РЅРµС€") == 0)
         {
             amountMult = 1;
         }

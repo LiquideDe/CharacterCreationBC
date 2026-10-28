@@ -53,7 +53,7 @@ public class SetRandomCharacteristicMinionPresenter : IPresenter
         _view.Perception.SetAmount(_typeMinion.CharacteristicPoints);
         _view.Willpower.SetAmount(_typeMinion.CharacteristicPoints);
         _view.Social.SetAmount(_typeMinion.CharacteristicPoints);
-        _view.Wounds.SetAmount(_minion.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount/10 * 2 + 2);
+        _view.Wounds.SetAmount(_minion.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount/10 * 2 + 2);
     }
 
     private void GenerateRandom()
@@ -82,15 +82,15 @@ public class SetRandomCharacteristicMinionPresenter : IPresenter
         _audioManager.PlayDone();
         MinionCharacter minionCharacter = (MinionCharacter)_minion;
 
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Навык Рукопашной"]].Amount = _view.WeaponSkill.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Навык Стрельбы"]].Amount = _view.BallisticSkill.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Сила"]].Amount = _view.Strength.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Выносливость"]].Amount = _view.Toughness.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Ловкость"]].Amount = _view.Agility.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Интеллект"]].Amount = _view.Intelligence.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Восприятие"]].Amount = _view.Perception.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Сила Воли"]].Amount = _view.Willpower.Amount;
-        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Общительность"]].Amount = _view.Social.Amount;        
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount = _view.WeaponSkill.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"]].Amount = _view.BallisticSkill.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р°"]].Amount = _view.Strength.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount = _view.Toughness.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount = _view.Agility.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount = _view.Intelligence.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount = _view.Perception.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount = _view.Willpower.Amount;
+        minionCharacter.Characteristics[GameStat.CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount = _view.Social.Amount;        
 
         Unscribe();
         _view.DestroyView();

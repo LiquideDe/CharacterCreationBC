@@ -14,7 +14,7 @@ public class UpgradeTalentMinionPresenter : IPresenter
     private AudioManager _audioManager;
     private CreatorTalents _creatorTalents;
     private Talent _talent;
-    private string _currentCategory = "Общие Таланты";
+    private string _currentCategory = "РћР±С‰РёРµ РўР°Р»Р°РЅС‚С‹";
 
     [Inject]
     private void Construct(AudioManager audioManager, CreatorTalents creatorTalents)
@@ -29,7 +29,7 @@ public class UpgradeTalentMinionPresenter : IPresenter
         _character = character;
         _typeMinion = typeMinion;
         Subscribe();
-        _view.UpdateExperience($"{_character.TalentPoints} О");
+        _view.UpdateExperience($"{_character.TalentPoints} Рћ");
         _view.SetCategories(_creatorTalents.Categories);
         ShowTalents(_currentCategory);
     }
@@ -60,7 +60,7 @@ public class UpgradeTalentMinionPresenter : IPresenter
         {
             _audioManager.PlayCancel();
             _character = _character.Minion;
-            _view.UpdateExperience($"{_character.TalentPoints} О");
+            _view.UpdateExperience($"{_character.TalentPoints} Рћ");
         }
         else
             _audioManager.PlayWarning();
@@ -75,7 +75,7 @@ public class UpgradeTalentMinionPresenter : IPresenter
             minionDecorator.UpgradeTalent(_talent);
             _view.CleanTalent();
             _character = minionDecorator;
-            _view.UpdateExperience($"{_character.TalentPoints} О");
+            _view.UpdateExperience($"{_character.TalentPoints} Рћ");
             ShowTalents(_currentCategory);
         }
         else
@@ -246,10 +246,10 @@ public class UpgradeTalentMinionPresenter : IPresenter
         if (talent.RequirementRace.Length == 0)
             return true;
 
-        if (string.Compare(talent.RequirementRace, "Космодесантник", true) == 0)
+        if (string.Compare(talent.RequirementRace, "РљРѕСЃРјРѕРґРµСЃР°РЅС‚РЅРёРє", true) == 0)
             foreach (var item in _character.Traits)
             {
-                if (string.Compare(item.Name, "Геносемя") == 0)
+                if (string.Compare(item.Name, "Р“РµРЅРѕСЃРµРјСЏ") == 0)
                     return true;
             }
 

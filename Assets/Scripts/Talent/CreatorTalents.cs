@@ -44,7 +44,7 @@ public class CreatorTalents
             }
         }
 
-        Debug.Log($"!!!!! Не нашли талантант !!!! Искали {name}");
+        Debug.Log($"!!!!! РќРµ РЅР°С€Р»Рё С‚Р°Р»Р°РЅС‚Р°РЅС‚ !!!! РСЃРєР°Р»Рё {name}");
         return null;
     }
 }

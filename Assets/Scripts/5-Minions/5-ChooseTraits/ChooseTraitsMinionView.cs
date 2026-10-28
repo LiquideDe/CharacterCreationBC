@@ -60,7 +60,7 @@ public class ChooseTraitsMinionView : CanDestroyView
         }
     }
 
-    public void SetTraitPoints(int amount) => _textPoints.text = $"Î÷êîâ: {amount}";
+    public void SetTraitPoints(int amount) => _textPoints.text = $"ÐžÑ‡ÐºÐ¾Ð²: {amount}";
 
     public void SetDescriptionText(string description) => _textDescription.text = description;
 

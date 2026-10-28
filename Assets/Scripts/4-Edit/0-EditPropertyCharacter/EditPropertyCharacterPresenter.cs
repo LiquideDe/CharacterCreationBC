@@ -58,9 +58,9 @@ public class EditPropertyCharacterPresenter : IPresenter
     private void RemoveMutation(string mutationName)
     {
         _audioManager.PlayCancel();
-        Debug.Log($"До удаления у персонажа мутаций {_character.Mutation.Count}");
+        Debug.Log($"Р”Рѕ СѓРґР°Р»РµРЅРёСЏ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјСѓС‚Р°С†РёР№ {_character.Mutation.Count}");
         _character.Mutation.Remove(mutationName);
-        Debug.Log($"После удаления у персонажа мутаций {_character.Mutation.Count}, удаляли мутацию {mutationName}");
+        Debug.Log($"РџРѕСЃР»Рµ СѓРґР°Р»РµРЅРёСЏ Сѓ РїРµСЂСЃРѕРЅР°Р¶Р° РјСѓС‚Р°С†РёР№ {_character.Mutation.Count}, СѓРґР°Р»СЏР»Рё РјСѓС‚Р°С†РёСЋ {mutationName}");
         _view.UpdateMutation(_character.Mutation);
     }
 
@@ -123,12 +123,12 @@ public class EditPropertyCharacterPresenter : IPresenter
         _inputNewProperty = _lvlFactory.Get(TypeScene.InputNewProperty).GetComponent<InputNewPropertyView>();
         _inputNewProperty.CloseInput += CloseInput;
         _inputNewProperty.ReturnThisString += SetNewMutation;
-        _inputNewProperty.Initialize("Впишите название новой мутации");
+        _inputNewProperty.Initialize("Р’РїРёС€РёС‚Рµ РЅР°Р·РІР°РЅРёРµ РЅРѕРІРѕР№ РјСѓС‚Р°С†РёРё");
     }
 
     private void SetNewMutation(string mutation)
     {
-        Debug.Log($"Добавляем новую мутацию {mutation}");
+        Debug.Log($"Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ РјСѓС‚Р°С†РёСЋ {mutation}");
         _audioManager.PlayDone();
         _character.Mutation.Add(mutation);
         _view.UpdateMutation(_character.Mutation);
@@ -143,7 +143,7 @@ public class EditPropertyCharacterPresenter : IPresenter
         _inputNewProperty = _lvlFactory.Get(TypeScene.InputNewProperty).GetComponent<InputNewPropertyView>();
         _inputNewProperty.CloseInput += CloseInput;
         _inputNewProperty.ReturnThisString += SetNewMental;
-        _inputNewProperty.Initialize("Впишите название нового расстройства");
+        _inputNewProperty.Initialize("Р’РїРёС€РёС‚Рµ РЅР°Р·РІР°РЅРёРµ РЅРѕРІРѕРіРѕ СЂР°СЃСЃС‚СЂРѕР№СЃС‚РІР°");
     }
 
     private void SetNewMental(string mental)
@@ -170,7 +170,7 @@ public class EditPropertyCharacterPresenter : IPresenter
         _listWithNewItems.ChooseThis += AddFeature;
         _listWithNewItems.CloseList += CloseList;
 
-        _listWithNewItems.Initialize(namesFeatures, "Выберите новую черту");
+        _listWithNewItems.Initialize(namesFeatures, "Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРІСѓСЋ С‡РµСЂС‚Сѓ");
     }
 
     private bool TryNotDoubleFeature(Trait feature)

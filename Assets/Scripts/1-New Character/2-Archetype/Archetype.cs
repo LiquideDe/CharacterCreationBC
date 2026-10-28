@@ -13,10 +13,10 @@ public class Archetype : BackgroundCharacter, IHistoryCharacter
     public Archetype(string path, CreatorSkills creatorSkills, CreatorTalents creatorTalents, CreatorTraits creatorTraits) :
         base(path, creatorSkills, creatorTalents, creatorTraits)
     {
-        _trait = new Trait(GameStat.ReadText(path + "/Название Трейта.txt"), GameStat.ReadText(path + "/Описание Трейта.txt"));
+        _trait = new Trait(GameStat.ReadText(path + "/РќР°Р·РІР°РЅРёРµ РўСЂРµР№С‚Р°.txt"), GameStat.ReadText(path + "/РћРїРёСЃР°РЅРёРµ РўСЂРµР№С‚Р°.txt"));
         if (Directory.Exists(path + "/Req"))
         {
-            if(string.Compare(GameStat.ReadText(path + "/Req/Race.txt"),"Космодесантник") == 0)
+            if(string.Compare(GameStat.ReadText(path + "/Req/Race.txt"),"РљРѕСЃРјРѕРґРµСЃР°РЅС‚РЅРёРє") == 0)
                 _isSpaceMarine = true;
             else _isSpaceMarine = false;
         }

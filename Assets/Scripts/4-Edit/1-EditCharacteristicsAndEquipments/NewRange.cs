@@ -38,7 +38,7 @@ public class NewRange : NewMelee
 
             if (toggleSingle.isOn)
             {
-                rSingle = "Î";
+                rSingle = "Ðž";
             }
             else
             {

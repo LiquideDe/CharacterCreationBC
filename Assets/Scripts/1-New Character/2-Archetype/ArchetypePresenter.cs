@@ -62,7 +62,7 @@ public class ArchetypePresenter : IPresenter
     {
         bool isSpacemarine = false;
 
-        if(string.Compare(_character.Race, "Космодесантник") == 0)
+        if(string.Compare(_character.Race, "РљРѕСЃРјРѕРґРµСЃР°РЅС‚РЅРёРє") == 0)
             isSpacemarine = true;
 
         

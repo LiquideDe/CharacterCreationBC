@@ -14,7 +14,7 @@ public class CreatorTraits
         dirs.AddRange(Directory.GetDirectories($"{Application.dataPath}/StreamingAssets/Traits"));
         foreach(string path in dirs)
         {
-            _traits.Add(new Trait(GameStat.ReadText(path + "/Название.txt"), GameStat.ReadText(path + "/Описание.txt")));
+            _traits.Add(new Trait(GameStat.ReadText(path + "/РќР°Р·РІР°РЅРёРµ.txt"), GameStat.ReadText(path + "/РћРїРёСЃР°РЅРёРµ.txt")));
         }
     }
 
@@ -26,7 +26,7 @@ public class CreatorTraits
                 return trait;
         }
 
-        Debug.Log($"Не смогли найти feature {name}");
+        Debug.Log($"РќРµ СЃРјРѕРіР»Рё РЅР°Р№С‚Рё feature {name}");
         return null;
     }
 }

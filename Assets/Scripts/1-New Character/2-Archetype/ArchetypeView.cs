@@ -12,7 +12,7 @@ public class ArchetypeView : RaceView
         string advantage = "";
         advantage += ModifierCharacteristicToText(archetype.ModifierCharacteristics);
         advantage += $"{archetype.Trait.Name} \n {archetype.Trait.Description} \n";
-        advantage += $"Ран {archetype.Wounds} + 1к5";
+        advantage += $"Р Р°РЅ {archetype.Wounds} + 1Рє5";
         SetTexts(archetype.Name, archetype.Description, advantage);
         HideWindows();
         ClearCells();

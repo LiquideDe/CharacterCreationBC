@@ -68,7 +68,7 @@ public class CreatorEquipment
                 return equipment;
             }
         }
-        Debug.Log($"!!!!ВНИМАНИЕ!!!! Не нашли экипировку {nameEq}");
+        Debug.Log($"!!!!Р’РќРРњРђРќРР•!!!! РќРµ РЅР°С€Р»Рё СЌРєРёРїРёСЂРѕРІРєСѓ {nameEq}");
         return null;
     }
 

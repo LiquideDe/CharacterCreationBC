@@ -117,7 +117,7 @@ public class LvlMediatorMinion
 
     private void ChooseArmorAndWeapon(IMinion minion)
     {
-        if(_typeMinion.Name.Contains("Зверь") || _typeMinion.Name.Contains("Демон"))
+        if(_typeMinion.Name.Contains("Р—РІРµСЂСЊ") || _typeMinion.Name.Contains("Р”РµРјРѕРЅ"))
             ChooseName(minion);
         else
         {

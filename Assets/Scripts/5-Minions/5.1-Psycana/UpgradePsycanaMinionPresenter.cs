@@ -176,6 +176,6 @@ public class UpgradePsycanaMinionPresenter : IPresenter
             _audioManager.PlayWarning();
     }
 
-    private void UpdateTextInView() => _view.SetExperience($"{_character.PsyPowerPoints} Î", $"ÏÐ {_character.PsyRating}",
+    private void UpdateTextInView() => _view.SetExperience($"{_character.PsyPowerPoints} Ðž", $"ÐŸÐ  {_character.PsyRating}",
         $"", _creatorPsyPowers.GetNameSchool(_school));
 }

@@ -15,7 +15,7 @@ public class UpgradeTalentPresenter : IPresenter
     private Talent _talent;
     private bool _isEdit = false;
     private int _cost;
-    private string _currentCategory = "Œ·˘ËÂ “‡Î‡ÌÚ˚";
+    private string _currentCategory = "–û–±—â–∏–µ –¢–∞–ª–∞–Ω—Ç—ã";
 
     [Inject]
     private void Construct(AudioManager audioManager, CreatorTalents creatorTalents)
@@ -29,7 +29,7 @@ public class UpgradeTalentPresenter : IPresenter
         _view = view;
         _character = character;
         Subscribe();
-        _view.UpdateExperience($"{_character.ExperienceUnspent} ŒŒ");
+        _view.UpdateExperience($"{_character.ExperienceUnspent} –û–û");
         _view.SetCategories(_creatorTalents.Categories);
         ShowTalents(_currentCategory);
     }
@@ -62,7 +62,7 @@ public class UpgradeTalentPresenter : IPresenter
         {
             _audioManager.PlayCancel();
             _character = _character.GetCharacter;
-            _view.UpdateExperience($"{_character.ExperienceUnspent} ŒŒ");
+            _view.UpdateExperience($"{_character.ExperienceUnspent} –û–û");
         }
         else
             _audioManager.PlayWarning();
@@ -77,7 +77,7 @@ public class UpgradeTalentPresenter : IPresenter
             character.UpgradeTalent(_talent, _cost);
             _view.CleanTalent();            
             _character = character;
-            _view.UpdateExperience($"{_character.ExperienceUnspent} ŒŒ");
+            _view.UpdateExperience($"{_character.ExperienceUnspent} –û–û");
             ShowTalents(_currentCategory);
         }
         else

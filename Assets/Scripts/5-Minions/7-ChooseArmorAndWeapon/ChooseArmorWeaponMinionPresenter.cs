@@ -48,7 +48,7 @@ public class ChooseArmorWeaponMinionPresenter : IPresenter
             if(string.Compare(item.Name, name, true) == 0)
             {
                 _armor = item;
-                string text = $"{item.Name}. Броня головы - {item.DefHead}, броня тела - {item.DefBody}, броня рук - {item.DefHands}, броня ног - {item.DefLegs}. Максимальная ловкость - {item.MaxAgil}";
+                string text = $"{item.Name}. Р‘СЂРѕРЅСЏ РіРѕР»РѕРІС‹ - {item.DefHead}, Р±СЂРѕРЅСЏ С‚РµР»Р° - {item.DefBody}, Р±СЂРѕРЅСЏ СЂСѓРє - {item.DefHands}, Р±СЂРѕРЅСЏ РЅРѕРі - {item.DefLegs}. РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ Р»РѕРІРєРѕСЃС‚СЊ - {item.MaxAgil}";
                 _view.SetArmorDescription(text);
                 if (_armor != null && _weapon != null)
                     _view.ShowButtonNext();
@@ -66,9 +66,9 @@ public class ChooseArmorWeaponMinionPresenter : IPresenter
             if (string.Compare(item.Name, name, true) == 0)
             {
                 _weapon = item;
-                string text = $"{item.Name}. Урон - {item.Damage}, Бронепробитие - {item.Penetration}.";
+                string text = $"{item.Name}. РЈСЂРѕРЅ - {item.Damage}, Р‘СЂРѕРЅРµРїСЂРѕР±РёС‚РёРµ - {item.Penetration}.";
                 if (item.TypeEq == Equipment.TypeEquipment.Range)
-                    text += $"Скорострельность - {item.Rof}, магазин - {item.Clip}, дальность - {item.Range}";
+                    text += $"РЎРєРѕСЂРѕСЃС‚СЂРµР»СЊРЅРѕСЃС‚СЊ - {item.Rof}, РјР°РіР°Р·РёРЅ - {item.Clip}, РґР°Р»СЊРЅРѕСЃС‚СЊ - {item.Range}";
                 _view.SetWeaponDescription(text);
                 if (_armor != null && _weapon != null)
                     _view.ShowButtonNext();

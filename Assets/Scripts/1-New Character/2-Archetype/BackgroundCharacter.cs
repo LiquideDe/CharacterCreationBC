@@ -20,8 +20,8 @@ public class BackgroundCharacter
     public BackgroundCharacter(string path, CreatorSkills creatorSkills, CreatorTalents creatorTalents, CreatorTraits creatorTraits)
     {
         _path = path;
-        _name = GameStat.ReadText(path + "/Õ‡Á‚‡ÌËÂ.txt");
-        _description = GameStat.ReadText(path + "/ŒÔËÒ‡ÌËÂ.txt");
+        _name = GameStat.ReadText(path + "/–ù–∞–∑–≤–∞–Ω–∏–µ.txt");
+        _description = GameStat.ReadText(path + "/–û–ø–∏—Å–∞–Ω–∏–µ.txt");
         _creatorSkills = creatorSkills;
         _creatorTalents = creatorTalents;
         _creatorTraits = creatorTraits;
@@ -66,7 +66,7 @@ public class BackgroundCharacter
             {
                 string[] jSonData = File.ReadAllLines(file);
                 JSONSmallSkillLoader readerName = JsonUtility.FromJson<JSONSmallSkillLoader>(jSonData[0]);
-                //Debug.Log($"»˘ÂÏ {readerName.name} {readerName.lvl} {_name}");
+                //Debug.Log($"–ò—â–µ–º {readerName.name} {readerName.lvl} {_name}");
                 if (_creatorSkills.IsSkillKnowledge(readerName.name))
                 {
                     Knowledge knowledge = (Knowledge)_creatorSkills.GetSkill(readerName.name);
@@ -90,7 +90,7 @@ public class BackgroundCharacter
             {
                 string[] jSonData = File.ReadAllLines(file);
                 JSONReaderName readerName = JsonUtility.FromJson<JSONReaderName>(jSonData[0]);
-                //Debug.Log($"»˘ÂÏ {readerName.name} {_name}");
+                //Debug.Log($"–ò—â–µ–º {readerName.name} {_name}");
                 _talents[^1].Add(new Talent(_creatorTalents.GetTalent(readerName.name)));
             }
         }
@@ -108,7 +108,7 @@ public class BackgroundCharacter
             {
                 string[] jSonData = File.ReadAllLines(file);
                 JSONSmallSkillLoader readerName = JsonUtility.FromJson<JSONSmallSkillLoader>(jSonData[0]);
-                //Debug.Log($"»˘ÂÏ {readerName.name} {readerName.lvl} {_name}");
+                //Debug.Log($"–ò—â–µ–º {readerName.name} {readerName.lvl} {_name}");
                 _traits[^1].Add(new Trait(_creatorTraits.GetTrait(readerName.name), readerName.lvl));
             }
         }

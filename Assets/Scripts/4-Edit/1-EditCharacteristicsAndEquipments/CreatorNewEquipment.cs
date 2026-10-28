@@ -42,7 +42,7 @@ public class CreatorNewEquipment : ViewWithButtonsDoneAndCancel
 
     }
 
-    public virtual void AddProperty(string property) { Debug.Log($"Не работает увы"); }
+    public virtual void AddProperty(string property) { Debug.Log($"РќРµ СЂР°Р±РѕС‚Р°РµС‚ СѓРІС‹"); }
 
     protected void SaveEquipment<T>(string path, T jsonToSave)
     {

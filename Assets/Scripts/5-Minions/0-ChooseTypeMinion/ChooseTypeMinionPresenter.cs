@@ -43,13 +43,13 @@ public class ChooseTypeMinionPresenter : IPresenter
 
     private void ChooseMachine(string type)
     {
-        TypeMinion minion = _creatorMinion.Get($"Машина {type}");
+        TypeMinion minion = _creatorMinion.Get($"РњР°С€РёРЅР° {type}");
         CloseWindow(minion);
     }
 
     private void ChooseHuman(string type)
     {
-        TypeMinion minion = _creatorMinion.Get($"Человек {type}");
+        TypeMinion minion = _creatorMinion.Get($"Р§РµР»РѕРІРµРє {type}");
         _audioManager.PlayClick();
         ReturnMinionToRandom?.Invoke(minion);
         Unscribe();
@@ -58,13 +58,13 @@ public class ChooseTypeMinionPresenter : IPresenter
 
     private void ChooseDaemon(string type)
     {
-        TypeMinion minion = _creatorMinion.Get($"Демон {type}");
+        TypeMinion minion = _creatorMinion.Get($"Р”РµРјРѕРЅ {type}");
         CloseWindow(minion);
     }
 
     private void ChooseBeast(string type)
     {        
-        TypeMinion minion = _creatorMinion.Get($"Зверь {type}");
+        TypeMinion minion = _creatorMinion.Get($"Р—РІРµСЂСЊ {type}");
         CloseWindow(minion);
     }
 

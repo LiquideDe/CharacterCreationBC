@@ -44,7 +44,7 @@ public class Load
             SaveLoadSkill skill = JsonUtility.FromJson<SaveLoadSkill>(data[i]);
             skills.Add(skill);
         }
-        //Debug.Log($"Первый объект Навык {data[min]}, последний объект {data[max-1]}, min = {min}, max = {max}");
+        //Debug.Log($"РџРµСЂРІС‹Р№ РѕР±СЉРµРєС‚ РќР°РІС‹Рє {data[min]}, РїРѕСЃР»РµРґРЅРёР№ РѕР±СЉРµРєС‚ {data[max-1]}, min = {min}, max = {max}");
 
         List<MechImplant> implants = new List<MechImplant>();
         if (loadCharacter.amountImplants > 0)
@@ -52,7 +52,7 @@ public class Load
             
             min = max;
             max = min + loadCharacter.amountImplants;
-            //Debug.Log($"Первый Имплант {data[min]}, последний объект {data[max - 1]}, min = {min}, max = {max}");
+            //Debug.Log($"РџРµСЂРІС‹Р№ РРјРїР»Р°РЅС‚ {data[min]}, РїРѕСЃР»РµРґРЅРёР№ РѕР±СЉРµРєС‚ {data[max - 1]}, min = {min}, max = {max}");
             for (int i = min; i < max; i++)
             {
                 //Debug.Log(data[i]);

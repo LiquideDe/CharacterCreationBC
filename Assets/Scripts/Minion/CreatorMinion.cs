@@ -27,7 +27,7 @@ public class CreatorMinion : ICreator
             if(string.Compare(name, item.Name,true) == 0)
                 return item;
 
-        Debug.Log($"!!!!Не нашли миньона {name}");
+        Debug.Log($"!!!!РќРµ РЅР°С€Р»Рё РјРёРЅСЊРѕРЅР° {name}");
         return null;
     }
 }

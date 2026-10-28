@@ -119,13 +119,13 @@ public class FourthCharacterSheet : TakeScreenshot
 
     private void CalculateGod(string god)
     {
-        if (string.Compare("Кхорн", god, true) == 0)
+        if (string.Compare("РљС…РѕСЂРЅ", god, true) == 0)
             _khorn++;
-        else if (string.Compare("Нургл", god, true) == 0)
+        else if (string.Compare("РќСѓСЂРіР»", god, true) == 0)
             _nurgl++;
-        else if(string.Compare("Слаанеш", god, true) == 0)
+        else if(string.Compare("РЎР»Р°Р°РЅРµС€", god, true) == 0)
             _slaanesh++;
-        else if(string.Compare("Тзинч", god, true) == 0)
+        else if(string.Compare("РўР·РёРЅС‡", god, true) == 0)
             _tzeentch++;
         else
             _undevided++;

@@ -36,7 +36,7 @@ public class Character : ICharacter
         CreateCharacteristics();
     }
 
-    #region Свойства
+    #region РЎРІРѕР№СЃС‚РІР°
 
     public List<Equipment> Equipments => _equipments;
     public int Wounds => _wounds;
@@ -234,7 +234,7 @@ public class Character : ICharacter
         int bToughness = _characteristics[3].Amount / 10;
         foreach(Trait feature in _traits)
         {
-            if (string.Compare(feature.Name, "Сверхъестественная Выносливость") == 0 || string.Compare(feature.Name, "Демонический") == 0)
+            if (string.Compare(feature.Name, "РЎРІРµСЂС…СЉРµСЃС‚РµСЃС‚РІРµРЅРЅР°СЏ Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ") == 0 || string.Compare(feature.Name, "Р”РµРјРѕРЅРёС‡РµСЃРєРёР№") == 0)
             {
                 bToughness += feature.Lvl;
             }
@@ -245,14 +245,14 @@ public class Character : ICharacter
 
     private void CreateCharacteristics()
     {
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.WeaponSkill, "Неделимый")); //0
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.BallisticSkill, "Неделимый")); //1
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Strength, "Кхорн")); //2
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Toughness, "Нургл")); //3
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Agility, "Неделимый")); //4
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Intelligence, "Неделимый")); //5
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Perception, "Неделимый")); //6
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Willpower, "Тзинч")); //7
-        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Fellowship, "Слаанеш")); //8
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.WeaponSkill, "РќРµРґРµР»РёРјС‹Р№")); //0
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.BallisticSkill, "РќРµРґРµР»РёРјС‹Р№")); //1
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Strength, "РљС…РѕСЂРЅ")); //2
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Toughness, "РќСѓСЂРіР»")); //3
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Agility, "РќРµРґРµР»РёРјС‹Р№")); //4
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Intelligence, "РќРµРґРµР»РёРјС‹Р№")); //5
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Perception, "РќРµРґРµР»РёРјС‹Р№")); //6
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Willpower, "РўР·РёРЅС‡")); //7
+        _characteristics.Add(new Characteristic(GameStat.CharacteristicName.Fellowship, "РЎР»Р°Р°РЅРµС€")); //8
     }
 }

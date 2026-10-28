@@ -43,7 +43,7 @@ public class RaceView : ViewWithButtonsDoneAndCancel
     {
 
         ResetImages(race.Path);
-        string advantage = $"Характеристики {race.StartCharacteristic} + 2к10 \n";
+        string advantage = $"РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё {race.StartCharacteristic} + 2Рє10 \n";
         HideWindows();
         advantage += ModifierCharacteristicToText(race.ModifierCharacteristics);
         for (int i = 0; i < race.Traits.Count; i++)
@@ -51,7 +51,7 @@ public class RaceView : ViewWithButtonsDoneAndCancel
                 advantage += $"{race.Traits[i][j].Name}({race.Traits[i][j].Lvl}) \n";
 
         if (race.ExperienceCost > 0)
-            advantage += $"Опыт -{race.ExperienceCost}";
+            advantage += $"РћРїС‹С‚ -{race.ExperienceCost}";
 
         SetTexts(race.Name, race.Description, advantage);
 
@@ -182,32 +182,32 @@ public class RaceView : ViewWithButtonsDoneAndCancel
             if (list[0] is Skill skill1)
             {
                 if (string.Compare(skill1.TypeSkill, "CommonLore", true) == 0)
-                    _textNameSkills.text = "Общие знания";
+                    _textNameSkills.text = "РћР±С‰РёРµ Р·РЅР°РЅРёСЏ";
                 else if (string.Compare(skill1.TypeSkill, "ForbiddenLore", true) == 0)
-                    _textNameSkills.text = "Запретные знания";
+                    _textNameSkills.text = "Р—Р°РїСЂРµС‚РЅС‹Рµ Р·РЅР°РЅРёСЏ";
                 else if (string.Compare(skill1.TypeSkill, "Linguistics", true) == 0)
-                    _textNameSkills.text = "Языки";
+                    _textNameSkills.text = "РЇР·С‹РєРё";
                 else if (string.Compare(skill1.TypeSkill, "ScholasticLore", true) == 0)
-                    _textNameSkills.text = "Ученые знания";
+                    _textNameSkills.text = "РЈС‡РµРЅС‹Рµ Р·РЅР°РЅРёСЏ";
                 else if (string.Compare(skill1.TypeSkill, "Trade", true) == 0)
-                    _textNameSkills.text = "Ремесло";
+                    _textNameSkills.text = "Р РµРјРµСЃР»Рѕ";
                 else
-                    _textNameSkills.text = "Навыки";
+                    _textNameSkills.text = "РќР°РІС‹РєРё";
             }
             else if (list[0] is Talent)
-                _textNameSkills.text = "Таланты";
+                _textNameSkills.text = "РўР°Р»Р°РЅС‚С‹";
             else if (list[0] is Trait)
-                _textNameSkills.text = "Черты";
+                _textNameSkills.text = "Р§РµСЂС‚С‹";
             else if (list[0] is Weapon)
-                _textNameSkills.text = "Оружие";
+                _textNameSkills.text = "РћСЂСѓР¶РёРµ";
             else if (list[0] is Armor)
-                _textNameSkills.text = "Броня";
+                _textNameSkills.text = "Р‘СЂРѕРЅСЏ";
             else if (list[0] is Equipment)
-                _textNameSkills.text = "Снаряжение";
+                _textNameSkills.text = "РЎРЅР°СЂСЏР¶РµРЅРёРµ";
             else if (list[0] is MechImplant)
-                _textNameSkills.text = "Импланты";
+                _textNameSkills.text = "РРјРїР»Р°РЅС‚С‹";
             else
-                _textNameSkills.text = "Не смогли распознать";
+                _textNameSkills.text = "РќРµ СЃРјРѕРіР»Рё СЂР°СЃРїРѕР·РЅР°С‚СЊ";
     }    
 
     protected void ShowDescriptionSkill(string nameSkill)
@@ -233,13 +233,13 @@ public class RaceView : ViewWithButtonsDoneAndCancel
                 }
                 else if(skill is Weapon weapon)
                 {
-                    _textDescriptionSkill.text = $"{weapon.Name} \n {weapon.Description} \n Урон - {weapon.Damage}\n Бронепробитие {weapon.Penetration} \n Особенности - {weapon.Properties}";
+                    _textDescriptionSkill.text = $"{weapon.Name} \n {weapon.Description} \n РЈСЂРѕРЅ - {weapon.Damage}\n Р‘СЂРѕРЅРµРїСЂРѕР±РёС‚РёРµ {weapon.Penetration} \n РћСЃРѕР±РµРЅРЅРѕСЃС‚Рё - {weapon.Properties}";
                     _chosenSkill = weapon;
                 }
                 else if(skill is Armor armor)
                 {
-                    _textDescriptionSkill.text = $"{armor.Name} \n {armor.Description} \n Броня головы - {armor.DefHead}, \nБроня тела - {armor.DefBody}, " +
-                        $"\nБроня рук - {armor.DefHands},\nБроня ног - {armor.DefLegs}";
+                    _textDescriptionSkill.text = $"{armor.Name} \n {armor.Description} \n Р‘СЂРѕРЅСЏ РіРѕР»РѕРІС‹ - {armor.DefHead}, \nР‘СЂРѕРЅСЏ С‚РµР»Р° - {armor.DefBody}, " +
+                        $"\nР‘СЂРѕРЅСЏ СЂСѓРє - {armor.DefHands},\nР‘СЂРѕРЅСЏ РЅРѕРі - {armor.DefLegs}";
                     _chosenSkill = armor;
                 }
                 else if(skill is Equipment equipment)

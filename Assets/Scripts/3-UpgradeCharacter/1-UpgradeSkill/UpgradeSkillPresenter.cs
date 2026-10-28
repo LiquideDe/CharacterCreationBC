@@ -27,7 +27,7 @@ public class UpgradeSkillPresenter : IPresenter
         _creatorView = creatorView;
         Subscribe();
         ShowSkills();
-        _view.UpgradeExpireinceText($"{_character.ExperienceUnspent} ŒŒ");
+        _view.UpgradeExpireinceText($"{_character.ExperienceUnspent} –û–û");
     }
 
     public void SetEdit() => _isEdit = true;
@@ -90,7 +90,7 @@ public class UpgradeSkillPresenter : IPresenter
 
             _character = character;
             ShowSkills();
-            _view.UpgradeExpireinceText($"{_character.ExperienceUnspent} ŒŒ");
+            _view.UpgradeExpireinceText($"{_character.ExperienceUnspent} –û–û");
         }
         else
             _audioManager.PlayWarning();
@@ -103,7 +103,7 @@ public class UpgradeSkillPresenter : IPresenter
             _audioManager.PlayCancel();
             _character = _character.GetCharacter;
             ShowSkills();
-            _view.UpgradeExpireinceText($"{_character.ExperienceUnspent} ŒŒ");
+            _view.UpgradeExpireinceText($"{_character.ExperienceUnspent} –û–û");
         }
         else
             _audioManager.PlayWarning();

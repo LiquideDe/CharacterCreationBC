@@ -38,7 +38,7 @@ public class ButtonWithAdditionalInformation : Button, IPointerEnterHandler, IPo
     public void Initialize(string category)
     {
         _category = category;
-        _textDescription = $"Показать таланты из {category}";
+        _textDescription = $"РџРѕРєР°Р·Р°С‚СЊ С‚Р°Р»Р°РЅС‚С‹ РёР· {category}";
         textName.text = category;
     }
 

@@ -100,57 +100,57 @@ public class MotivationPresenter : IPresenter
         switch (id)
         {
             case 0:
-                character.SetPride("Красота");
+                character.SetPride("РљСЂР°СЃРѕС‚Р°");
                 character.SetInfamy(2);
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 4; break;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 4; break;
 
             case 1:
-                character.SetPride("Обаяние");
-                character.Characteristics[CharacteristicToInt["Общительность"]].Amount += 5;
-                character.Characteristics[CharacteristicToInt["Выносливость"]].Amount -= 5; break;
+                character.SetPride("РћР±Р°СЏРЅРёРµ");
+                character.Characteristics[CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount += 5;
+                character.Characteristics[CharacteristicToInt["Р’С‹РЅРѕСЃР»РёРІРѕСЃС‚СЊ"]].Amount -= 5; break;
 
             case 2:
-                character.SetPride("Мастерство");
+                character.SetPride("РњР°СЃС‚РµСЂСЃС‚РІРѕ");
                 character.SetInfamy(1);
-                character.Characteristics[CharacteristicToInt["Ловкость"]].Amount += 3;
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount += 3;
-                character.Characteristics[CharacteristicToInt["Навык Рукопашной"]].Amount -= 3;
-                character.Characteristics[CharacteristicToInt["Навык Стрельбы"]].Amount -= 3; break;
+                character.Characteristics[CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount += 3;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount += 3;
+                character.Characteristics[CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount -= 3;
+                character.Characteristics[CharacteristicToInt["РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"]].Amount -= 3; break;
 
             case 3:
-                character.SetPride("Набожность");
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount += 5;
-                character.Characteristics[CharacteristicToInt["Сила"]].Amount -= 5; break;
+                character.SetPride("РќР°Р±РѕР¶РЅРѕСЃС‚СЊ");
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount += 5;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р°"]].Amount -= 5; break;
 
             case 4:
-                character.SetPride("Стойкость");
-                character.Characteristics[CharacteristicToInt["Сила"]].Amount += 5;
-                character.Characteristics[CharacteristicToInt["Ловкость"]].Amount -= 3;
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount -= 3; break;
+                character.SetPride("РЎС‚РѕР№РєРѕСЃС‚СЊ");
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р°"]].Amount += 5;
+                character.Characteristics[CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount -= 3;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount -= 3; break;
 
             case 5:
-                character.SetPride("Прозорливость");
-                character.Characteristics[CharacteristicToInt["Общительность"]].Amount -= 5;
-                character.Characteristics[CharacteristicToInt["Восприятие"]].Amount += 5; break;
+                character.SetPride("РџСЂРѕР·РѕСЂР»РёРІРѕСЃС‚СЊ");
+                character.Characteristics[CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount -= 5;
+                character.Characteristics[CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount += 5; break;
 
             case 6:
-                character.SetPride("Рассудительность");
-                character.Characteristics[CharacteristicToInt["Восприятие"]].Amount -= 5;
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount += 5; break;
+                character.SetPride("Р Р°СЃСЃСѓРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ");
+                character.Characteristics[CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount -= 5;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount += 5; break;
 
             case 7:
-                character.SetPride("Воинское искусство");
-                character.Characteristics[CharacteristicToInt["Навык Рукопашной"]].Amount += 5;
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount -= 5; break;
+                character.SetPride("Р’РѕРёРЅСЃРєРѕРµ РёСЃРєСѓСЃСЃС‚РІРѕ");
+                character.Characteristics[CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount += 5;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount -= 5; break;
 
             case 8:
-                character.SetPride("Изящество");
-                character.Characteristics[CharacteristicToInt["Ловкость"]].Amount += 5;
-                character.Characteristics[CharacteristicToInt["Навык Стрельбы"]].Amount -= 5; break;
+                character.SetPride("РР·СЏС‰РµСЃС‚РІРѕ");
+                character.Characteristics[CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount += 5;
+                character.Characteristics[CharacteristicToInt["РќР°РІС‹Рє РЎС‚СЂРµР»СЊР±С‹"]].Amount -= 5; break;
 
             case 9:
-                character.SetPride("Богатство");
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 3; break;
+                character.SetPride("Р‘РѕРіР°С‚СЃС‚РІРѕ");
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 3; break;
         }
     }
 
@@ -159,51 +159,51 @@ public class MotivationPresenter : IPresenter
         switch (id)
         {
             case 0:
-                character.SetDisgrace("Вероломство");
+                character.SetDisgrace("Р’РµСЂРѕР»РѕРјСЃС‚РІРѕ");
                 character.SetCorruptionPoints(5); break;
 
             case 1:
-                character.SetDisgrace("Лживость");
+                character.SetDisgrace("Р›Р¶РёРІРѕСЃС‚СЊ");
                 character.SetInfamy(2);
-                character.Characteristics[CharacteristicToInt["Восприятие"]].Amount -= 4; break;
+                character.Characteristics[CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount -= 4; break;
 
             case 2:
-                character.SetDisgrace("Трусость");
-                character.Characteristics[CharacteristicToInt["Восприятие"]].Amount += 3;
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 5; break;
+                character.SetDisgrace("РўСЂСѓСЃРѕСЃС‚СЊ");
+                character.Characteristics[CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount += 3;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 5; break;
 
             case 3:
-                character.SetDisgrace("Жестокость");
+                character.SetDisgrace("Р–РµСЃС‚РѕРєРѕСЃС‚СЊ");
                 character.SetInfamy(2);
-                character.Characteristics[CharacteristicToInt["Общительность"]].Amount -= 4; break;
+                character.Characteristics[CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount -= 4; break;
 
             case 4:
-                character.SetDisgrace("Ненасытность");
+                character.SetDisgrace("РќРµРЅР°СЃС‹С‚РЅРѕСЃС‚СЊ");
                 character.SetWounds(2);
-                character.Characteristics[CharacteristicToInt["Ловкость"]].Amount -= 5; break;
+                character.Characteristics[CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount -= 5; break;
 
             case 5:
-                character.SetDisgrace("Алчность");
+                character.SetDisgrace("РђР»С‡РЅРѕСЃС‚СЊ");
                 character.SetCorruptionPoints(4); break;
 
             case 6:
-                character.SetDisgrace("Гордыня");
+                character.SetDisgrace("Р“РѕСЂРґС‹РЅСЏ");
                 character.SetInfamy(2);
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount -= 4; break;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount -= 4; break;
 
             case 7:
-                character.SetDisgrace("Сожаления");
+                character.SetDisgrace("РЎРѕР¶Р°Р»РµРЅРёСЏ");
                 character.SetCorruptionPoints(5); break;
 
             case 8:
-                character.SetDisgrace("Транжирство");
+                character.SetDisgrace("РўСЂР°РЅР¶РёСЂСЃС‚РІРѕ");
                 character.SetInfamy(2);
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 4; break;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 4; break;
 
             case 9:
-                character.SetDisgrace("Гнев");
-                character.Characteristics[CharacteristicToInt["Восприятие"]].Amount += 5;
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 2; 
+                character.SetDisgrace("Р“РЅРµРІ");
+                character.Characteristics[CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount += 5;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 2; 
                 character.SetWounds(-1); break;
         }
     }
@@ -213,58 +213,58 @@ public class MotivationPresenter : IPresenter
         switch (id)
         {
             case 0:
-                character.SetMotivation("Тайные знания");
+                character.SetMotivation("РўР°Р№РЅС‹Рµ Р·РЅР°РЅРёСЏ");
                 character.SetCorruptionPoints(4);
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount += 2;
-                character.Characteristics[CharacteristicToInt["Сила"]].Amount -= 3; break;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount += 2;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р°"]].Amount -= 3; break;
 
             case 1:
-                character.SetMotivation("Могущество");
+                character.SetMotivation("РњРѕРіСѓС‰РµСЃС‚РІРѕ");
                 character.SetWounds(-2);
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 3; break;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 3; break;
 
             case 2:
-                character.SetMotivation("Власть");
+                character.SetMotivation("Р’Р»Р°СЃС‚СЊ");
                 character.SetInfamy(1);
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount += 2;
-                character.Characteristics[CharacteristicToInt["Общительность"]].Amount += 2;
-                character.Characteristics[CharacteristicToInt["Ловкость"]].Amount -= 4;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount += 2;
+                character.Characteristics[CharacteristicToInt["РћР±С‰РёС‚РµР»СЊРЅРѕСЃС‚СЊ"]].Amount += 2;
+                character.Characteristics[CharacteristicToInt["Р›РѕРІРєРѕСЃС‚СЊ"]].Amount -= 4;
                 character.SetWounds(-1); break;
 
             case 3:
-                character.SetMotivation("Бессмертие");
-                character.Characteristics[CharacteristicToInt["Навык Рукопашной"]].Amount -= 5;
+                character.SetMotivation("Р‘РµСЃСЃРјРµСЂС‚РёРµ");
+                character.Characteristics[CharacteristicToInt["РќР°РІС‹Рє Р СѓРєРѕРїР°С€РЅРѕР№"]].Amount -= 5;
                 character.SetWounds(2); break;
 
             case 4:
-                character.SetMotivation("Новшества");
+                character.SetMotivation("РќРѕРІС€РµСЃС‚РІР°");
                 character.SetCorruptionPoints(2);
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount += 3;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount += 3;
                 character.SetWounds(-2); break;
 
             case 5:
-                character.SetMotivation("Наследие");
+                character.SetMotivation("РќР°СЃР»РµРґРёРµ");
                 character.SetInfamy(2);
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount -= 4; break;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount -= 4; break;
 
             case 6:
-                character.SetMotivation("Вседозволенность");
+                character.SetMotivation("Р’СЃРµРґРѕР·РІРѕР»РµРЅРЅРѕСЃС‚СЊ");
                 character.SetCorruptionPoints(5);
-                character.Characteristics[CharacteristicToInt["Сила Воли"]].Amount -= 3; break;
+                character.Characteristics[CharacteristicToInt["РЎРёР»Р° Р’РѕР»Рё"]].Amount -= 3; break;
 
             case 7:
-                character.SetMotivation("Совершенство");
+                character.SetMotivation("РЎРѕРІРµСЂС€РµРЅСЃС‚РІРѕ");
                 break;
 
             case 8:
-                character.SetMotivation("Месть");
+                character.SetMotivation("РњРµСЃС‚СЊ");
                 character.SetWounds(2);
-                character.Characteristics[CharacteristicToInt["Восприятие"]].Amount -= 5; break;
+                character.Characteristics[CharacteristicToInt["Р’РѕСЃРїСЂРёСЏС‚РёРµ"]].Amount -= 5; break;
 
             case 9:
-                character.SetMotivation("Насилие");
+                character.SetMotivation("РќР°СЃРёР»РёРµ");
                 character.SetCorruptionPoints(5);
-                character.Characteristics[CharacteristicToInt["Интеллект"]].Amount -= 3; break;
+                character.Characteristics[CharacteristicToInt["РРЅС‚РµР»Р»РµРєС‚"]].Amount -= 3; break;
         }
     }
 
